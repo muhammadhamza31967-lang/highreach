@@ -17,12 +17,12 @@ export function Hero() {
       <Container>
         <div className="relative mx-auto max-w-[58rem] text-center">
           <Reveal>
-            <p className="mb-10 text-[0.75rem] font-medium uppercase tracking-[0.32em] text-foreground sm:mb-12">
+            <p className="mb-5 text-[0.75rem] font-medium uppercase tracking-[0.32em] text-foreground sm:mb-6">
               WELCOME TO HIGHREACH
             </p>
           </Reveal>
           <Reveal delay={90}>
-            <h1 className="mx-auto max-w-[30ch] text-[2.15rem] font-light leading-[1.1] tracking-[-0.025em] text-foreground sm:max-w-[34ch] sm:text-[2.75rem] lg:max-w-[36ch] lg:text-[3.5rem] xl:text-[3.75rem]">
+            <h1 className="mx-auto max-w-[30ch] text-[2.25rem] font-light leading-[1.1] tracking-[-0.025em] text-foreground sm:max-w-[34ch] sm:text-[2.75rem] lg:max-w-[36ch] lg:text-[3rem] xl:text-[3.5rem]">
               Building Intelligent Organisations
               <br className="hidden sm:block" /> for an AI-Driven World
             </h1>
