@@ -10,59 +10,56 @@ import { Arrow, Container, Eyebrow, Reveal, SectionLabel } from "./primitives";
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-28 lg:pt-36">
+    <section id="top" className="relative overflow-hidden bg-surface pt-32 pb-20 lg:pt-40 lg:pb-24">
       <Container>
-        <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="grid items-center gap-14 text-center lg:grid-cols-12 lg:gap-16 lg:text-left">
           <div className="lg:col-span-7">
-            <Reveal>
-              <Eyebrow>Welcome to HighReach</Eyebrow>
-            </Reveal>
-            <Reveal delay={80}>
-              <h1 className="mt-6 max-w-[16ch] text-[2.6rem] font-semibold leading-[1.02] tracking-[-0.03em] text-foreground sm:text-6xl lg:text-[5.5rem]">
-                Building Intelligent Organisations for an AI-Driven World
-              </h1>
-            </Reveal>
-            <Reveal delay={160}>
-              <p className="mt-8 max-w-xl text-base leading-relaxed text-secondary-ink lg:text-lg">
-                In an era of AI and constant disruption, organisations must become smarter, more
-                adaptive and future-ready. HighReach develops the leadership, strategy and
-                capabilities needed to thrive in a rapidly changing world.
-              </p>
-            </Reveal>
-            <Reveal delay={240}>
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <a
-                  href="#capability"
-                  className="group inline-flex items-center justify-between gap-6 bg-accent px-6 py-4 text-sm font-medium text-accent-foreground transition-colors duration-300 hover:bg-foreground"
-                >
-                  Explore Our Approach
-                  <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
-                <a
-                  href="#contact"
-                  className="group inline-flex items-center justify-between gap-6 border border-foreground/20 px-6 py-4 text-sm font-medium text-foreground transition-colors duration-300 hover:border-accent hover:text-accent"
-                >
-                  Talk to HighReach
-                  <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
-              </div>
-            </Reveal>
+            <div className="mx-auto max-w-[36rem] lg:mx-auto lg:pl-10">
+              <Reveal>
+                <div className="flex items-center justify-center gap-4 lg:justify-start">
+                  <span className="h-px w-10 bg-accent" aria-hidden="true" />
+                  <p className="text-[0.7rem] font-medium uppercase tracking-[0.32em] text-accent">
+                    Welcome to HighReach
+                  </p>
+                </div>
+              </Reveal>
+              <Reveal delay={90}>
+                <h1 className="mt-8 text-[2.5rem] font-semibold leading-[1.05] tracking-[-0.028em] text-foreground sm:text-[3.4rem] lg:text-[4.1rem] xl:text-[4.6rem]">
+                  Building Intelligent
+                  <br className="hidden sm:block" /> Organisations for an{" "}
+                  <br className="hidden sm:block" />
+                  AI-Driven World
+                </h1>
+              </Reveal>
+              <Reveal delay={180}>
+                <p className="mx-auto mt-9 max-w-[34rem] text-base leading-[1.85] text-secondary-ink lg:mx-0 lg:text-[1.05rem]">
+                  In an era of AI and constant disruption, organisations must become smarter, more
+                  adaptive and future-ready. HighReach develops the leadership, strategy and
+                  capabilities needed to thrive in a rapidly changing world.
+                </p>
+              </Reveal>
+            </div>
           </div>
 
           <div className="lg:col-span-5">
-            <Reveal delay={120}>
-              <img
-                src={heroExecutive}
-                alt="Senior executive in a modern Riyadh office"
-                width={1400}
-                height={1600}
-                className="h-[22rem] w-full object-cover sm:h-[30rem] lg:h-[34rem]"
-              />
+            <Reveal delay={140}>
+              <div className="relative mx-auto max-w-md lg:max-w-none">
+                <div
+                  aria-hidden="true"
+                  className="absolute -right-4 -top-4 h-full w-full rounded-lg border border-hairline"
+                />
+                <img
+                  src={heroExecutive}
+                  alt="Senior executive in a modern Riyadh office"
+                  width={1400}
+                  height={1600}
+                  className="relative h-[24rem] w-full rounded-lg object-cover shadow-[0_32px_70px_-32px_rgba(5,52,98,0.38)] ring-1 ring-hairline sm:h-[28rem] lg:h-[32rem]"
+                />
+              </div>
             </Reveal>
           </div>
         </div>
       </Container>
-      <div className="mt-20 h-px w-full bg-hairline lg:mt-28" />
     </section>
   );
 }
