@@ -118,7 +118,9 @@ export function Resources() {
               </div>
             </Reveal>
           ))}
+          <li aria-hidden="true" className="hidden bg-background lg:block" />
         </ul>
+
       </Container>
     </section>
   );
