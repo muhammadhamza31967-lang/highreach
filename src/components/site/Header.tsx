@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Arrow, Container } from "./primitives";
 import { cn } from "@/lib/utils";
+import logoAsset from "@/assets/highreach-logo.png.asset.json";
 
 const NAV = [
   { label: "Home", href: "#top" },
@@ -44,9 +45,14 @@ export function Header() {
       </div>
 
       <Container className="flex h-16 items-center justify-between lg:h-[4.5rem]">
-        <a href="#top" className="group flex items-baseline gap-2" aria-label="HighReach home">
-          <span className="text-xl font-semibold tracking-tight text-foreground">HighReach</span>
-          <span className="h-1.5 w-1.5 translate-y-[-1px] bg-accent transition-transform duration-300 group-hover:translate-x-1" />
+        <a href="#top" className="group flex items-center" aria-label="HighReach home">
+          <img
+            src={logoAsset.url}
+            alt="HighReach — Success Elevated"
+            className="h-9 w-auto lg:h-10"
+            width={240}
+            height={64}
+          />
         </a>
 
         <nav aria-label="Primary" className="hidden xl:block">
@@ -55,7 +61,7 @@ export function Header() {
               <li key={item.label}>
                 <a
                   href={item.href}
-                  className="relative py-2 text-sm text-secondary-ink transition-colors hover:text-foreground after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 hover:after:scale-x-100"
+                  className="relative py-2 text-sm text-foreground/85 transition-colors hover:text-accent after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 hover:after:scale-x-100"
                 >
                   {item.label}
                 </a>
