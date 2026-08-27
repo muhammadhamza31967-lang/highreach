@@ -581,15 +581,17 @@ export function Partners() {
                 Supported By
               </h3>
               <ul className="mt-6 grid gap-px bg-hairline sm:grid-cols-2">
-                {PARTNERS.map((p) => (
+                {[0, 1, 2, 3].map((i) => (
                   <li
-                    key={p}
-                    className="flex h-24 items-center justify-center bg-background px-6 text-center text-sm font-medium tracking-[0.04em] text-secondary-ink transition-colors duration-300 hover:text-foreground"
+                    key={i}
+                    aria-hidden="true"
+                    className="group flex h-24 items-center justify-center bg-background px-6"
                   >
-                    {p}
+                    <span className="h-8 w-28 bg-hairline transition-colors duration-300 group-hover:bg-accent/25" />
                   </li>
                 ))}
               </ul>
+
             </Reveal>
           </div>
         </div>
