@@ -61,7 +61,7 @@ export function Header() {
               <li key={item.label}>
                 <a
                   href={item.href}
-                  className="relative py-2 text-sm text-secondary-ink transition-colors hover:text-foreground after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 hover:after:scale-x-100"
+                  className="relative py-2 text-sm text-foreground/85 transition-colors hover:text-accent after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 hover:after:scale-x-100"
                 >
                   {item.label}
                 </a>
