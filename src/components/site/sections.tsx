@@ -95,10 +95,10 @@ function ResourcePanel({
 
       <div
         className={
-          "relative flex h-full flex-col justify-between p-6 " + (inset ? "lg:pl-[4.5rem] lg:pr-6 lg:py-6" : "lg:p-6")
+          "relative flex h-full flex-col justify-between p-6 " + (inset ? "lg:pl-[3.25rem] lg:pr-5 lg:py-6" : "lg:p-6")
         }
       >
-        <div className="lg:max-w-[11.5rem]">
+        <div className="lg:max-w-[11rem]">
           <span className="text-[0.7rem] font-medium uppercase tracking-[0.28em] text-accent">{item.index}</span>
           <h3 className="mt-4 max-w-[15ch] text-lg font-medium leading-snug tracking-[-0.01em] text-foreground">
             {item.title}
@@ -119,7 +119,7 @@ function ResourcePanel({
 export function Resources() {
   /** vertical offsets + overlap create the layered editorial rhythm on desktop */
   const offsets = ["lg:translate-y-8", "lg:translate-y-16", "lg:translate-y-0", "lg:translate-y-14", "lg:translate-y-6"];
-  const overlaps = ["", "lg:-ml-14", "lg:-ml-14", "lg:-ml-14", "lg:-ml-14"];
+  const overlaps = ["", "lg:-ml-10", "lg:-ml-10", "lg:-ml-10", "lg:-ml-10"];
   const layers = ["lg:z-10", "lg:z-20", "lg:z-30", "lg:z-20", "lg:z-10"];
 
   return (
