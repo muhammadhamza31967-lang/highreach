@@ -12,7 +12,7 @@ export function Hero() {
     <section
       id="top"
       className="relative overflow-hidden pt-28 pb-24 sm:pt-32 sm:pb-28 lg:pt-40 lg:pb-36"
-      style={{ backgroundColor: '#FAFAF8' }}
+      style={{ backgroundColor: "#FAFAF8" }}
     >
       <Container>
         <div className="relative mx-auto max-w-[58rem] text-center">
@@ -22,16 +22,20 @@ export function Hero() {
             </p>
           </Reveal>
           <Reveal delay={90}>
-            <h1 className="mx-auto max-w-[30ch] text-[2.25rem] font-light leading-[1.1] tracking-[-0.025em] text-foreground sm:max-w-[34ch] sm:text-[2.75rem] lg:max-w-[36ch] lg:text-[3rem] xl:text-[3.5rem]">
+            {/* <h1 className="mx-auto max-w-[30ch] text-[2.25rem] font-light leading-[1.1] tracking-[-0.025em] text-foreground sm:max-w-[34ch] sm:text-[2.75rem] lg:max-w-[36ch] lg:text-[3rem] xl:text-[3.5rem]">
+              Building Intelligent Organisations
+              <br className="hidden sm:block" /> for an AI-Driven World
+            </h1> */}
+            <h1 className="mx-auto max-w-[30ch] text-[2rem] font-light leading-[1.1] tracking-[-0.025em] text-foreground sm:max w-[34ch] sm:text-[2.25rem] lg:max-w-[36ch] lg:text-[2.75rem] xl:text-[3rem]">
               Building Intelligent Organisations
               <br className="hidden sm:block" /> for an AI-Driven World
             </h1>
           </Reveal>
           <Reveal delay={180}>
             <p className="mx-auto mt-8 max-w-[42rem] text-lg leading-[1.7] text-secondary-ink">
-              In an era of AI and constant disruption, organisations must become smarter, more
-              adaptive and future-ready. HighReach develops the leadership, strategy and
-              capabilities needed to thrive in a rapidly changing world.
+              In an era of AI and constant disruption, organisations must become smarter, more adaptive and
+              future-ready. HighReach develops the leadership, strategy and capabilities needed to thrive in a rapidly
+              changing world.
             </p>
           </Reveal>
         </div>
@@ -93,7 +97,6 @@ export function Resources() {
           ))}
           <li aria-hidden="true" className="hidden bg-background lg:block" />
         </ul>
-
       </Container>
     </section>
   );
@@ -150,10 +153,9 @@ export function About() {
                 HighReach Business Solutions
               </h2>
               <p className="mt-8 text-base leading-relaxed text-secondary-ink">
-                With world-class expertise, extensive networks and strong partnerships, we develop
-                people and organisations across strategy, innovation and leadership. We work with
-                business leaders and management teams to overcome challenges, unlock potential and
-                create lasting impact.
+                With world-class expertise, extensive networks and strong partnerships, we develop people and
+                organisations across strategy, innovation and leadership. We work with business leaders and management
+                teams to overcome challenges, unlock potential and create lasting impact.
               </p>
             </Reveal>
           </div>
@@ -172,29 +174,25 @@ export function About() {
             <div className="mt-10 grid gap-px bg-hairline sm:grid-cols-2">
               <Reveal delay={140} className="bg-background">
                 <div className="h-full pr-0 sm:pr-8">
-                  <p className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-accent">
-                    Our Approach
-                  </p>
+                  <p className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-accent">Our Approach</p>
                   <h3 className="mt-4 text-xl font-semibold tracking-[-0.01em] text-foreground">
                     Learning That Drives Action
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-secondary-ink">
-                    Our executive development approach combines critical thinking, contemporary
-                    education and practical application to enable organisational improvement.
+                    Our executive development approach combines critical thinking, contemporary education and practical
+                    application to enable organisational improvement.
                   </p>
                 </div>
               </Reveal>
               <Reveal delay={200} className="bg-background">
                 <div className="h-full pt-8 sm:pl-8 sm:pt-0">
-                  <p className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-accent">
-                    Our Uniqueness
-                  </p>
+                  <p className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-accent">Our Uniqueness</p>
                   <h3 className="mt-4 text-xl font-semibold tracking-[-0.01em] text-foreground">
                     Expertise Built Around Transformation
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-secondary-ink">
-                    We combine leadership facilitation, strategy, technology-enabled learning and
-                    problem-based design to deliver impactful transformation programmes.
+                    We combine leadership facilitation, strategy, technology-enabled learning and problem-based design
+                    to deliver impactful transformation programmes.
                   </p>
                 </div>
               </Reveal>
@@ -239,9 +237,9 @@ export function Capability() {
             id="capability-heading"
             className="mt-6 max-w-4xl text-xl font-medium leading-[1.45] tracking-[-0.01em] text-foreground sm:text-2xl lg:text-[2rem]"
           >
-            Through advisory, capability development, and intelligent platforms, we help
-            organisations strengthen leadership, align strategy with execution, and build the systems
-            required to perform in an increasingly complex world.
+            Through advisory, capability development, and intelligent platforms, we help organisations strengthen
+            leadership, align strategy with execution, and build the systems required to perform in an increasingly
+            complex world.
           </p>
         </Reveal>
 
@@ -335,12 +333,8 @@ export function Industries() {
               >
                 <span className="mt-2 h-px w-8 shrink-0 bg-accent transition-all duration-300 group-hover:w-12" />
                 <span>
-                  <h3 className="text-lg font-semibold tracking-[-0.01em] text-foreground lg:text-xl">
-                    {ind.title}
-                  </h3>
-                  <p className="mt-3 max-w-md text-sm leading-relaxed text-secondary-ink">
-                    {ind.body}
-                  </p>
+                  <h3 className="text-lg font-semibold tracking-[-0.01em] text-foreground lg:text-xl">{ind.title}</h3>
+                  <p className="mt-3 max-w-md text-sm leading-relaxed text-secondary-ink">{ind.body}</p>
                 </span>
                 <Arrow className="ml-auto mt-1 h-4 w-4 text-accent opacity-0 transition-all duration-300 group-hover:opacity-100" />
               </a>
@@ -400,9 +394,7 @@ export function Services() {
           {SERVICES.map((s, i) => (
             <Reveal as="li" key={s.title} delay={i * 80} className="group bg-foreground">
               <a href="#contact" className="flex h-full flex-col p-8 lg:p-10">
-                <span className="text-xs font-medium tracking-[0.2em] text-accent-light">
-                  {s.number}
-                </span>
+                <span className="text-xs font-medium tracking-[0.2em] text-accent-light">{s.number}</span>
                 <h3 className="mt-8 text-2xl font-semibold tracking-[-0.015em]">{s.title}</h3>
                 <p className="mt-4 text-sm leading-relaxed text-background/70">{s.body}</p>
                 <Arrow className="mt-10 h-5 w-5 text-accent-light transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -436,9 +428,9 @@ export function Careers() {
           <div className="lg:col-span-7 lg:border-l lg:border-hairline lg:pl-16">
             <Reveal delay={100}>
               <p className="text-base leading-relaxed text-secondary-ink lg:text-lg">
-                At HighReach, we develop the next generation of leaders and organisations by bringing
-                the latest research and thinking into practice. We are always looking for passionate,
-                experienced professionals and expert facilitators who are committed to excellence.
+                At HighReach, we develop the next generation of leaders and organisations by bringing the latest
+                research and thinking into practice. We are always looking for passionate, experienced professionals and
+                expert facilitators who are committed to excellence.
               </p>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
                 <a
@@ -480,8 +472,7 @@ export function Contact() {
                 Let's Start a Conversation
               </h2>
               <p className="mt-8 max-w-xl text-base leading-relaxed text-secondary-ink lg:text-lg">
-                Discover how HighReach can support your organisation's leadership and transformation
-                journey.
+                Discover how HighReach can support your organisation's leadership and transformation journey.
               </p>
             </Reveal>
           </div>
@@ -528,8 +519,6 @@ export function Contact() {
 
 /* -------------------------------------------------------------- PARTNERS */
 
-
-
 export function Partners() {
   return (
     <section id="partners" className="py-20 lg:py-28" aria-labelledby="partners-heading">
@@ -549,12 +538,10 @@ export function Partners() {
           <div className="lg:col-span-7 lg:pl-16">
             <Reveal delay={100}>
               <p className="text-base leading-relaxed text-secondary-ink lg:text-lg">
-                HighReach collaborates with leading partners in executive learning and organisational
-                development to create impactful experiences for leaders and organisations.
+                HighReach collaborates with leading partners in executive learning and organisational development to
+                create impactful experiences for leaders and organisations.
               </p>
-              <h3 className="mt-12 text-xs font-medium uppercase tracking-[0.22em] text-secondary-ink">
-                Supported By
-              </h3>
+              <h3 className="mt-12 text-xs font-medium uppercase tracking-[0.22em] text-secondary-ink">Supported By</h3>
               <ul className="mt-6 grid gap-px bg-hairline sm:grid-cols-2">
                 {[0, 1, 2, 3].map((i) => (
                   <li
@@ -566,7 +553,6 @@ export function Partners() {
                   </li>
                 ))}
               </ul>
-
             </Reveal>
           </div>
         </div>
