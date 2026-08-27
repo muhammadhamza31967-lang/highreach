@@ -57,49 +57,106 @@ const RESOURCES = [
   { index: "05", title: "Cyber Security Practice", sub: "Cyber Capability Built for Complex" },
 ];
 
-export function Resources() {
+/** One report-cover style panel. */
+function ResourcePanel({
+  item,
+  focal = false,
+}: {
+  item: (typeof RESOURCES)[number];
+  focal?: boolean;
+}) {
   return (
-    <section id="resources" className="py-20 lg:py-28" aria-labelledby="resources-heading">
+    <a
+      href="#contact"
+      className={
+        "group relative block h-[15rem] w-[19rem] shrink-0 snap-center overflow-hidden rounded-2xl border border-hairline bg-background " +
+        "shadow-[0_10px_30px_-18px_rgba(5,52,98,0.35)] transition-all duration-500 ease-out " +
+        "hover:-translate-y-2 hover:shadow-[0_26px_50px_-22px_rgba(5,52,98,0.45)] hover:border-accent/40 " +
+        (focal ? " lg:h-[16.5rem] lg:w-[21rem]" : "")
+      }
+    >
+      {/* fine architectural detailing */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-6 -top-10 select-none text-[7rem] font-light leading-none tracking-tighter text-foreground/[0.045]"
+      >
+        {item.index}
+      </span>
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 right-10 w-px bg-hairline"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-16 h-px bg-hairline"
+      />
+      {focal && (
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-16 -left-16 h-40 w-40 rounded-full border border-hairline"
+        />
+      )}
+
+      <div className="relative flex h-full flex-col justify-between p-6 lg:p-7">
+        <div>
+          <span className="text-[0.7rem] font-medium uppercase tracking-[0.28em] text-accent">
+            {item.index}
+          </span>
+          <h3 className="mt-5 max-w-[15ch] text-lg font-medium leading-snug tracking-[-0.01em] text-foreground lg:text-xl">
+            {item.title}
+          </h3>
+          <p className="mt-2 text-xs leading-relaxed text-secondary-ink">{item.sub}</p>
+        </div>
+        <span className="inline-flex items-center gap-2 text-[0.78rem] font-medium text-foreground transition-colors group-hover:text-accent">
+          <Download className="h-3.5 w-3.5" aria-hidden="true" />
+          Download
+          <span className="sr-only"> {item.title}</span>
+          <Arrow className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
+        </span>
+      </div>
+    </a>
+  );
+}
+
+export function Resources() {
+  /** vertical offsets create the layered editorial rhythm on desktop */
+  const offsets = ["lg:translate-y-6", "lg:translate-y-16", "lg:-translate-y-2", "lg:translate-y-12", "lg:translate-y-4"];
+  const overlaps = ["", "lg:-ml-12", "lg:-ml-10", "lg:-ml-12", "lg:-ml-10"];
+  const layers = ["lg:z-10", "lg:z-20", "lg:z-30", "lg:z-20", "lg:z-10"];
+
+  return (
+    <section id="resources" className="bg-background py-20 lg:py-28" aria-labelledby="resources-heading">
       <Container>
         <Reveal>
           <SectionLabel>Resources</SectionLabel>
           <h2
             id="resources-heading"
-            className="mt-6 max-w-[20ch] text-3xl font-semibold leading-[1.08] tracking-[-0.02em] text-foreground sm:text-4xl lg:text-5xl"
+            className="mt-6 max-w-[18ch] text-3xl font-light leading-[1.08] tracking-[-0.025em] text-foreground sm:text-4xl lg:text-[3.4rem]"
           >
             Strategic Intelligence &amp; Capability Resources
           </h2>
         </Reveal>
+      </Container>
 
-        <ul className="mt-14 grid gap-px border border-hairline bg-hairline sm:grid-cols-2 lg:grid-cols-3">
+      {/* layered horizontal composition */}
+      <div className="mt-14 lg:mt-20">
+        <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-10 lg:mx-auto lg:w-full lg:max-w-[86rem] lg:snap-none lg:justify-center lg:gap-0 lg:overflow-visible lg:px-12 lg:pb-20">
           {RESOURCES.map((r, i) => (
-            <Reveal as="li" key={r.index} delay={i * 60} className="group bg-background">
-              <div className="flex h-full flex-col justify-between p-7 transition-colors duration-300 group-hover:bg-surface lg:p-9">
-                <div>
-                  <span className="text-xs font-medium tracking-[0.2em] text-accent">{r.index}</span>
-                  <h3 className="mt-6 text-xl font-semibold leading-snug tracking-[-0.01em] text-foreground">
-                    {r.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-secondary-ink">{r.sub}</p>
-                </div>
-                <a
-                  href="#contact"
-                  className="mt-10 inline-flex items-center gap-3 text-sm font-medium text-foreground transition-colors hover:text-accent"
-                >
-                  <Download className="h-4 w-4" aria-hidden="true" />
-                  <span>Download</span>
-                  <span className="sr-only"> {r.title}</span>
-                  <Arrow className="h-3.5 w-3.5 -translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
-                </a>
-              </div>
+            <Reveal
+              key={r.index}
+              delay={i * 110}
+              className={`shrink-0 ${offsets[i]} ${overlaps[i]} ${layers[i]} hover:z-40`}
+            >
+              <ResourcePanel item={r} focal={i === 2} />
             </Reveal>
           ))}
-          <li aria-hidden="true" className="hidden bg-background lg:block" />
-        </ul>
-      </Container>
+          <span aria-hidden="true" className="w-1 shrink-0 lg:hidden" />
+        </div>
+      </div>
     </section>
   );
 }
+
 
 /* ------------------------------------------------------- ASSESSMENT TOOLS */
 
