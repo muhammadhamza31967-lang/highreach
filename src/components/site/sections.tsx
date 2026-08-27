@@ -23,10 +23,8 @@ export function Hero() {
           </Reveal>
           <Reveal delay={90}>
             <h1 className="mx-auto max-w-[30ch] text-[2.15rem] font-light leading-[1.1] tracking-[-0.025em] text-foreground sm:max-w-[34ch] sm:text-[2.75rem] lg:max-w-[36ch] lg:text-[3.5rem] xl:text-[3.75rem]">
-              Building Intelligent
-              <br className="hidden sm:block" /> Organisations for an{" "}
-              <br className="hidden sm:block" />
-              AI-Driven World
+              Building Intelligent Organisations
+              <br className="hidden sm:block" /> for an AI-Driven World
             </h1>
           </Reveal>
           <Reveal delay={180}>
