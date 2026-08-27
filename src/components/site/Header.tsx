@@ -15,7 +15,7 @@ const NAV = [
 ];
 
 const FLOATING =
-  "bg-white border border-black/[0.06] shadow-[0_10px_30px_-10px_rgba(5,52,98,0.12),0_2px_6px_-2px_rgba(5,52,98,0.06)]";
+  "bg-white border border-black/[0.06] shadow-[0_8px_25px_rgba(15,45,75,0.10)]";
 
 export function Header() {
   const [open, setOpen] = useState(false);

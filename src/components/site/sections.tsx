@@ -12,7 +12,6 @@ export function Hero() {
     <section
       id="top"
       className="relative overflow-hidden pt-28 pb-24 sm:pt-32 sm:pb-28 lg:pt-40 lg:pb-36"
-      style={{ backgroundColor: "#FAFAF8" }}
     >
       <Container>
         <div className="relative mx-auto max-w-[58rem] text-center">
