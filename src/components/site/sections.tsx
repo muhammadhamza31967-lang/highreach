@@ -98,12 +98,12 @@ function ResourcePanel({
           "relative flex h-full flex-col justify-between p-6 " + (inset ? "lg:pl-[4.5rem] lg:pr-6 lg:py-6" : "lg:p-6")
         }
       >
-        <div>
+        <div className="lg:max-w-[11.5rem]">
           <span className="text-[0.7rem] font-medium uppercase tracking-[0.28em] text-accent">{item.index}</span>
           <h3 className="mt-4 max-w-[15ch] text-lg font-medium leading-snug tracking-[-0.01em] text-foreground">
             {item.title}
           </h3>
-          <p className="mt-2 max-w-[24ch] text-xs leading-relaxed text-secondary-ink">{item.sub}</p>
+          <p className="mt-2 max-w-[26ch] text-xs leading-relaxed text-secondary-ink lg:max-w-none">{item.sub}</p>
         </div>
         <span className="inline-flex items-center gap-2 text-[0.78rem] font-medium text-foreground transition-colors group-hover:text-accent">
           <Download className="h-3.5 w-3.5" aria-hidden="true" />
