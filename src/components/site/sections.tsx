@@ -11,44 +11,24 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden bg-surface pt-36 pb-24 sm:pt-44 sm:pb-28 lg:pt-52 lg:pb-36"
+      className="relative overflow-hidden pt-28 pb-24 sm:pt-32 sm:pb-28 lg:pt-40 lg:pb-36"
+      style={{ backgroundColor: '#FAFAF8' }}
     >
-      {/* Subtle architectural detail: oversized faint "H" + hairline rules */}
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-semibold leading-none text-foreground/[0.035] text-[38rem] sm:text-[48rem] lg:text-[56rem]"
-      >
-        H
-      </span>
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-24 h-px w-40 -translate-x-1/2 bg-hairline"
-      />
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-24 left-1/2 h-px w-40 -translate-x-1/2 bg-hairline"
-      />
-
       <Container>
         <div className="relative mx-auto max-w-[58rem] text-center">
           <Reveal>
-            <div className="flex items-center justify-center gap-4">
-              <span className="h-px w-10 bg-accent" aria-hidden="true" />
-              <p className="text-[0.72rem] font-medium uppercase tracking-[0.34em] text-accent">
-                Welcome to HighReach
-              </p>
-            </div>
+            <p className="mb-10 text-[0.75rem] font-medium uppercase tracking-[0.32em] text-foreground sm:mb-12">
+              WELCOME TO HIGHREACH
+            </p>
           </Reveal>
           <Reveal delay={90}>
-            <h1 className="mx-auto mt-9 max-w-[16ch] text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.022em] text-foreground sm:mt-10 sm:text-[3.5rem] lg:text-[4.4rem] xl:text-[4.75rem]">
-              Building Intelligent
-              <br className="hidden sm:block" /> Organisations for an{" "}
-              <br className="hidden sm:block" />
-              AI-Driven World
+            <h1 className="mx-auto max-w-[30ch] text-[2.15rem] font-light leading-[1.1] tracking-[-0.025em] text-foreground sm:max-w-[34ch] sm:text-[2.75rem] lg:max-w-[36ch] lg:text-[3.5rem] xl:text-[3.75rem]">
+              Building Intelligent Organisations
+              <br className="hidden sm:block" /> for an AI-Driven World
             </h1>
           </Reveal>
           <Reveal delay={180}>
-            <p className="mx-auto mt-10 max-w-[42rem] text-base leading-[1.8] text-secondary-ink sm:mt-11 sm:text-[1.075rem] lg:text-[1.15rem]">
+            <p className="mx-auto mt-8 max-w-[42rem] text-lg leading-[1.7] text-secondary-ink">
               In an era of AI and constant disruption, organisations must become smarter, more
               adaptive and future-ready. HighReach develops the leadership, strategy and
               capabilities needed to thrive in a rapidly changing world.
