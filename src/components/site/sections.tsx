@@ -61,51 +61,49 @@ const RESOURCES = [
 function ResourcePanel({
   item,
   focal = false,
+  inset = false,
 }: {
   item: (typeof RESOURCES)[number];
   focal?: boolean;
+  inset?: boolean;
 }) {
   return (
     <a
       href="#contact"
       className={
-        "group relative block h-[15rem] w-[19rem] shrink-0 snap-center overflow-hidden rounded-2xl border border-hairline bg-background " +
+        "group relative block h-[14.5rem] w-[18rem] shrink-0 snap-center overflow-hidden rounded-2xl border border-hairline bg-background " +
         "shadow-[0_10px_30px_-18px_rgba(5,52,98,0.35)] transition-all duration-500 ease-out " +
-        "hover:-translate-y-2 hover:shadow-[0_26px_50px_-22px_rgba(5,52,98,0.45)] hover:border-accent/40 " +
-        (focal ? " lg:h-[16.5rem] lg:w-[21rem]" : "")
+        "hover:-translate-y-2 hover:shadow-[0_28px_55px_-24px_rgba(5,52,98,0.45)] hover:border-accent/40 " +
+        (focal ? " lg:h-[16rem] lg:w-[18.5rem]" : " lg:w-[16.5rem]")
       }
     >
       {/* fine architectural detailing */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -right-6 -top-10 select-none text-[7rem] font-light leading-none tracking-tighter text-foreground/[0.045]"
+        className="pointer-events-none absolute -right-5 -top-9 select-none text-[6.5rem] font-light leading-none tracking-tighter text-foreground/[0.05]"
       >
         {item.index}
       </span>
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-10 w-px bg-hairline"
-      />
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-16 h-px bg-hairline"
-      />
+      <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-8 w-px bg-hairline" />
+      <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-14 h-px bg-hairline" />
       {focal && (
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-16 -left-16 h-40 w-40 rounded-full border border-hairline"
+          className="pointer-events-none absolute -bottom-20 -left-16 h-44 w-44 rounded-full border border-hairline"
         />
       )}
 
-      <div className="relative flex h-full flex-col justify-between p-6 lg:p-7">
+      <div
+        className={
+          "relative flex h-full flex-col justify-between p-6 " + (inset ? "lg:pl-[4.5rem] lg:pr-6 lg:py-6" : "lg:p-6")
+        }
+      >
         <div>
-          <span className="text-[0.7rem] font-medium uppercase tracking-[0.28em] text-accent">
-            {item.index}
-          </span>
-          <h3 className="mt-5 max-w-[15ch] text-lg font-medium leading-snug tracking-[-0.01em] text-foreground lg:text-xl">
+          <span className="text-[0.7rem] font-medium uppercase tracking-[0.28em] text-accent">{item.index}</span>
+          <h3 className="mt-4 max-w-[15ch] text-lg font-medium leading-snug tracking-[-0.01em] text-foreground">
             {item.title}
           </h3>
-          <p className="mt-2 text-xs leading-relaxed text-secondary-ink">{item.sub}</p>
+          <p className="mt-2 max-w-[24ch] text-xs leading-relaxed text-secondary-ink">{item.sub}</p>
         </div>
         <span className="inline-flex items-center gap-2 text-[0.78rem] font-medium text-foreground transition-colors group-hover:text-accent">
           <Download className="h-3.5 w-3.5" aria-hidden="true" />
@@ -119,9 +117,9 @@ function ResourcePanel({
 }
 
 export function Resources() {
-  /** vertical offsets create the layered editorial rhythm on desktop */
-  const offsets = ["lg:translate-y-6", "lg:translate-y-16", "lg:-translate-y-2", "lg:translate-y-12", "lg:translate-y-4"];
-  const overlaps = ["", "lg:-ml-12", "lg:-ml-10", "lg:-ml-12", "lg:-ml-10"];
+  /** vertical offsets + overlap create the layered editorial rhythm on desktop */
+  const offsets = ["lg:translate-y-8", "lg:translate-y-16", "lg:translate-y-0", "lg:translate-y-14", "lg:translate-y-6"];
+  const overlaps = ["", "lg:-ml-14", "lg:-ml-14", "lg:-ml-14", "lg:-ml-14"];
   const layers = ["lg:z-10", "lg:z-20", "lg:z-30", "lg:z-20", "lg:z-10"];
 
   return (
@@ -139,15 +137,15 @@ export function Resources() {
       </Container>
 
       {/* layered horizontal composition */}
-      <div className="mt-14 lg:mt-20">
-        <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-10 lg:mx-auto lg:w-full lg:max-w-[86rem] lg:snap-none lg:justify-center lg:gap-0 lg:overflow-visible lg:px-12 lg:pb-20">
+      <div className="mt-14 lg:mt-16">
+        <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-10 lg:mx-auto lg:w-full lg:max-w-[86rem] lg:snap-none lg:justify-center lg:gap-0 lg:overflow-visible lg:px-12 lg:pb-24">
           {RESOURCES.map((r, i) => (
             <Reveal
               key={r.index}
               delay={i * 110}
-              className={`shrink-0 ${offsets[i]} ${overlaps[i]} ${layers[i]} hover:z-40`}
+              className={`shrink-0 ${offsets[i]} ${overlaps[i]} ${layers[i]} transition-transform hover:z-40`}
             >
-              <ResourcePanel item={r} focal={i === 2} />
+              <ResourcePanel item={r} focal={i === 2} inset={i > 0} />
             </Reveal>
           ))}
           <span aria-hidden="true" className="w-1 shrink-0 lg:hidden" />
@@ -156,6 +154,7 @@ export function Resources() {
     </section>
   );
 }
+
 
 
 /* ------------------------------------------------------- ASSESSMENT TOOLS */
