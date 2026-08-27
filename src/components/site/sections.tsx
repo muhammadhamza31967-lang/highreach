@@ -553,7 +553,7 @@ export function Contact() {
 
 /* -------------------------------------------------------------- PARTNERS */
 
-const PARTNERS = ["Leadership Institute", "Riyadh Executive Forum", "Vision Learning Group", "Digital Governance Council"];
+
 
 export function Partners() {
   return (
