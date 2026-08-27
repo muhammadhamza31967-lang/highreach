@@ -76,7 +76,7 @@ export function Header() {
                   href={item.href}
                   aria-current={i === 0 ? "page" : undefined}
                   className={cn(
-                    "inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-[0.83rem] font-medium tracking-wide text-[#053462]/85 transition-colors hover:text-[#1480AE]",
+                    "inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-[0.83rem] font-semibold tracking-wide text-[#053462]/85 transition-colors hover:bg-[#f3f4f3] hover:text-[#1480AE]",
                     i === 0 &&
                       "bg-[#f3f4f3] text-[#053462] hover:bg-[#e8eeec] hover:text-[#053462]",
                   )}
@@ -84,7 +84,7 @@ export function Header() {
                   {item.label}
                   {item.chevron && (
                     <ChevronDown
-                      className="h-3.5 w-3.5 text-[#053462]/60"
+                      className="h-3.5 w-3.5 shrink-0 text-[#053462]/60"
                       aria-hidden="true"
                     />
                   )}
