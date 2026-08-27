@@ -1,5 +1,4 @@
 import { Download } from "lucide-react";
-import heroExecutive from "@/assets/hero-executive.jpg";
 import riyadhArchitecture from "@/assets/riyadh-architecture.jpg";
 import aiTransformation from "@/assets/ai-transformation.jpg";
 import cyberSecurity from "@/assets/cyber-security.jpg";
@@ -10,54 +9,51 @@ import { Arrow, Container, Eyebrow, Reveal, SectionLabel } from "./primitives";
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-surface pt-32 pb-20 lg:pt-40 lg:pb-24">
-      <Container>
-        <div className="grid items-center gap-14 text-center lg:grid-cols-12 lg:gap-16 lg:text-left">
-          <div className="lg:col-span-7">
-            <div className="mx-auto max-w-[36rem] lg:mx-auto lg:pl-10">
-              <Reveal>
-                <div className="flex items-center justify-center gap-4 lg:justify-start">
-                  <span className="h-px w-10 bg-accent" aria-hidden="true" />
-                  <p className="text-[0.7rem] font-medium uppercase tracking-[0.32em] text-accent">
-                    Welcome to HighReach
-                  </p>
-                </div>
-              </Reveal>
-              <Reveal delay={90}>
-                <h1 className="mt-8 text-[2.5rem] font-semibold leading-[1.05] tracking-[-0.028em] text-foreground sm:text-[3.4rem] lg:text-[4.1rem] xl:text-[4.6rem]">
-                  Building Intelligent
-                  <br className="hidden sm:block" /> Organisations for an{" "}
-                  <br className="hidden sm:block" />
-                  AI-Driven World
-                </h1>
-              </Reveal>
-              <Reveal delay={180}>
-                <p className="mx-auto mt-9 max-w-[34rem] text-base leading-[1.85] text-secondary-ink lg:mx-0 lg:text-[1.05rem]">
-                  In an era of AI and constant disruption, organisations must become smarter, more
-                  adaptive and future-ready. HighReach develops the leadership, strategy and
-                  capabilities needed to thrive in a rapidly changing world.
-                </p>
-              </Reveal>
-            </div>
-          </div>
+    <section
+      id="top"
+      className="relative overflow-hidden bg-surface pt-36 pb-24 sm:pt-44 sm:pb-28 lg:pt-52 lg:pb-36"
+    >
+      {/* Subtle architectural detail: oversized faint "H" + hairline rules */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-semibold leading-none text-foreground/[0.035] text-[38rem] sm:text-[48rem] lg:text-[56rem]"
+      >
+        H
+      </span>
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-24 h-px w-40 -translate-x-1/2 bg-hairline"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-24 left-1/2 h-px w-40 -translate-x-1/2 bg-hairline"
+      />
 
-          <div className="lg:col-span-5">
-            <Reveal delay={140}>
-              <div className="relative mx-auto max-w-md lg:max-w-none">
-                <div
-                  aria-hidden="true"
-                  className="absolute -right-4 -top-4 h-full w-full rounded-lg border border-hairline"
-                />
-                <img
-                  src={heroExecutive}
-                  alt="Senior executive in a modern Riyadh office"
-                  width={1400}
-                  height={1600}
-                  className="relative h-[24rem] w-full rounded-lg object-cover shadow-[0_32px_70px_-32px_rgba(5,52,98,0.38)] ring-1 ring-hairline sm:h-[28rem] lg:h-[32rem]"
-                />
-              </div>
-            </Reveal>
-          </div>
+      <Container>
+        <div className="relative mx-auto max-w-[58rem] text-center">
+          <Reveal>
+            <div className="flex items-center justify-center gap-4">
+              <span className="h-px w-10 bg-accent" aria-hidden="true" />
+              <p className="text-[0.72rem] font-medium uppercase tracking-[0.34em] text-accent">
+                Welcome to HighReach
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={90}>
+            <h1 className="mx-auto mt-9 max-w-[16ch] text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.022em] text-foreground sm:mt-10 sm:text-[3.5rem] lg:text-[4.4rem] xl:text-[4.75rem]">
+              Building Intelligent
+              <br className="hidden sm:block" /> Organisations for an{" "}
+              <br className="hidden sm:block" />
+              AI-Driven World
+            </h1>
+          </Reveal>
+          <Reveal delay={180}>
+            <p className="mx-auto mt-10 max-w-[42rem] text-base leading-[1.8] text-secondary-ink sm:mt-11 sm:text-[1.075rem] lg:text-[1.15rem]">
+              In an era of AI and constant disruption, organisations must become smarter, more
+              adaptive and future-ready. HighReach develops the leadership, strategy and
+              capabilities needed to thrive in a rapidly changing world.
+            </p>
+          </Reveal>
         </div>
       </Container>
     </section>
