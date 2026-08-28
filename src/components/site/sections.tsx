@@ -955,11 +955,11 @@ export function Careers() {
 /* -------------------------------------------------------------- PARTNERS */
 
 const partnerLogos = [
-  { src: gamiLogo.url, alt: "General Authority for Military Industries", size: "h-20 sm:h-24 lg:h-28 max-w-[190px]" },
-  { src: iamiLogo.url, alt: "Innovation Award for Military Industries", size: "h-20 sm:h-24 lg:h-28 max-w-[180px]" },
-  { src: adiLogo.url, alt: "Academy of Defense Industries", size: "h-20 sm:h-24 lg:h-28 max-w-[190px]" },
-  { src: salLogo.url, alt: "SAL", size: "h-12 sm:h-14 lg:h-16 max-w-[170px]" },
-  { src: slaLogo.url, alt: "Saudi Logistics Academy", size: "h-16 sm:h-20 lg:h-24 max-w-[200px]" },
+  { src: gamiLogo.url, alt: "General Authority for Military Industries", size: "h-24 sm:h-28 lg:h-32 max-w-[220px]" },
+  { src: iamiLogo.url, alt: "Innovation Award for Military Industries", size: "h-24 sm:h-28 lg:h-32 max-w-[210px]" },
+  { src: adiLogo.url, alt: "Academy of Defense Industries", size: "h-24 sm:h-28 lg:h-32 max-w-[220px]" },
+  { src: salLogo.url, alt: "SAL", size: "h-14 sm:h-16 lg:h-20 max-w-[200px]" },
+  { src: slaLogo.url, alt: "Saudi Logistics Academy", size: "h-20 sm:h-24 lg:h-28 max-w-[240px]" },
 ];
 
 export function Partners() {
@@ -1006,12 +1006,12 @@ export function Partners() {
               <span className="h-px flex-1 bg-hairline" aria-hidden />
             </div>
 
-            <div className="mt-7 rounded-3xl border border-hairline bg-white/85 p-6 shadow-[0_18px_50px_-30px_rgba(5,52,98,0.35)] backdrop-blur-sm sm:p-8 lg:p-10">
+            <div className="mt-7 rounded-3xl border border-hairline bg-white/85 p-5 shadow-[0_18px_50px_-30px_rgba(5,52,98,0.35)] backdrop-blur-sm sm:p-6 lg:p-8">
               <ul className="grid grid-cols-2 divide-y divide-hairline sm:grid-cols-3 lg:grid-cols-5 lg:divide-y-0">
                 {partnerLogos.map((logo, i) => (
                   <li
                     key={logo.alt}
-                    className={`flex items-center justify-center px-4 py-8 sm:px-6 sm:py-10 ${
+                    className={`flex items-center justify-center px-4 py-6 sm:px-6 sm:py-8 ${
                       i % 2 === 1 ? "border-l border-hairline" : ""
                     } sm:border-l-0 ${i % 3 !== 0 ? "sm:border-l sm:border-hairline" : ""} lg:border-l-0 ${
                       i !== 0 ? "lg:border-l lg:border-hairline" : ""
@@ -1037,12 +1037,12 @@ export function Partners() {
               <span className="h-px flex-1 bg-hairline" aria-hidden />
             </div>
 
-            <div className="mt-7 flex items-center justify-center rounded-3xl border border-hairline bg-[linear-gradient(180deg,#F4F8FB_0%,#FFFFFF_100%)] px-8 py-12 sm:py-14">
+            <div className="mt-7 flex items-center justify-center rounded-3xl border border-hairline bg-[linear-gradient(180deg,#F4F8FB_0%,#FFFFFF_100%)] px-6 py-8 sm:py-10">
               <img
                 src={lscLogo}
                 alt="London Strategy Centre"
                 loading="lazy"
-                className="h-24 w-auto max-w-[340px] object-contain transition-transform duration-500 ease-out hover:scale-[1.04] sm:h-28 lg:h-32"
+                className="h-16 w-auto max-w-[260px] object-contain transition-transform duration-500 ease-out hover:scale-[1.04] sm:h-20 lg:h-24"
               />
             </div>
           </div>
