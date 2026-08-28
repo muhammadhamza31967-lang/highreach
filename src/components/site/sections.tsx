@@ -408,7 +408,7 @@ export function Capability() {
               as="li"
               key={c.title}
               delay={200 + i * 130}
-              className={`group ${i === 1 ? "translate-y-4 sm:translate-y-5 lg:translate-y-6" : ""}`}
+              className={`group ${i === 1 ? "sm:translate-y-5 lg:translate-y-6" : ""}`}
             >
               <a
                 href="#contact"
@@ -427,7 +427,7 @@ export function Capability() {
                   className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(5,52,98,0.42)_70%,rgba(5,52,98,0.72)_100%)] opacity-80 transition-opacity duration-500 group-hover:opacity-100"
                 />
                 <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-7 lg:p-8">
-                  <h3 className="text-2xl font-semibold tracking-[-0.01em] text-white">{c.title}</h3>
+                  <h3 className="text-2xl font-semibold tracking-[-0.01em] text-white sm:text-3xl">{c.title}</h3>
                   <p className="mt-3 max-w-[30ch] text-sm leading-relaxed text-white/90 opacity-0 transition-all duration-500 ease-out translate-y-3 group-hover:translate-y-0 group-hover:opacity-100">
                     {c.body}
                   </p>
