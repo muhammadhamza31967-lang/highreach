@@ -6,7 +6,6 @@ import {
   AssessmentTools,
   Capability,
   Careers,
-  Contact,
   Hero,
   Industries,
   Partners,
@@ -51,7 +50,6 @@ function Index() {
         <Industries />
         <Services />
         <Careers />
-        <Contact />
         <Partners />
       </main>
       <Footer />
