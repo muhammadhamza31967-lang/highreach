@@ -313,56 +313,131 @@ const CAPABILITIES = [
     body: "Comprehensive AI strategy and implementation certification",
     image: aiTransformation,
     alt: "Analysts reviewing AI performance dashboards",
+    kind: "ai" as const,
   },
   {
     title: "Cyber Security",
     body: "Advanced cyber security framework and risk management",
     image: cyberSecurity,
     alt: "Cyber security operations centre",
+    kind: "cyber" as const,
   },
   {
     title: "Advisory Services",
     body: "Advisory Services provide expert advice to support better decisions and growth.",
     image: advisoryMeeting,
     alt: "Executive advisory meeting in a Riyadh office",
+    kind: "advisory" as const,
   },
 ];
+
+/** Minimal navy/blue linework layered over each capability visual. */
+function CapabilityGraphic({ kind }: { kind: "ai" | "cyber" | "advisory" }) {
+  const common = "absolute inset-0 h-full w-full text-accent/70";
+  if (kind === "ai") {
+    return (
+      <svg viewBox="0 0 400 240" fill="none" aria-hidden="true" className={common} preserveAspectRatio="none">
+        <g stroke="currentColor" strokeWidth="0.75" opacity="0.9">
+          <path d="M60 190 L140 120 L230 160 L320 70" />
+          <path d="M60 190 L150 60 L230 160" />
+          <path d="M150 60 L320 70" />
+        </g>
+        {[
+          [60, 190],
+          [140, 120],
+          [150, 60],
+          [230, 160],
+          [320, 70],
+        ].map(([x, y]) => (
+          <circle key={`${x}-${y}`} cx={x} cy={y} r="3.5" fill="currentColor" />
+        ))}
+      </svg>
+    );
+  }
+  if (kind === "cyber") {
+    return (
+      <svg viewBox="0 0 400 240" fill="none" aria-hidden="true" className={common} preserveAspectRatio="none">
+        <g stroke="currentColor" strokeWidth="0.75" opacity="0.9">
+          <path d="M200 40 L280 75 V140 C280 178 240 198 200 208 C160 198 120 178 120 140 V75 Z" />
+          <path d="M200 62 L258 88 V140 C258 168 228 183 200 191 C172 183 142 168 142 140 V88 Z" opacity="0.6" />
+          <path d="M20 120 H120 M280 120 H380" />
+          <path d="M20 90 H100 M300 150 H380" opacity="0.5" />
+        </g>
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 400 240" fill="none" aria-hidden="true" className={common} preserveAspectRatio="none">
+      <g stroke="currentColor" strokeWidth="0.75" opacity="0.9">
+        <rect x="40" y="150" width="60" height="50" />
+        <rect x="130" y="110" width="60" height="90" />
+        <rect x="220" y="70" width="60" height="130" />
+        <rect x="310" y="30" width="50" height="170" />
+        <path d="M40 200 H360" />
+      </g>
+    </svg>
+  );
+}
 
 export function Capability() {
   return (
     <section id="capability" className="bg-surface py-20 lg:py-28" aria-labelledby="capability-heading">
       <Container>
-        <Reveal>
-          <SectionLabel>Our Capability</SectionLabel>
-          <p
-            id="capability-heading"
-            className="mt-6 max-w-4xl text-xl font-medium leading-[1.45] tracking-[-0.01em] text-foreground sm:text-2xl lg:text-[2rem]"
-          >
-            Through advisory, capability development, and intelligent platforms, we help organisations strengthen
-            leadership, align strategy with execution, and build the systems required to perform in an increasingly
-            complex world.
-          </p>
-        </Reveal>
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-16">
+          <Reveal className="lg:col-span-5">
+            <Eyebrow>CAPABILITY</Eyebrow>
+            <h2
+              id="capability-heading"
+              className="mt-5 text-[2.25rem] font-light leading-[1.05] tracking-[-0.02em] text-foreground sm:text-[2.75rem] lg:text-[3.25rem]"
+            >
+              Our Capability
+            </h2>
+          </Reveal>
+          <Reveal delay={120} className="lg:col-span-7 lg:border-l lg:border-accent/40 lg:pl-10">
+            <p className="max-w-2xl text-base leading-[1.7] text-secondary-ink sm:text-lg">
+              Through advisory, capability development, and intelligent platforms, we help organisations strengthen
+              leadership, align strategy with execution, and build the systems required to perform in an increasingly
+              complex world.
+            </p>
+          </Reveal>
+        </div>
 
-        <ul className="mt-14 grid gap-8 md:grid-cols-3">
+        <ul className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {CAPABILITIES.map((c, i) => (
-            <Reveal as="li" key={c.title} delay={i * 80} className="group">
-              <a href="#contact" className="block">
-                <div className="overflow-hidden">
+            <Reveal as="li" key={c.title} delay={200 + i * 130} className="group">
+              <a
+                href="#contact"
+                className="flex h-full flex-col overflow-hidden rounded-[0.875rem] border border-hairline bg-card shadow-[0_1px_2px_rgba(5,52,98,0.04)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-accent/60 hover:shadow-[0_18px_40px_rgba(5,52,98,0.10)]"
+              >
+                <div className="relative overflow-hidden">
                   <img
                     src={c.image}
                     alt={c.alt}
                     loading="lazy"
                     width={1408}
                     height={1008}
-                    className="h-56 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] lg:h-64"
+                    className={`w-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.03] ${
+                      i === 1 ? "h-64 lg:h-72" : "h-56 lg:h-60"
+                    }`}
                   />
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,52,98,0.28)_0%,rgba(5,52,98,0.55)_100%)] transition-opacity duration-500 group-hover:opacity-90"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 opacity-60 transition-transform duration-[600ms] ease-out group-hover:translate-x-1 group-hover:opacity-90"
+                  >
+                    <CapabilityGraphic kind={c.kind} />
+                  </span>
                 </div>
-                <h3 className="mt-6 flex items-center gap-3 text-xl font-semibold tracking-[-0.01em] text-foreground">
-                  {c.title}
-                  <Arrow className="h-4 w-4 text-accent transition-transform duration-300 group-hover:translate-x-1.5" />
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-secondary-ink">{c.body}</p>
+
+                <div className="flex flex-1 flex-col p-7 lg:p-8">
+                  <span aria-hidden="true" className="h-px w-10 bg-accent" />
+                  <h3 className="mt-5 text-xl font-semibold tracking-[-0.01em] text-foreground">{c.title}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-secondary-ink">{c.body}</p>
+                  <Arrow className="mt-6 h-4 w-4 text-accent transition-transform duration-500 ease-out group-hover:translate-x-2" />
+                </div>
               </a>
             </Reveal>
           ))}
@@ -371,6 +446,7 @@ export function Capability() {
     </section>
   );
 }
+
 
 /* ------------------------------------------------------------ INDUSTRIES */
 
