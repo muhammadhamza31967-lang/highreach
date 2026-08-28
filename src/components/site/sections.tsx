@@ -11,6 +11,14 @@ import resCapability from "@/assets/res-capability.jpg";
 import resCyber from "@/assets/res-cyber.jpg";
 import aboutExecutives from "@/assets/about-saudi-executives.jpg";
 import aboutDetail from "@/assets/about-strategy-detail.jpg";
+import industryPublicSector from "@/assets/industry-public-sector.jpg";
+import industryTechTelecom from "@/assets/industry-tech-telecom.jpg";
+import industryPrivateSector from "@/assets/industry-private-sector.jpg";
+import industryRealEstate from "@/assets/industry-real-estate.jpg";
+import industryHealthcare from "@/assets/industry-healthcare.jpg";
+import industryMedia from "@/assets/industry-media.jpg";
+import industryLogistics from "@/assets/industry-logistics.jpg";
+import industryAerospace from "@/assets/industry-aerospace.jpg";
 import { Arrow, Container, Eyebrow, Reveal, SectionLabel } from "./primitives";
 
 /* ------------------------------------------------------------------ HERO */
@@ -449,31 +457,50 @@ const INDUSTRIES = [
   {
     title: "Public Sector",
     body: "Public administration optimization and digital government solutions",
+    image: industryPublicSector,
+    alt: "Modern civic government architecture representing the public sector",
   },
   {
     title: "Technology and Telecommunications",
     body: "Digital transformation and innovation strategies for tech companies",
+    image: industryTechTelecom,
+    alt: "Glowing data network and fibre optics representing technology and telecommunications",
   },
-  { title: "Private Sector", body: "Comprehensive business solutions for private sector enterprises" },
+  {
+    title: "Private Sector",
+    body: "Comprehensive business solutions for private sector enterprises",
+    image: industryPrivateSector,
+    alt: "Executives collaborating in a modern corporate boardroom representing the private sector",
+  },
   {
     title: "Real Estate",
     body: "Real estate leaders need organisational intelligence built for market complexity — not instinct or convention dressed as strategy.",
+    image: industryRealEstate,
+    alt: "Premium commercial skyscraper architecture representing real estate development",
   },
   {
     title: "Healthcare Sector",
     body: "Healthcare organisations demand the leadership capability and decision systems designed for a fundamentally different environment.",
+    image: industryHealthcare,
+    alt: "Modern hospital corridor representing the healthcare sector",
   },
   {
     title: "Media Sector",
     body: "The sector demands leaders making high-quality decisions under pressure, not those who react faster to change they failed to see.",
+    image: industryMedia,
+    alt: "Broadcast production control room representing the media sector",
   },
   {
     title: "Logistics Sector",
     body: "In logistics, execution coherence is the decisive competitive advantage separating organisations that perform from those who fail.",
+    image: industryLogistics,
+    alt: "Container port with cargo cranes at dusk representing the logistics sector",
   },
   {
     title: "Aerospace and Defence",
     body: "Strategic consulting for aerospace innovation and defense sector transformation.",
+    image: industryAerospace,
+    alt: "Jet aircraft on a runway at dusk representing aerospace and defence",
   },
 ];
 
@@ -575,16 +602,36 @@ export function Industries() {
               >
                 <a
                   href="#contact"
-                  className="group flex h-full flex-col justify-between rounded-2xl border border-hairline bg-background p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_10px_28px_rgba(5,52,98,0.09)] lg:p-8"
+                  className="group relative block h-[24rem] overflow-hidden rounded-2xl shadow-[0_4px_16px_rgba(5,52,98,0.08)] transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_14px_36px_rgba(5,52,98,0.18)] sm:h-[26rem] lg:h-[28rem]"
                 >
-                  <span className="block h-px w-8 bg-accent transition-all duration-300 group-hover:w-12" />
-                  <span className="mt-8 block">
-                    <h3 className="text-lg font-semibold tracking-[-0.01em] text-foreground lg:text-xl">
+                  <img
+                    src={ind.image}
+                    alt={ind.alt}
+                    loading="lazy"
+                    width={1024}
+                    height={1024}
+                    className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[600ms] ease-out group-hover:scale-[1.045]"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-gradient-to-t from-[#053462]/95 via-[#053462]/35 to-transparent transition-opacity duration-[600ms] ease-out group-hover:opacity-90"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-[#053462]/0 transition-colors duration-[600ms] ease-out group-hover:bg-[#053462]/15"
+                  />
+                  <span className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 lg:p-7">
+                    <h3 className="text-xl font-semibold leading-tight tracking-[-0.01em] text-white transition-transform duration-[550ms] ease-out lg:text-2xl">
                       {ind.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-secondary-ink">{ind.body}</p>
+                    <span className="grid max-h-0 overflow-hidden opacity-0 transition-all duration-[550ms] ease-out group-hover:max-h-32 group-hover:opacity-100">
+                      <p className="pt-2.5 text-sm leading-relaxed text-white/85">{ind.body}</p>
+                    </span>
+                    <span className="mt-4 flex items-center gap-2 text-white/90">
+                      <span className="block h-px w-7 bg-accent transition-all duration-500 ease-out group-hover:w-10" />
+                      <Arrow className="h-4 w-4 text-accent transition-transform duration-500 ease-out group-hover:translate-x-1.5" />
+                    </span>
                   </span>
-                  <Arrow className="mt-8 h-4 w-4 text-accent opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
                 </a>
               </Reveal>
             ))}
