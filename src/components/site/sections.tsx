@@ -712,20 +712,90 @@ const SERVICES = [
     number: "01",
     title: "CT Scan",
     body: "An AI-enabled diagnostic, mapping how leaders think, decide, and execute, then surfacing the systemic constraints on performance.",
+    image: serviceCtScan,
+    alt: "Illuminated neural network visualisation representing an AI-enabled organisational diagnostic",
   },
   {
     number: "02",
     title: "Agentic Leadership",
     body: "Producing measurable shifts in decision quality and execution coherence, not just competency scores or attendance on a programme.",
+    image: serviceLeadership,
+    alt: "Senior executives in discussion around a boardroom table representing agentic leadership",
   },
   {
     number: "03",
     title: "Cybernetics Transformation",
     body: "Redesigning decision architecture, sensing systems, and governance so your organisation continuously senses, adapts, and performs.",
+    image: serviceCybernetics,
+    alt: "Operations command centre with data dashboards representing cybernetics transformation",
   },
 ];
 
+type ServiceItem = (typeof SERVICES)[number];
+
+function ServiceCard({ service, featured = false }: { service: ServiceItem; featured?: boolean }) {
+  return (
+    <a
+      href="#contact"
+      className={`group relative block h-full overflow-hidden rounded-3xl ${
+        featured ? "min-h-[26rem] lg:min-h-[36rem]" : "min-h-[18rem] lg:min-h-[17.25rem]"
+      }`}
+    >
+      <img
+        src={service.image}
+        alt={service.alt}
+        loading="lazy"
+        width={1200}
+        height={900}
+        className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[600ms] ease-out group-hover:scale-[1.04]"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-t from-[#053462]/95 via-[#053462]/45 to-[#053462]/10 transition-opacity duration-[600ms] ease-out group-hover:opacity-95"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute inset-0 bg-[#053462]/0 transition-colors duration-[600ms] ease-out group-hover:bg-[#053462]/20"
+      />
+
+      <span className="absolute left-0 top-0 p-7 lg:p-9">
+        <span className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-white/75">
+          {service.number} — Service
+        </span>
+      </span>
+
+      <span
+        className={`absolute inset-x-0 bottom-0 flex flex-col p-7 transition-transform duration-[600ms] ease-out group-hover:-translate-y-1.5 lg:p-9 ${
+          featured ? "" : "lg:pr-40"
+        }`}
+      >
+        <h3
+          className={`font-semibold leading-[1.1] tracking-[-0.015em] text-white ${
+            featured ? "text-3xl lg:text-[2.6rem]" : "text-2xl lg:text-[1.75rem]"
+          }`}
+        >
+          {service.title}
+        </h3>
+        <p
+          className={`mt-3 text-sm leading-relaxed text-white/80 ${
+            featured ? "max-w-xl lg:text-base" : "max-w-md"
+          }`}
+        >
+          {service.body}
+        </p>
+      </span>
+
+      <span className="absolute bottom-7 right-7 flex items-center gap-2 rounded-full border border-white/35 bg-white/10 px-5 py-2.5 text-xs font-medium uppercase tracking-[0.16em] text-white backdrop-blur-sm transition-colors duration-[600ms] ease-out group-hover:border-white/70 lg:bottom-9 lg:right-9">
+        Explore
+        <Arrow className="h-4 w-4 transition-transform duration-[600ms] ease-out group-hover:translate-x-1.5" />
+      </span>
+    </a>
+  );
+}
+
 export function Services() {
+  const [featured, ...rest] = SERVICES;
+
   return (
     <section id="services" className="bg-foreground py-20 text-background lg:py-28" aria-labelledby="services-heading">
       <Container>
@@ -749,22 +819,25 @@ export function Services() {
           </div>
         </Reveal>
 
-        <ul className="mt-14 grid gap-px bg-background/15 lg:grid-cols-3">
-          {SERVICES.map((s, i) => (
-            <Reveal as="li" key={s.title} delay={i * 80} className="group bg-foreground">
-              <a href="#contact" className="flex h-full flex-col p-8 lg:p-10">
-                <span className="text-xs font-medium tracking-[0.2em] text-accent-light">{s.number}</span>
-                <h3 className="mt-8 text-2xl font-semibold tracking-[-0.015em]">{s.title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-background/70">{s.body}</p>
-                <Arrow className="mt-10 h-5 w-5 text-accent-light transition-transform duration-300 group-hover:translate-x-1.5" />
-              </a>
+        <div className="mt-14 grid gap-5 lg:grid-cols-2 lg:gap-6">
+          {featured && (
+            <Reveal className="h-full">
+              <ServiceCard service={featured} featured />
             </Reveal>
-          ))}
-        </ul>
+          )}
+          <div className="grid gap-5 lg:gap-6">
+            {rest.map((s, i) => (
+              <Reveal key={s.title} delay={(i + 1) * 90} className="h-full">
+                <ServiceCard service={s} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </Container>
     </section>
   );
 }
+
 
 /* --------------------------------------------------------------- CAREERS */
 
