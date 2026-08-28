@@ -242,7 +242,7 @@ export function Resources() {
     >
       <Reveal>
         <div
-          className="mx-auto overflow-hidden px-6 pb-6 pt-2 sm:w-[calc(2*15rem+1.75rem)] sm:px-0 md:w-[calc(3*15rem+3.5rem)] lg:w-[calc(4*14rem+5.25rem)]"
+          className="mx-auto overflow-hidden px-6 pb-6 pt-2 sm:w-[calc(2*15rem+2.75rem)] sm:px-0 md:w-[calc(3*14rem+5.5rem)] lg:w-[calc(4*13.75rem+8.25rem)]"
           onMouseEnter={() => {
             pausedRef.current = true;
           }}
@@ -261,7 +261,7 @@ export function Resources() {
         >
           <div
             ref={trackRef}
-            className="flex w-max items-start gap-7"
+            className="flex w-max items-start gap-11"
             style={{
               transform: `translate3d(-${x}px, 0, 0)`,
               transition: animated ? "transform 900ms cubic-bezier(0.65, 0, 0.35, 1)" : "none",
@@ -270,7 +270,7 @@ export function Resources() {
             {[...RESOURCES, ...RESOURCES].map((r, i) => (
               <div
                 key={`${i >= n ? "copy-" : ""}${r.id}`}
-                className="w-[calc(100vw-3rem)] shrink-0 sm:w-[15rem] lg:w-[14rem] hover:z-40"
+                className="w-[calc(100vw-3rem)] shrink-0 sm:w-[15rem] md:w-[14rem] lg:w-[13.75rem] hover:z-40"
                 aria-hidden={i >= n ? true : undefined}
               >
 
