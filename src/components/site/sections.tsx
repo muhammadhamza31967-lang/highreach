@@ -182,7 +182,7 @@ export function AssessmentTools() {
     <section className="py-10 lg:py-12" aria-label="Strategic & Digital Assessment Tools">
       <Container>
         <Reveal>
-          <nav className="mx-auto w-full max-w-4xl rounded-xl border border-hairline bg-background p-1 shadow-[0_4px_18px_rgba(15,45,75,0.08)]">
+          <nav className="mx-auto w-full max-w-4xl rounded-[1rem] border border-hairline bg-background p-1 shadow-[0_2px_8px_rgba(5,52,98,0.05),0_10px_28px_rgba(5,52,98,0.09)]">
             <ul className="flex overflow-x-auto sm:overflow-visible">
               {TOOLS.map((tool) => (
                 <li
