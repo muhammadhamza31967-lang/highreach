@@ -171,37 +171,44 @@ export function Resources() {
 
 /* ------------------------------------------------------- ASSESSMENT TOOLS */
 
-const TOOLS = ["AI Direction Scan", "Cyber Excellence, Assessment", "Digital, Business Plan"];
+const TOOLS = [
+  { label: "AI Direction Scan", href: "https://londonstrategycentre.com/ai-direction-scan" },
+  { label: "Cyber Excellence, Assessment", href: "https://londonstrategycentre.com/cyber-assessment" },
+  { label: "Digital, Business Plan", href: "https://londonstrategycentre.com/venture-framework" },
+];
 
 export function AssessmentTools() {
   return (
-    <section className="bg-surface py-16 lg:py-20" aria-labelledby="tools-heading">
-      <Container className="grid gap-10 lg:grid-cols-12 lg:items-center">
-        <h2
-          id="tools-heading"
-          className="text-2xl font-semibold leading-tight tracking-[-0.02em] text-foreground lg:col-span-5 lg:text-3xl"
-        >
-          Strategic &amp; Digital Assessment Tools
-        </h2>
-        <ul className="lg:col-span-7 lg:border-l lg:border-hairline lg:pl-12">
-          {TOOLS.map((t, i) => (
-            <Reveal as="li" key={t} delay={i * 70}>
-              <a
-                href="#contact"
-                className="group flex items-center justify-between border-b border-hairline py-5 first:border-t lg:first:border-t-0"
-              >
-                <span className="text-lg text-foreground transition-colors group-hover:text-accent lg:text-xl">
-                  {t}
-                </span>
-                <Arrow className="h-5 w-5 text-accent transition-transform duration-300 group-hover:translate-x-1.5" />
-              </a>
-            </Reveal>
-          ))}
-        </ul>
+    <section className="bg-surface py-16 lg:py-20" aria-label="Strategic & Digital Assessment Tools">
+      <Container>
+        <Reveal>
+          <nav className="mx-auto w-full max-w-5xl rounded-2xl border border-hairline bg-background p-2 shadow-[0_8px_25px_rgba(15,45,75,0.10)]">
+            <ul className="flex flex-col sm:flex-row">
+              {TOOLS.map((tool) => (
+                <li
+                  key={tool.label}
+                  className="group flex flex-1 border-b border-hairline last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0"
+                >
+                  <a
+                    href={tool.href}
+                    className="flex w-full items-center gap-3 rounded-lg px-5 py-4 text-foreground transition-all duration-300 ease-out hover:bg-accent/[0.10] hover:text-accent"
+                    aria-current={undefined}
+                  >
+                    <span className="flex-1 text-base font-medium sm:text-center sm:text-lg">
+                      {tool.label}
+                    </span>
+                    <Arrow className="h-4 w-4 shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-1" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </Reveal>
       </Container>
     </section>
   );
 }
+
 
 /* ---------------------------------------------------------------- ABOUT */
 
