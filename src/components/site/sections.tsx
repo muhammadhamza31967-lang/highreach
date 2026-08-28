@@ -740,7 +740,7 @@ function ServiceCard({ service, featured = false }: { service: ServiceItem; feat
   return (
     <a
       href="#contact"
-      className={`group relative block h-full overflow-hidden rounded-3xl ${
+      className={`group relative flex h-full flex-col justify-between gap-16 overflow-hidden rounded-3xl p-7 lg:p-9 ${
         featured ? "min-h-[26rem] lg:min-h-[36rem]" : "min-h-[18rem] lg:min-h-[17.25rem]"
       }`}
     >
@@ -761,15 +761,17 @@ function ServiceCard({ service, featured = false }: { service: ServiceItem; feat
         className="absolute inset-0 bg-[#053462]/0 transition-colors duration-[600ms] ease-out group-hover:bg-[#053462]/20"
       />
 
-      <span className="absolute left-0 top-0 p-7 lg:p-9">
-        <span className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-white/75">
+      <span className="relative flex items-start justify-between gap-4">
+        <span className="pt-2 text-[0.7rem] font-medium uppercase tracking-[0.22em] text-white/75">
           {service.number} — Service
+        </span>
+        <span className="flex items-center gap-2 rounded-full border border-white/35 bg-white/10 px-5 py-2.5 text-xs font-medium uppercase tracking-[0.16em] text-white backdrop-blur-sm transition-colors duration-[600ms] ease-out group-hover:border-white/70">
+          Explore
+          <Arrow className="h-4 w-4 transition-transform duration-[600ms] ease-out group-hover:translate-x-1.5" />
         </span>
       </span>
 
-      <span
-        className="absolute inset-x-0 bottom-0 flex flex-col p-7 pb-20 transition-transform duration-[600ms] ease-out group-hover:-translate-y-1.5 lg:p-9 lg:pb-9 lg:pr-44"
-      >
+      <span className="relative flex flex-col transition-transform duration-[600ms] ease-out group-hover:-translate-y-1.5">
         <h3
           className={`font-semibold leading-[1.1] tracking-[-0.015em] text-white ${
             featured ? "text-3xl lg:text-[2.6rem]" : "text-2xl lg:text-[1.75rem]"
@@ -784,11 +786,6 @@ function ServiceCard({ service, featured = false }: { service: ServiceItem; feat
         >
           {service.body}
         </p>
-      </span>
-
-      <span className="absolute bottom-7 right-7 flex items-center gap-2 rounded-full border border-white/35 bg-white/10 px-5 py-2.5 text-xs font-medium uppercase tracking-[0.16em] text-white backdrop-blur-sm transition-colors duration-[600ms] ease-out group-hover:border-white/70 lg:bottom-9 lg:right-9">
-        Explore
-        <Arrow className="h-4 w-4 transition-transform duration-[600ms] ease-out group-hover:translate-x-1.5" />
       </span>
     </a>
   );
