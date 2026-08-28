@@ -505,79 +505,96 @@ const INDUSTRIES = [
 ];
 
 export function Industries() {
+  const n = INDUSTRIES.length;
+  const viewportRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLUListElement | null>(null);
-  const rafRef = useRef<number | null>(null);
-  const timerRef = useRef<number | null>(null);
+  const [index, setIndex] = useState(0);
+  const [animated, setAnimated] = useState(true);
+  const [step, setStep] = useState(0);
+  const busyRef = useRef(false);
   const pausedRef = useRef(false);
+  const timerRef = useRef<number | null>(null);
+  const releaseRef = useRef<number | null>(null);
 
-  const animateTo = (target: number, onDone?: () => void) => {
-    const el = trackRef.current;
-    if (!el) return;
-    if (rafRef.current) return; // an animation is already running — ignore
-    const start = el.scrollLeft;
-    const max = el.scrollWidth - el.clientWidth;
-    const end = Math.max(0, Math.min(max, target));
-    const dist = end - start;
-    if (Math.abs(dist) < 1) return;
-    const duration = 900;
-    const t0 = performance.now();
-    const step = (now: number) => {
-      const p = Math.min(1, (now - t0) / duration);
-      // smooth ease-in-out
-      const eased = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
-      el.scrollLeft = start + dist * eased;
-      if (p < 1) {
-        rafRef.current = requestAnimationFrame(step);
-      } else {
-        rafRef.current = null;
-        onDone?.();
-      }
-    };
-    rafRef.current = requestAnimationFrame(step);
-  };
-
-  const move = (dir: 1 | -1, onDone?: () => void) => {
-    const el = trackRef.current;
-    if (!el) return;
-    if (rafRef.current) return; // prevent rapid clicks from jumping
-    const first = el.querySelector("li");
-    const second = el.querySelector("li:nth-child(2)");
-    const stepPx =
-      first && second
-        ? (second as HTMLElement).offsetLeft - (first as HTMLElement).offsetLeft
-        : el.clientWidth / 4;
-    const max = el.scrollWidth - el.clientWidth;
-    // gentle loop: wrap at the ends instead of stalling
-    if (dir === 1 && el.scrollLeft >= max - 2) return animateTo(0, onDone);
-    if (dir === -1 && el.scrollLeft <= 2) return animateTo(max, onDone);
-    animateTo(el.scrollLeft + dir * stepPx, onDone);
-  };
-
-  // Auto-scroll: advance one card every ~3.5s, paused on hover / touch / reduced motion
+  // measure exact one-card step (card width + gap)
   useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
+    const measure = () => {
+      const el = trackRef.current;
+      if (!el) return;
+      const items = el.children;
+      if (items.length < 2) return;
+      const a = items[0] as HTMLElement;
+      const b = items[1] as HTMLElement;
+      setStep(b.offsetLeft - a.offsetLeft);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
 
-    const schedule = () => {
-      if (timerRef.current) window.clearTimeout(timerRef.current);
+  // single source of truth for movement — used by auto-scroll and both arrows
+  const move = (dir: 1 | -1) => {
+    if (busyRef.current) return;
+    busyRef.current = true;
+
+    if (dir === -1 && index === 0) {
+      // silently reposition onto the clone set, then animate one card back
+      setAnimated(false);
+      setIndex(n);
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          setAnimated(true);
+          setIndex(n - 1);
+        }),
+      );
+    } else {
+      setAnimated(true);
+      setIndex((i) => i + dir);
+    }
+
+    if (releaseRef.current) window.clearTimeout(releaseRef.current);
+    releaseRef.current = window.setTimeout(() => {
+      busyRef.current = false;
+      // seamless index correction once the transition has completed
+      setIndex((i) => {
+        if (i >= n) {
+          setAnimated(false);
+          requestAnimationFrame(() => setAnimated(true));
+          return i - n;
+        }
+        return i;
+      });
+    }, 950);
+  };
+
+  const manualMove = (dir: 1 | -1) => {
+    if (busyRef.current) return;
+    if (timerRef.current) window.clearTimeout(timerRef.current);
+    move(dir);
+  };
+
+  // Auto-scroll: one controlled timer, one card every ~3.5s, paused on hover/touch
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const tick = () => {
+      if (!pausedRef.current && !busyRef.current) move(1);
       timerRef.current = window.setTimeout(tick, 3500);
     };
-    const tick = () => {
-      if (!pausedRef.current) move(1, schedule);
-      else schedule();
-    };
-    schedule();
-
+    timerRef.current = window.setTimeout(tick, 3500);
     return () => {
       if (timerRef.current) window.clearTimeout(timerRef.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [index]);
 
   useEffect(() => () => {
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
     if (timerRef.current) window.clearTimeout(timerRef.current);
+    if (releaseRef.current) window.clearTimeout(releaseRef.current);
   }, []);
+
+  // touch swipe: one swipe = exactly one card
+  const touchX = useRef(0);
+
 
   return (
     <section id="industries" className="py-20 lg:py-28" aria-labelledby="industries-heading">
