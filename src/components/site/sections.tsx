@@ -616,7 +616,7 @@ export function Industries() {
                 <button
                   type="button"
                   aria-label="Previous industries"
-                  onClick={() => move(-1)}
+                  onClick={() => manualMove(-1)}
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-hairline text-foreground transition-colors duration-300 hover:border-accent hover:text-accent"
                 >
                   <Arrow className="h-4 w-4 rotate-180" />
@@ -624,7 +624,7 @@ export function Industries() {
                 <button
                   type="button"
                   aria-label="Next industries"
-                  onClick={() => move(1)}
+                  onClick={() => manualMove(1)}
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-hairline text-foreground transition-colors duration-300 hover:border-accent hover:text-accent"
                 >
                   <Arrow className="h-4 w-4" />
@@ -637,21 +637,32 @@ export function Industries() {
 
       <div className="mt-14">
         <Container>
-          <ul
-            ref={trackRef}
+          <div
+            ref={viewportRef}
+            className="overflow-hidden pb-4"
             onMouseEnter={() => { pausedRef.current = true; }}
             onMouseLeave={() => { pausedRef.current = false; }}
-            onTouchStart={() => { pausedRef.current = true; }}
-            onTouchEnd={() => { pausedRef.current = false; }}
-            className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] lg:gap-6 [&::-webkit-scrollbar]:hidden"
+            onTouchStart={(e) => { pausedRef.current = true; touchX.current = e.touches[0].clientX; }}
+            onTouchEnd={(e) => {
+              pausedRef.current = false;
+              const dx = e.changedTouches[0].clientX - touchX.current;
+              if (Math.abs(dx) > 40) manualMove(dx < 0 ? 1 : -1);
+            }}
           >
-            {INDUSTRIES.map((ind, i) => (
-              <Reveal
-                as="li"
-                key={ind.title}
-                delay={Math.min(i, 4) * 70}
-                className="w-[85%] shrink-0 snap-start sm:w-[46%] md:w-[36%] lg:w-[23%]"
-              >
+            <ul
+              ref={trackRef}
+              className="flex gap-5 lg:gap-6"
+              style={{
+                transform: `translate3d(-${index * step}px, 0, 0)`,
+                transition: animated ? "transform 900ms cubic-bezier(0.65, 0, 0.35, 1)" : "none",
+              }}
+            >
+              {[...INDUSTRIES, ...INDUSTRIES].map((ind, i) => (
+                <li
+                  key={`${ind.title}-${i}`}
+                  aria-hidden={i >= n ? true : undefined}
+                  className="w-[85%] shrink-0 sm:w-[46%] md:w-[36%] lg:w-[23%]"
+                >
                 <div className="group relative block h-[24rem] overflow-hidden rounded-2xl shadow-[0_4px_16px_rgba(5,52,98,0.08)] transition-all duration-[800ms] ease-out hover:-translate-y-1 hover:shadow-[0_14px_36px_rgba(5,52,98,0.18)] sm:h-[26rem] lg:h-[28rem]">
                   <img
                     src={ind.image}
@@ -682,11 +693,13 @@ export function Industries() {
                     </span>
                   </span>
                 </div>
-              </Reveal>
-            ))}
-          </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
         </Container>
       </div>
+
     </section>
   );
 }
