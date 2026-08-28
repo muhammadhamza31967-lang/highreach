@@ -242,7 +242,7 @@ export function Resources() {
     >
       <Reveal>
         <div
-          className="mx-auto overflow-hidden px-6 pb-6 pt-2 sm:w-[calc(2*15rem+2.75rem)] sm:px-0 md:w-[calc(3*14rem+5.5rem)] lg:w-[calc(4*13.75rem+8.25rem)]"
+          className="mx-auto max-w-full overflow-hidden px-6 pb-6 pt-2 sm:w-[calc(2*12.5rem+1.5rem)] sm:px-0 md:w-[calc(3*13rem+4rem)] lg:w-[calc(4*11.5rem+6rem)] xl:w-[calc(4*13.75rem+8.25rem)]"
           onMouseEnter={() => {
             pausedRef.current = true;
           }}
