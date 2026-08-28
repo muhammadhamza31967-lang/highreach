@@ -507,30 +507,39 @@ const INDUSTRIES = [
 export function Industries() {
   const trackRef = useRef<HTMLUListElement | null>(null);
   const rafRef = useRef<number | null>(null);
+  const timerRef = useRef<number | null>(null);
+  const pausedRef = useRef(false);
 
-  const animateTo = (target: number) => {
+  const animateTo = (target: number, onDone?: () => void) => {
     const el = trackRef.current;
     if (!el) return;
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    if (rafRef.current) return; // an animation is already running — ignore
     const start = el.scrollLeft;
     const max = el.scrollWidth - el.clientWidth;
     const end = Math.max(0, Math.min(max, target));
     const dist = end - start;
     if (Math.abs(dist) < 1) return;
-    const duration = 600;
+    const duration = 900;
     const t0 = performance.now();
     const step = (now: number) => {
       const p = Math.min(1, (now - t0) / duration);
-      const eased = 1 - Math.pow(1 - p, 3);
+      // smooth ease-in-out
+      const eased = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
       el.scrollLeft = start + dist * eased;
-      if (p < 1) rafRef.current = requestAnimationFrame(step);
+      if (p < 1) {
+        rafRef.current = requestAnimationFrame(step);
+      } else {
+        rafRef.current = null;
+        onDone?.();
+      }
     };
     rafRef.current = requestAnimationFrame(step);
   };
 
-  const move = (dir: 1 | -1) => {
+  const move = (dir: 1 | -1, onDone?: () => void) => {
     const el = trackRef.current;
     if (!el) return;
+    if (rafRef.current) return; // prevent rapid clicks from jumping
     const first = el.querySelector("li");
     const second = el.querySelector("li:nth-child(2)");
     const stepPx =
@@ -539,13 +548,35 @@ export function Industries() {
         : el.clientWidth / 4;
     const max = el.scrollWidth - el.clientWidth;
     // gentle loop: wrap at the ends instead of stalling
-    if (dir === 1 && el.scrollLeft >= max - 2) return animateTo(0);
-    if (dir === -1 && el.scrollLeft <= 2) return animateTo(max);
-    animateTo(el.scrollLeft + dir * stepPx);
+    if (dir === 1 && el.scrollLeft >= max - 2) return animateTo(0, onDone);
+    if (dir === -1 && el.scrollLeft <= 2) return animateTo(max, onDone);
+    animateTo(el.scrollLeft + dir * stepPx, onDone);
   };
+
+  // Auto-scroll: advance one card every ~3.5s, paused on hover / touch / reduced motion
+  useEffect(() => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+    const schedule = () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+      timerRef.current = window.setTimeout(tick, 3500);
+    };
+    const tick = () => {
+      if (!pausedRef.current) move(1, schedule);
+      else schedule();
+    };
+    schedule();
+
+    return () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => () => {
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    if (timerRef.current) window.clearTimeout(timerRef.current);
   }, []);
 
   return (
