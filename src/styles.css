@@ -238,6 +238,10 @@ body {
   .marquee-track {
     animation: none;
   }
+  .cta-drift {
+    animation: none;
+  }
 }
+
 
 
