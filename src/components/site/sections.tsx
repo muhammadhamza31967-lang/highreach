@@ -1006,12 +1006,12 @@ export function Partners() {
               <span className="h-px flex-1 bg-hairline" aria-hidden />
             </div>
 
-            <div className="mt-7 rounded-3xl border border-hairline bg-white/85 p-6 shadow-[0_18px_50px_-30px_rgba(5,52,98,0.35)] backdrop-blur-sm sm:p-8 lg:p-10">
+            <div className="mt-7 rounded-3xl border border-hairline bg-white/85 p-5 shadow-[0_18px_50px_-30px_rgba(5,52,98,0.35)] backdrop-blur-sm sm:p-6 lg:p-8">
               <ul className="grid grid-cols-2 divide-y divide-hairline sm:grid-cols-3 lg:grid-cols-5 lg:divide-y-0">
                 {partnerLogos.map((logo, i) => (
                   <li
                     key={logo.alt}
-                    className={`flex items-center justify-center px-4 py-8 sm:px-6 sm:py-10 ${
+                    className={`flex items-center justify-center px-4 py-6 sm:px-6 sm:py-8 ${
                       i % 2 === 1 ? "border-l border-hairline" : ""
                     } sm:border-l-0 ${i % 3 !== 0 ? "sm:border-l sm:border-hairline" : ""} lg:border-l-0 ${
                       i !== 0 ? "lg:border-l lg:border-hairline" : ""
