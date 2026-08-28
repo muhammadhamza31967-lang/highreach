@@ -760,7 +760,7 @@ function ServiceCard({ service, featured = false }: { service: ServiceItem; feat
       />
       <span
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-[#053462]/95 via-[#053462]/45 to-[#053462]/10 transition-opacity duration-[600ms] ease-out group-hover:opacity-95"
+        className="absolute inset-0 bg-[#053462]/70"
       />
       <span
         aria-hidden="true"
