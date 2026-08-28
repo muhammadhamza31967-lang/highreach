@@ -245,7 +245,7 @@ export function Resources() {
     <section id="resources" className="relative -mt-5 bg-background pb-14 pt-0 sm:-mt-6 lg:-mt-8 lg:pb-16 lg:pt-0" aria-label="Resources">
       <Reveal>
         <div
-          className="overflow-hidden pb-6 pt-2"
+          className="overflow-hidden px-6 pb-6 pt-2 lg:px-0"
           onMouseEnter={() => { pausedRef.current = true; }}
           onMouseLeave={() => { pausedRef.current = false; }}
           onTouchStart={(e) => { pausedRef.current = true; touchX.current = e.touches[0]?.clientX ?? 0; }}
@@ -257,7 +257,7 @@ export function Resources() {
         >
           <div
             ref={trackRef}
-            className="flex w-max items-start gap-8 pl-6 lg:gap-10 lg:pl-12"
+            className="flex w-max items-start gap-8 lg:gap-10 lg:pl-12"
             style={{
               transform: `translate3d(-${x}px, 0, 0)`,
               transition: animated ? "transform 900ms cubic-bezier(0.65, 0, 0.35, 1)" : "none",
