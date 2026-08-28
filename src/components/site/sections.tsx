@@ -1006,7 +1006,7 @@ export function Partners() {
               <span className="h-px flex-1 bg-hairline" aria-hidden />
             </div>
 
-            <div className="mt-7 rounded-3xl border border-hairline bg-[linear-gradient(180deg,#F4F8FB_0%,#FFFFFF_100%)] p-5 shadow-[0_18px_50px_-30px_rgba(5,52,98,0.35)] backdrop-blur-sm sm:p-6 lg:p-8">
+            <div className="mt-7 p-5 sm:p-6 lg:p-8">
               <ul className="grid grid-cols-2 divide-y divide-hairline sm:grid-cols-3 lg:grid-cols-5 lg:divide-y-0">
                 {partnerLogos.map((logo, i) => (
                   <li
@@ -1037,7 +1037,7 @@ export function Partners() {
               <span className="h-px flex-1 bg-hairline" aria-hidden />
             </div>
 
-            <div className="mt-7 flex items-center justify-center rounded-3xl border border-hairline bg-[linear-gradient(180deg,#F4F8FB_0%,#FFFFFF_100%)] px-6 py-8 sm:py-10">
+            <div className="mt-7 flex items-center justify-center px-6 py-8 sm:py-10">
               <img
                 src={lscLogo}
                 alt="London Strategy Centre"
