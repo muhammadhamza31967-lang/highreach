@@ -746,7 +746,7 @@ function ServiceCard({ service, featured = false }: { service: ServiceItem; feat
   return (
     <a
       href="#contact"
-      className={`group relative flex h-full flex-col justify-between gap-16 overflow-hidden rounded-3xl p-7 lg:p-9 ${
+      className={`group relative flex h-full flex-col justify-between gap-16 overflow-hidden rounded-3xl p-7 shadow-[0_12px_40px_-12px_rgba(20,128,174,0.28)] transition-all duration-[650ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:scale-[1.015] hover:shadow-[0_28px_60px_-16px_rgba(20,128,174,0.45)] lg:p-9 ${
         featured ? "min-h-[26rem] lg:min-h-[36rem]" : "min-h-[18rem] lg:min-h-[17.25rem]"
       }`}
     >
@@ -756,15 +756,15 @@ function ServiceCard({ service, featured = false }: { service: ServiceItem; feat
         loading="lazy"
         width={1200}
         height={900}
-        className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[600ms] ease-out group-hover:scale-[1.04]"
+        className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[650ms] ease-out group-hover:scale-[1.03]"
       />
       <span
         aria-hidden="true"
-        className="absolute inset-0 bg-[#053462]/70"
+        className="absolute inset-0 bg-[#053462]/40"
       />
       <span
         aria-hidden="true"
-        className="absolute inset-0 bg-[#053462]/0 transition-colors duration-[600ms] ease-out group-hover:bg-[#053462]/20"
+        className="absolute inset-0 bg-[#053462]/0 transition-colors duration-[600ms] ease-out group-hover:bg-[#053462]/15"
       />
 
       <span className="relative flex items-start justify-between gap-4">
