@@ -219,4 +219,7 @@ body {
     transform: none;
     transition: none;
   }
-}
+  .marquee-track {
+    animation: none;
+  }
+
