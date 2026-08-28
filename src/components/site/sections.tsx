@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Download } from "lucide-react";
 import riyadhArchitecture from "@/assets/riyadh-architecture.jpg";
 import aiTransformation from "@/assets/ai-transformation.jpg";
@@ -505,79 +505,96 @@ const INDUSTRIES = [
 ];
 
 export function Industries() {
+  const n = INDUSTRIES.length;
+  const viewportRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLUListElement | null>(null);
-  const rafRef = useRef<number | null>(null);
-  const timerRef = useRef<number | null>(null);
+  const [index, setIndex] = useState(0);
+  const [animated, setAnimated] = useState(true);
+  const [step, setStep] = useState(0);
+  const busyRef = useRef(false);
   const pausedRef = useRef(false);
+  const timerRef = useRef<number | null>(null);
+  const releaseRef = useRef<number | null>(null);
 
-  const animateTo = (target: number, onDone?: () => void) => {
-    const el = trackRef.current;
-    if (!el) return;
-    if (rafRef.current) return; // an animation is already running — ignore
-    const start = el.scrollLeft;
-    const max = el.scrollWidth - el.clientWidth;
-    const end = Math.max(0, Math.min(max, target));
-    const dist = end - start;
-    if (Math.abs(dist) < 1) return;
-    const duration = 900;
-    const t0 = performance.now();
-    const step = (now: number) => {
-      const p = Math.min(1, (now - t0) / duration);
-      // smooth ease-in-out
-      const eased = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
-      el.scrollLeft = start + dist * eased;
-      if (p < 1) {
-        rafRef.current = requestAnimationFrame(step);
-      } else {
-        rafRef.current = null;
-        onDone?.();
-      }
-    };
-    rafRef.current = requestAnimationFrame(step);
-  };
-
-  const move = (dir: 1 | -1, onDone?: () => void) => {
-    const el = trackRef.current;
-    if (!el) return;
-    if (rafRef.current) return; // prevent rapid clicks from jumping
-    const first = el.querySelector("li");
-    const second = el.querySelector("li:nth-child(2)");
-    const stepPx =
-      first && second
-        ? (second as HTMLElement).offsetLeft - (first as HTMLElement).offsetLeft
-        : el.clientWidth / 4;
-    const max = el.scrollWidth - el.clientWidth;
-    // gentle loop: wrap at the ends instead of stalling
-    if (dir === 1 && el.scrollLeft >= max - 2) return animateTo(0, onDone);
-    if (dir === -1 && el.scrollLeft <= 2) return animateTo(max, onDone);
-    animateTo(el.scrollLeft + dir * stepPx, onDone);
-  };
-
-  // Auto-scroll: advance one card every ~3.5s, paused on hover / touch / reduced motion
+  // measure exact one-card step (card width + gap)
   useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
+    const measure = () => {
+      const el = trackRef.current;
+      if (!el) return;
+      const items = el.children;
+      if (items.length < 2) return;
+      const a = items[0] as HTMLElement;
+      const b = items[1] as HTMLElement;
+      setStep(b.offsetLeft - a.offsetLeft);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
 
-    const schedule = () => {
-      if (timerRef.current) window.clearTimeout(timerRef.current);
+  // single source of truth for movement — used by auto-scroll and both arrows
+  const move = (dir: 1 | -1) => {
+    if (busyRef.current) return;
+    busyRef.current = true;
+
+    if (dir === -1 && index === 0) {
+      // silently reposition onto the clone set, then animate one card back
+      setAnimated(false);
+      setIndex(n);
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          setAnimated(true);
+          setIndex(n - 1);
+        }),
+      );
+    } else {
+      setAnimated(true);
+      setIndex((i) => i + dir);
+    }
+
+    if (releaseRef.current) window.clearTimeout(releaseRef.current);
+    releaseRef.current = window.setTimeout(() => {
+      busyRef.current = false;
+      // seamless index correction once the transition has completed
+      setIndex((i) => {
+        if (i >= n) {
+          setAnimated(false);
+          requestAnimationFrame(() => setAnimated(true));
+          return i - n;
+        }
+        return i;
+      });
+    }, 950);
+  };
+
+  const manualMove = (dir: 1 | -1) => {
+    if (busyRef.current) return;
+    if (timerRef.current) window.clearTimeout(timerRef.current);
+    move(dir);
+  };
+
+  // Auto-scroll: one controlled timer, one card every ~3.5s, paused on hover/touch
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const tick = () => {
+      if (!pausedRef.current && !busyRef.current) move(1);
       timerRef.current = window.setTimeout(tick, 3500);
     };
-    const tick = () => {
-      if (!pausedRef.current) move(1, schedule);
-      else schedule();
-    };
-    schedule();
-
+    timerRef.current = window.setTimeout(tick, 3500);
     return () => {
       if (timerRef.current) window.clearTimeout(timerRef.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [index]);
 
   useEffect(() => () => {
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
     if (timerRef.current) window.clearTimeout(timerRef.current);
+    if (releaseRef.current) window.clearTimeout(releaseRef.current);
   }, []);
+
+  // touch swipe: one swipe = exactly one card
+  const touchX = useRef(0);
+
 
   return (
     <section id="industries" className="py-20 lg:py-28" aria-labelledby="industries-heading">
@@ -599,7 +616,7 @@ export function Industries() {
                 <button
                   type="button"
                   aria-label="Previous industries"
-                  onClick={() => move(-1)}
+                  onClick={() => manualMove(-1)}
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-hairline text-foreground transition-colors duration-300 hover:border-accent hover:text-accent"
                 >
                   <Arrow className="h-4 w-4 rotate-180" />
@@ -607,7 +624,7 @@ export function Industries() {
                 <button
                   type="button"
                   aria-label="Next industries"
-                  onClick={() => move(1)}
+                  onClick={() => manualMove(1)}
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-hairline text-foreground transition-colors duration-300 hover:border-accent hover:text-accent"
                 >
                   <Arrow className="h-4 w-4" />
@@ -620,21 +637,32 @@ export function Industries() {
 
       <div className="mt-14">
         <Container>
-          <ul
-            ref={trackRef}
+          <div
+            ref={viewportRef}
+            className="overflow-hidden pb-4"
             onMouseEnter={() => { pausedRef.current = true; }}
             onMouseLeave={() => { pausedRef.current = false; }}
-            onTouchStart={() => { pausedRef.current = true; }}
-            onTouchEnd={() => { pausedRef.current = false; }}
-            className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] lg:gap-6 [&::-webkit-scrollbar]:hidden"
+            onTouchStart={(e) => { pausedRef.current = true; touchX.current = e.touches[0]?.clientX ?? 0; }}
+            onTouchEnd={(e) => {
+              pausedRef.current = false;
+              const dx = (e.changedTouches[0]?.clientX ?? 0) - touchX.current;
+              if (Math.abs(dx) > 40) manualMove(dx < 0 ? 1 : -1);
+            }}
           >
-            {INDUSTRIES.map((ind, i) => (
-              <Reveal
-                as="li"
-                key={ind.title}
-                delay={Math.min(i, 4) * 70}
-                className="w-[85%] shrink-0 snap-start sm:w-[46%] md:w-[36%] lg:w-[23%]"
-              >
+            <ul
+              ref={trackRef}
+              className="flex gap-5 lg:gap-6"
+              style={{
+                transform: `translate3d(-${index * step}px, 0, 0)`,
+                transition: animated ? "transform 900ms cubic-bezier(0.65, 0, 0.35, 1)" : "none",
+              }}
+            >
+              {[...INDUSTRIES, ...INDUSTRIES].map((ind, i) => (
+                <li
+                  key={`${ind.title}-${i}`}
+                  aria-hidden={i >= n ? true : undefined}
+                  className="w-[85%] shrink-0 sm:w-[46%] md:w-[36%] lg:w-[23%]"
+                >
                 <div className="group relative block h-[24rem] overflow-hidden rounded-2xl shadow-[0_4px_16px_rgba(5,52,98,0.08)] transition-all duration-[800ms] ease-out hover:-translate-y-1 hover:shadow-[0_14px_36px_rgba(5,52,98,0.18)] sm:h-[26rem] lg:h-[28rem]">
                   <img
                     src={ind.image}
@@ -665,11 +693,13 @@ export function Industries() {
                     </span>
                   </span>
                 </div>
-              </Reveal>
-            ))}
-          </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
         </Container>
       </div>
+
     </section>
   );
 }
