@@ -319,15 +319,15 @@ export function AssessmentTools() {
       <Container>
         <Reveal>
           <nav className="mx-auto w-full max-w-4xl rounded-[3rem] border border-hairline bg-background p-1 shadow-[0_2px_8px_rgba(5,52,98,0.05),0_10px_28px_rgba(5,52,98,0.09)]">
-            <ul className="flex overflow-x-auto sm:overflow-visible">
+            <ul className="flex flex-wrap justify-center gap-1 overflow-x-visible md:flex-nowrap md:gap-0">
               {TOOLS.map((tool) => (
                 <li
                   key={tool.label}
-                  className="flex shrink-0 border-b border-hairline last:border-b-0 sm:flex-1 sm:border-b-0 sm:border-r sm:last:border-r-0"
+                  className="flex flex-1 justify-center border-b border-hairline last:border-b-0 md:flex-1 md:border-b-0 md:border-r md:last:border-r-0"
                 >
                   <a
                     href={tool.href}
-                    className="flex w-full items-center justify-center whitespace-nowrap px-5 py-3 text-sm font-medium text-foreground transition-colors duration-300 hover:text-accent sm:text-[0.95rem]"
+                    className="flex w-full items-center justify-center px-3 py-2.5 text-center text-sm font-medium leading-tight text-foreground transition-colors duration-300 hover:text-accent sm:px-4 md:whitespace-nowrap md:px-5 md:py-3 md:text-[0.95rem]"
                   >
                     {tool.label}
                   </a>
