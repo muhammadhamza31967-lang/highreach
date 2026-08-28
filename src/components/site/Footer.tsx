@@ -9,7 +9,7 @@ const QUICK_LINKS = [
   { label: "Cyber Security", href: "#capability" },
   { label: "Advisory Services", href: "#services" },
   { label: "Press Release", href: "#resources" },
-  { label: "Contact", href: "#contact" },
+  
 ];
 
 function XIcon({ className }: { className?: string }) {
