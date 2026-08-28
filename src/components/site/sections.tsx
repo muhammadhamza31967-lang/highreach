@@ -8,6 +8,8 @@ import resArchitecture from "@/assets/res-architecture.jpg";
 import resIntelligence from "@/assets/res-intelligence.jpg";
 import resCapability from "@/assets/res-capability.jpg";
 import resCyber from "@/assets/res-cyber.jpg";
+import aboutExecutives from "@/assets/about-saudi-executives.jpg";
+import aboutDetail from "@/assets/about-strategy-detail.jpg";
 import { Arrow, Container, Eyebrow, Reveal, SectionLabel } from "./primitives";
 
 /* ------------------------------------------------------------------ HERO */
@@ -211,57 +213,84 @@ export function AssessmentTools() {
 
 export function About() {
   return (
-    <section id="about" className="py-20 lg:py-28" aria-labelledby="about-heading">
+    <section id="about" className="overflow-hidden py-20 lg:py-28" aria-labelledby="about-heading">
       <Container>
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
+        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
+          {/* Visual */}
+          <Reveal className="order-2 lg:order-1 lg:col-span-5">
+            <div className="group relative">
+              <div className="pointer-events-none absolute -left-6 -top-6 hidden h-24 w-24 border-l border-t border-accent/40 lg:block" />
+              <div className="relative overflow-hidden rounded-2xl border border-hairline shadow-[0_18px_50px_rgba(5,52,98,0.12)]">
+                <img
+                  src={aboutExecutives}
+                  alt="Senior Saudi executives in strategic discussion in a modern Riyadh boardroom"
+                  loading="lazy"
+                  width={1200}
+                  height={1504}
+                  className="h-[26rem] w-full object-cover transition-transform duration-700 ease-out will-change-transform group-hover:scale-[1.03] sm:h-[32rem] lg:h-[38rem]"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-foreground/25 via-transparent to-transparent" />
+              </div>
+              <div className="absolute -bottom-8 -right-4 hidden w-52 overflow-hidden rounded-xl border border-hairline bg-background p-1.5 shadow-[0_14px_40px_rgba(5,52,98,0.14)] sm:block lg:-right-10 lg:w-60">
+                <img
+                  src={aboutDetail}
+                  alt="Saudi business leader reviewing a strategy document"
+                  loading="lazy"
+                  width={928}
+                  height={720}
+                  className="h-28 w-full rounded-lg object-cover lg:h-32"
+                />
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Content */}
+          <div className="order-1 lg:order-2 lg:col-span-7">
             <Reveal>
               <SectionLabel>About HighReach</SectionLabel>
               <h2
                 id="about-heading"
-                className="mt-6 text-3xl font-semibold leading-[1.08] tracking-[-0.02em] text-foreground sm:text-4xl lg:text-5xl"
+                className="mt-6 text-3xl font-semibold leading-[1.08] tracking-[-0.02em] text-foreground sm:text-4xl lg:text-[3.25rem]"
               >
                 HighReach Business Solutions
               </h2>
-              <p className="mt-8 text-base leading-relaxed text-secondary-ink">
-                With world-class expertise, extensive networks and strong partnerships, we develop people and
-                organisations across strategy, innovation and leadership. We work with business leaders and management
-                teams to overcome challenges, unlock potential and create lasting impact.
-              </p>
             </Reveal>
-          </div>
 
-          <div className="lg:col-span-7">
-            <Reveal delay={100}>
-              <img
-                src={riyadhArchitecture}
-                alt="Contemporary Riyadh architecture in daylight"
-                loading="lazy"
-                width={1600}
-                height={1008}
-                className="h-64 w-full object-cover sm:h-80 lg:h-96"
-              />
-            </Reveal>
-            <div className="mt-10 grid gap-px bg-hairline sm:grid-cols-2">
-              <Reveal delay={140} className="bg-background">
-                <div className="h-full pr-0 sm:pr-8">
+            <div className="mt-8 border-l border-accent/40 pl-6 sm:pl-8">
+              <Reveal delay={90}>
+                <p className="max-w-[46rem] text-base leading-[1.8] text-secondary-ink">
+                  With world-class expertise, extensive networks and strong partnerships, we develop people and
+                  organisations across strategy, innovation and leadership.
+                </p>
+              </Reveal>
+              <Reveal delay={150}>
+                <p className="mt-5 max-w-[46rem] text-base leading-[1.8] text-secondary-ink">
+                  We work with business leaders and management teams to overcome challenges, unlock potential and
+                  create lasting impact.
+                </p>
+              </Reveal>
+            </div>
+
+            <div className="mt-12 grid gap-10 sm:grid-cols-2 sm:gap-px sm:bg-hairline">
+              <Reveal delay={220} className="sm:bg-background">
+                <div className="h-full sm:pr-8">
                   <p className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-accent">Our Approach</p>
-                  <h3 className="mt-4 text-xl font-semibold tracking-[-0.01em] text-foreground">
+                  <h3 className="mt-4 text-xl font-semibold tracking-[-0.01em] text-foreground lg:text-2xl">
                     Learning That Drives Action
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-secondary-ink">
+                  <p className="mt-4 text-sm leading-[1.75] text-secondary-ink">
                     Our executive development approach combines critical thinking, contemporary education and practical
                     application to enable organisational improvement.
                   </p>
                 </div>
               </Reveal>
-              <Reveal delay={200} className="bg-background">
-                <div className="h-full pt-8 sm:pl-8 sm:pt-0">
+              <Reveal delay={300} className="sm:bg-background">
+                <div className="h-full sm:pl-8">
                   <p className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-accent">Our Uniqueness</p>
-                  <h3 className="mt-4 text-xl font-semibold tracking-[-0.01em] text-foreground">
+                  <h3 className="mt-4 text-xl font-semibold tracking-[-0.01em] text-foreground lg:text-2xl">
                     Expertise Built Around Transformation
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-secondary-ink">
+                  <p className="mt-4 text-sm leading-[1.75] text-secondary-ink">
                     We combine leadership facilitation, strategy, technology-enabled learning and problem-based design
                     to deliver impactful transformation programmes.
                   </p>
@@ -274,6 +303,7 @@ export function About() {
     </section>
   );
 }
+
 
 /* ------------------------------------------------------------ CAPABILITY */
 
