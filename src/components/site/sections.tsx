@@ -850,18 +850,18 @@ export function Careers() {
             className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white via-surface to-[oklch(0.96_0.01_236)]"
           />
 
-          <div className="relative z-10 grid lg:grid-cols-2">
-            <div className="flex flex-col justify-center px-8 py-14 sm:px-12 sm:py-16 lg:px-16 lg:py-20">
+          <div className="relative z-10 grid min-h-[24rem] lg:grid-cols-2">
+            <div className="flex flex-col justify-center px-8 py-14 sm:px-10 sm:py-16 lg:px-14 lg:py-20">
               <Reveal>
                 <h2
                   id="careers-heading"
-                  className="max-w-[18ch] text-3xl font-light leading-[1.05] tracking-[-0.02em] text-foreground sm:text-4xl lg:text-5xl"
+                  className="text-3xl font-light leading-[1.05] tracking-[-0.02em] text-foreground sm:text-4xl lg:text-5xl"
                 >
                   Interested in Working With Us?
                 </h2>
               </Reveal>
               <Reveal delay={120}>
-                <p className="mt-5 max-w-xl text-base leading-[1.75] text-secondary-ink sm:text-lg">
+                <p className="mt-5 text-base leading-[1.75] text-secondary-ink sm:text-lg">
                   At HighReach, we develop the next generation of leaders and organisations by bringing the latest
                   research and thinking into practice. We are always looking for passionate, experienced professionals and
                   expert facilitators who are committed to excellence.
@@ -878,16 +878,21 @@ export function Careers() {
               </Reveal>
             </div>
 
-            {/* premium abstract visual */}
-            <div className="relative hidden min-h-[320px] overflow-hidden lg:block">
+            {/* full-bleed premium abstract visual panel */}
+            <div className="relative hidden h-full overflow-hidden lg:block">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-br from-accent-light/[0.06] via-surface/50 to-accent/[0.10]"
+              />
+
               {/* slow drifting gradient orbs */}
               <div
                 aria-hidden="true"
-                className="cta-aurora absolute -right-1/4 top-0 h-[140%] w-[140%] rounded-full bg-[radial-gradient(circle_at_center,var(--accent-light),transparent_55%)] opacity-30 blur-3xl"
+                className="cta-aurora absolute -right-1/4 -top-1/4 h-[150%] w-[150%] rounded-full bg-[radial-gradient(circle_at_center,var(--accent-light),transparent_55%)] opacity-35 blur-3xl"
               />
               <div
                 aria-hidden="true"
-                className="cta-aurora absolute -bottom-1/4 -left-1/4 h-[130%] w-[130%] rounded-full bg-[radial-gradient(circle_at_center,var(--accent),transparent_50%)] opacity-20 blur-3xl"
+                className="cta-aurora absolute -bottom-1/4 -left-1/4 h-[140%] w-[140%] rounded-full bg-[radial-gradient(circle_at_center,var(--accent),transparent_50%)] opacity-25 blur-3xl"
                 style={{ animationDelay: "-14s" }}
               />
 
@@ -906,7 +911,13 @@ export function Careers() {
                     <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.25" />
                     <stop offset="100%" stopColor="var(--foreground)" stopOpacity="0.06" />
                   </linearGradient>
+                  <linearGradient id="ctaPanelFill" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="var(--accent-light)" stopOpacity="0.18" />
+                    <stop offset="60%" stopColor="var(--accent)" stopOpacity="0.06" />
+                    <stop offset="100%" stopColor="var(--foreground)" stopOpacity="0.04" />
+                  </linearGradient>
                 </defs>
+                <rect width="420" height="420" fill="url(#ctaPanelFill)" opacity="0.45" />
                 <path
                   d="M-30 290 C70 250 150 330 250 270 S440 210 470 310"
                   fill="none"
@@ -921,8 +932,8 @@ export function Careers() {
                   strokeWidth="1.5"
                   opacity="0.45"
                 />
-                <ellipse cx="320" cy="110" rx="85" ry="65" fill="url(#ctaFlow1)" opacity="0.22" />
-                <ellipse cx="110" cy="330" rx="110" ry="80" fill="url(#ctaFlow2)" opacity="0.18" />
+                <ellipse cx="340" cy="90" rx="95" ry="75" fill="url(#ctaFlow1)" opacity="0.22" />
+                <ellipse cx="90" cy="340" rx="120" ry="90" fill="url(#ctaFlow2)" opacity="0.18" />
                 <line x1="60" y1="60" x2="360" y2="360" stroke="var(--accent)" strokeWidth="0.5" opacity="0.12" />
                 <line x1="360" y1="60" x2="60" y2="360" stroke="var(--foreground)" strokeWidth="0.5" opacity="0.08" />
                 <circle cx="210" cy="210" r="150" fill="none" stroke="var(--accent)" strokeWidth="0.5" opacity="0.08" />
