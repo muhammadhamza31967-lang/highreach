@@ -733,29 +733,29 @@ export function Industries() {
             >
               Our Industries
             </h2>
-            <div className="flex items-end justify-between gap-8 lg:items-center">
-              <p className="max-w-md text-base leading-relaxed text-secondary-ink">
-                Specialised expertise across diverse sectors and industries
-              </p>
-              <div className="hidden shrink-0 gap-3 lg:flex">
-                <button
-                  type="button"
-                  aria-label="Previous industries"
-                  onClick={() => manualMove(-1)}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-hairline text-foreground transition-colors duration-300 hover:border-accent hover:text-accent"
-                >
-                  <Arrow className="h-4 w-4 rotate-180" />
-                </button>
-                <button
-                  type="button"
-                  aria-label="Next industries"
-                  onClick={() => manualMove(1)}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-hairline text-foreground transition-colors duration-300 hover:border-accent hover:text-accent"
-                >
-                  <Arrow className="h-4 w-4" />
-                </button>
+              <div className="flex items-end justify-between gap-4 sm:gap-6 lg:items-center lg:gap-8">
+                <p className="max-w-md text-base leading-relaxed text-secondary-ink">
+                  Specialised expertise across diverse sectors and industries
+                </p>
+                <div className="flex shrink-0 gap-3">
+                  <button
+                    type="button"
+                    aria-label="Previous industries"
+                    onClick={() => manualMove(-1)}
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-hairline bg-background text-foreground transition-colors duration-300 hover:border-accent hover:text-accent"
+                  >
+                    <Arrow className="h-4 w-4 rotate-180" />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Next industries"
+                    onClick={() => manualMove(1)}
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-hairline bg-background text-foreground transition-colors duration-300 hover:border-accent hover:text-accent"
+                  >
+                    <Arrow className="h-4 w-4" />
+                  </button>
+                </div>
               </div>
-            </div>
           </div>
         </Reveal>
       </Container>
