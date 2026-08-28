@@ -96,17 +96,17 @@ const RESOURCES = [
 ];
 
 /** One full-bleed immersive resource panel. Title shows by default; description + download reveal on hover. */
-function ResourcePanel({ item, focal = false }: { item: (typeof RESOURCES)[number]; focal?: boolean }) {
+function ResourcePanel({ item }: { item: (typeof RESOURCES)[number] }) {
   return (
     <a
       href="#contact"
       className={
-        "group relative block h-[21rem] w-[17.5rem] shrink-0 snap-center overflow-hidden rounded-2xl border border-hairline bg-background shadow-[0_10px_30px_-18px_rgba(5,52,98,0.35)] " +
+        "group relative block h-[21rem] w-full overflow-hidden rounded-2xl border border-hairline bg-background shadow-[0_10px_30px_-18px_rgba(5,52,98,0.35)] " +
         "transition-all duration-[550ms] ease-[cubic-bezier(0.16,1,0.3,1)] " +
-        "hover:-translate-y-2 hover:border-accent hover:shadow-[0_28px_55px_-24px_rgba(5,52,98,0.45)] " +
-        (focal ? " lg:h-[22.5rem] lg:w-[19.5rem]" : " lg:w-[18rem]")
+        "hover:-translate-y-2 hover:border-accent hover:shadow-[0_28px_55px_-24px_rgba(5,52,98,0.45)]"
       }
     >
+
       <img
         src={item.image}
         alt=""
