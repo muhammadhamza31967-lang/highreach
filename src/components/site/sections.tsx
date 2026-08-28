@@ -426,9 +426,9 @@ export function Capability() {
                   aria-hidden="true"
                   className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(5,52,98,0.42)_70%,rgba(5,52,98,0.72)_100%)] opacity-80 transition-opacity duration-500 group-hover:opacity-100"
                 />
-                <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-7 lg:p-8">
-                  <h3 className="text-2xl font-semibold tracking-[-0.01em] text-white sm:text-3xl">{c.title}</h3>
-                  <p className="mt-3 max-w-[30ch] text-sm leading-relaxed text-white/90 opacity-0 transition-all duration-500 ease-out translate-y-3 group-hover:translate-y-0 group-hover:opacity-100">
+                <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end px-5 pt-5 pb-4 lg:px-6 lg:pt-6 lg:pb-5">
+                  <h3 className="text-2xl font-semibold tracking-[-0.01em] text-white transition-transform duration-500 ease-out sm:text-3xl">{c.title}</h3>
+                  <p className="max-h-0 max-w-[30ch] overflow-hidden text-sm leading-relaxed text-white/90 opacity-0 transition-all duration-500 ease-out group-hover:mt-3 group-hover:max-h-24 group-hover:opacity-100">
                     {c.body}
                   </p>
                 </div>
