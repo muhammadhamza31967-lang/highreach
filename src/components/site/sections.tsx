@@ -768,9 +768,7 @@ function ServiceCard({ service, featured = false }: { service: ServiceItem; feat
       </span>
 
       <span
-        className={`absolute inset-x-0 bottom-0 flex flex-col p-7 transition-transform duration-[600ms] ease-out group-hover:-translate-y-1.5 lg:p-9 ${
-          featured ? "" : "lg:pr-40"
-        }`}
+        className="absolute inset-x-0 bottom-0 flex flex-col p-7 pb-20 transition-transform duration-[600ms] ease-out group-hover:-translate-y-1.5 lg:p-9 lg:pb-9 lg:pr-44"
       >
         <h3
           className={`font-semibold leading-[1.1] tracking-[-0.015em] text-white ${
@@ -781,7 +779,7 @@ function ServiceCard({ service, featured = false }: { service: ServiceItem; feat
         </h3>
         <p
           className={`mt-3 text-sm leading-relaxed text-white/80 ${
-            featured ? "max-w-xl lg:text-base" : "max-w-md"
+            featured ? "max-w-lg lg:text-base" : "max-w-md"
           }`}
         >
           {service.body}
