@@ -11,6 +11,14 @@ import resCapability from "@/assets/res-capability.jpg";
 import resCyber from "@/assets/res-cyber.jpg";
 import aboutExecutives from "@/assets/about-saudi-executives.jpg";
 import aboutDetail from "@/assets/about-strategy-detail.jpg";
+import industryPublicSector from "@/assets/industry-public-sector.jpg";
+import industryTechTelecom from "@/assets/industry-tech-telecom.jpg";
+import industryPrivateSector from "@/assets/industry-private-sector.jpg";
+import industryRealEstate from "@/assets/industry-real-estate.jpg";
+import industryHealthcare from "@/assets/industry-healthcare.jpg";
+import industryMedia from "@/assets/industry-media.jpg";
+import industryLogistics from "@/assets/industry-logistics.jpg";
+import industryAerospace from "@/assets/industry-aerospace.jpg";
 import { Arrow, Container, Eyebrow, Reveal, SectionLabel } from "./primitives";
 
 /* ------------------------------------------------------------------ HERO */
