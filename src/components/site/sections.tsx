@@ -602,16 +602,36 @@ export function Industries() {
               >
                 <a
                   href="#contact"
-                  className="group flex h-full flex-col justify-between rounded-2xl border border-hairline bg-background p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_10px_28px_rgba(5,52,98,0.09)] lg:p-8"
+                  className="group relative block h-[24rem] overflow-hidden rounded-2xl shadow-[0_4px_16px_rgba(5,52,98,0.08)] transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_14px_36px_rgba(5,52,98,0.18)] sm:h-[26rem] lg:h-[28rem]"
                 >
-                  <span className="block h-px w-8 bg-accent transition-all duration-300 group-hover:w-12" />
-                  <span className="mt-8 block">
-                    <h3 className="text-lg font-semibold tracking-[-0.01em] text-foreground lg:text-xl">
+                  <img
+                    src={ind.image}
+                    alt={ind.alt}
+                    loading="lazy"
+                    width={1024}
+                    height={1024}
+                    className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[600ms] ease-out group-hover:scale-[1.045]"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-gradient-to-t from-[#053462]/95 via-[#053462]/35 to-transparent transition-opacity duration-[600ms] ease-out group-hover:opacity-90"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-[#053462]/0 transition-colors duration-[600ms] ease-out group-hover:bg-[#053462]/15"
+                  />
+                  <span className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 lg:p-7">
+                    <h3 className="text-xl font-semibold leading-tight tracking-[-0.01em] text-white transition-transform duration-[550ms] ease-out lg:text-2xl">
                       {ind.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-secondary-ink">{ind.body}</p>
+                    <span className="grid max-h-0 overflow-hidden opacity-0 transition-all duration-[550ms] ease-out group-hover:max-h-32 group-hover:opacity-100">
+                      <p className="pt-2.5 text-sm leading-relaxed text-white/85">{ind.body}</p>
+                    </span>
+                    <span className="mt-4 flex items-center gap-2 text-white/90">
+                      <span className="block h-px w-7 bg-accent transition-all duration-500 ease-out group-hover:w-10" />
+                      <Arrow className="h-4 w-4 text-accent transition-transform duration-500 ease-out group-hover:translate-x-1.5" />
+                    </span>
                   </span>
-                  <Arrow className="mt-8 h-4 w-4 text-accent opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
                 </a>
               </Reveal>
             ))}
