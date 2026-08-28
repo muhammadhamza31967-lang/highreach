@@ -404,39 +404,33 @@ export function Capability() {
 
         <ul className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {CAPABILITIES.map((c, i) => (
-            <Reveal as="li" key={c.title} delay={200 + i * 130} className="group">
+            <Reveal
+              as="li"
+              key={c.title}
+              delay={200 + i * 130}
+              className={`group ${i === 1 ? "sm:translate-y-5 lg:translate-y-6" : ""}`}
+            >
               <a
                 href="#contact"
-                className="flex h-full flex-col overflow-hidden rounded-[0.875rem] border border-hairline bg-card shadow-[0_1px_2px_rgba(5,52,98,0.04)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-accent/60 hover:shadow-[0_18px_40px_rgba(5,52,98,0.10)]"
+                className="relative block h-[22rem] w-full overflow-hidden rounded-[0.875rem] border border-hairline shadow-[0_1px_2px_rgba(5,52,98,0.04)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-accent/60 hover:shadow-[0_18px_40px_rgba(5,52,98,0.10)]"
               >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={c.image}
-                    alt={c.alt}
-                    loading="lazy"
-                    width={1408}
-                    height={1008}
-                    className={`w-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.03] ${
-                      i === 1 ? "h-64 lg:h-72" : "h-56 lg:h-60"
-                    }`}
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,52,98,0.28)_0%,rgba(5,52,98,0.55)_100%)] transition-opacity duration-500 group-hover:opacity-90"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-0 opacity-60 transition-transform duration-[600ms] ease-out group-hover:translate-x-1 group-hover:opacity-90"
-                  >
-                    <CapabilityGraphic kind={c.kind} />
-                  </span>
-                </div>
-
-                <div className="flex flex-1 flex-col p-7 lg:p-8">
-                  <span aria-hidden="true" className="h-px w-10 bg-accent" />
-                  <h3 className="mt-5 text-xl font-semibold tracking-[-0.01em] text-foreground">{c.title}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-secondary-ink">{c.body}</p>
-                  <Arrow className="mt-6 h-4 w-4 text-accent transition-transform duration-500 ease-out group-hover:translate-x-2" />
+                <img
+                  src={c.image}
+                  alt={c.alt}
+                  loading="lazy"
+                  width={1408}
+                  height={1008}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.04]"
+                />
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(5,52,98,0.42)_70%,rgba(5,52,98,0.72)_100%)] opacity-80 transition-opacity duration-500 group-hover:opacity-100"
+                />
+                <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-7 lg:p-8">
+                  <h3 className="text-2xl font-semibold tracking-[-0.01em] text-white sm:text-3xl">{c.title}</h3>
+                  <p className="mt-3 max-w-[30ch] text-sm leading-relaxed text-white/90 opacity-0 transition-all duration-500 ease-out translate-y-3 group-hover:translate-y-0 group-hover:opacity-100">
+                    {c.body}
+                  </p>
                 </div>
               </a>
             </Reveal>
