@@ -29,7 +29,7 @@ const SOCIALS = [
 
 function ColumnHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-background/90">
+    <h2 className="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-foreground">
       {children}
     </h2>
   );
@@ -37,12 +37,12 @@ function ColumnHeading({ children }: { children: React.ReactNode }) {
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-foreground text-background">
-      {/* subtle background depth */}
+    <footer className="relative overflow-hidden bg-surface text-foreground">
+      {/* subtle premium depth */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-40 -top-40 h-[28rem] w-[28rem] rounded-full bg-accent/15 blur-3xl" />
-        <div className="absolute -bottom-56 right-[-10rem] h-[32rem] w-[32rem] rounded-full bg-accent/10 blur-3xl" />
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-light/50 to-transparent" />
+        <div className="absolute -right-40 -top-40 h-[28rem] w-[28rem] rounded-full bg-accent/[0.07] blur-3xl" />
+        <div className="absolute -bottom-56 -left-40 h-[32rem] w-[32rem] rounded-full bg-foreground/[0.04] blur-3xl" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
       </div>
 
       <Container className="relative grid gap-14 py-20 md:grid-cols-2 md:gap-x-12 lg:grid-cols-12 lg:gap-x-10 lg:py-24">
@@ -50,14 +50,14 @@ export function Footer() {
           <img
             src={logoAsset.url}
             alt="HighReach — Success Elevated"
-            className="h-10 w-auto brightness-0 invert"
+            className="h-10 w-auto"
             width={240}
             height={64}
           />
           <div className="mt-9">
             <ColumnHeading>About HighReach</ColumnHeading>
           </div>
-          <p className="mt-5 max-w-sm text-sm leading-[1.85] text-background/65">
+          <p className="mt-5 max-w-sm text-sm leading-[1.85] text-secondary-ink">
             HighReach develops people and organisations through expertise in strategy, innovation and
             leadership.
           </p>
@@ -70,7 +70,7 @@ export function Footer() {
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label={label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-background/20 text-background/75 transition-all duration-[350ms] ease-out hover:-translate-y-0.5 hover:border-accent-light/70 hover:bg-background/10 hover:text-accent-light"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-white text-foreground/70 transition-all duration-[400ms] ease-out hover:-translate-y-0.5 hover:border-accent/60 hover:text-accent"
                 >
                   <Icon className="h-[1.05rem] w-[1.05rem]" />
                 </a>
@@ -86,12 +86,12 @@ export function Footer() {
               <li key={l.label}>
                 <a
                   href={l.href}
-                  className="group inline-flex items-center gap-2 text-sm text-background/65 transition-all duration-[350ms] ease-out hover:translate-x-1 hover:text-accent-light"
+                  className="group inline-flex items-center gap-2 text-sm text-secondary-ink transition-all duration-[400ms] ease-out hover:translate-x-1 hover:text-accent"
                 >
-                  <span className="border-b border-transparent pb-0.5 transition-colors duration-[350ms] group-hover:border-accent-light/50">
+                  <span className="border-b border-transparent pb-0.5 transition-colors duration-[400ms] group-hover:border-accent/50">
                     {l.label}
                   </span>
-                  <Arrow className="h-3 w-3 -translate-x-1 opacity-0 transition-all duration-[350ms] group-hover:translate-x-0 group-hover:opacity-100" />
+                  <Arrow className="h-3 w-3 -translate-x-1 opacity-0 transition-all duration-[400ms] group-hover:translate-x-0 group-hover:opacity-100" />
                 </a>
               </li>
             ))}
@@ -100,10 +100,10 @@ export function Footer() {
 
         <div className="lg:col-span-2">
           <ColumnHeading>Contact</ColumnHeading>
-          <ul className="mt-6 space-y-4 text-sm text-background/65">
+          <ul className="mt-6 space-y-4 text-sm text-secondary-ink">
             <li>
               <a
-                className="transition-colors duration-[350ms] hover:text-accent-light"
+                className="transition-colors duration-[400ms] hover:text-accent"
                 href="tel:+966566653356"
               >
                 +966 56 665 3356
@@ -111,13 +111,13 @@ export function Footer() {
             </li>
             <li>
               <a
-                className="transition-colors duration-[350ms] hover:text-accent-light"
+                className="transition-colors duration-[400ms] hover:text-accent"
                 href="mailto:info@HighReach.sa"
               >
                 info@HighReach.sa
               </a>
             </li>
-            <li className="max-w-[16rem] leading-[1.85] text-background/55">
+            <li className="max-w-[16rem] leading-[1.85] text-secondary-ink/80">
               Al Tauwin – Othman Bin Afan Road, Riyadh, Saudi Arabia
             </li>
           </ul>
@@ -125,9 +125,9 @@ export function Footer() {
 
         <div className="lg:col-span-3">
           <ColumnHeading>Newsletter</ColumnHeading>
-          <p className="mt-6 text-sm text-background/65">Subscribe To Our Newsletter</p>
+          <p className="mt-6 text-sm text-secondary-ink">Subscribe To Our Newsletter</p>
           <form
-            className="group mt-5 flex items-center gap-2 rounded-[10px] border border-background/20 px-4 transition-all duration-[350ms] ease-out hover:border-background/40 focus-within:border-accent-light focus-within:bg-background/5"
+            className="group mt-5 flex items-center gap-2 rounded-[12px] border border-hairline bg-white px-4 transition-all duration-[400ms] ease-out hover:border-accent/40 focus-within:border-accent focus-within:ring-1 focus-within:ring-accent/20"
             onSubmit={(e) => e.preventDefault()}
           >
             <label className="sr-only" htmlFor="newsletter-email">
@@ -137,12 +137,12 @@ export function Footer() {
               id="newsletter-email"
               type="email"
               placeholder="Your email"
-              className="w-full bg-transparent py-3 text-sm text-background outline-none placeholder:text-background/45"
+              className="w-full bg-transparent py-3 text-sm text-foreground outline-none placeholder:text-secondary-ink/50"
             />
             <button
               type="submit"
               aria-label="Subscribe to our newsletter"
-              className="shrink-0 p-1 text-accent-light transition-transform duration-[350ms] ease-out hover:translate-x-1"
+              className="shrink-0 p-1 text-accent transition-transform duration-[400ms] ease-out hover:translate-x-1"
             >
               <Arrow />
             </button>
@@ -150,9 +150,9 @@ export function Footer() {
         </div>
       </Container>
 
-      <div className="relative border-t border-background/10">
+      <div className="relative border-t border-hairline bg-[#ECEFF3]">
         <Container className="flex flex-col gap-2 py-7">
-          <p className="text-xs tracking-wide text-background/45">
+          <p className="text-xs tracking-wide text-secondary-ink">
             © 2026 HighReach. All Rights Reserved.
           </p>
         </Container>
