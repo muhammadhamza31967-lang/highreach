@@ -141,15 +141,7 @@ function ResourcePanel({ item }: { item: (typeof RESOURCES)[number] }) {
 
 export function Resources() {
   const n = RESOURCES.length;
-  /** vertical offsets create the layered editorial rhythm on desktop */
-  const offsets = [
-    "lg:translate-y-6",
-    "lg:translate-y-12",
-    "lg:translate-y-0",
-    "lg:translate-y-10",
-    "lg:translate-y-4",
-  ];
-  const layers = ["lg:z-10", "lg:z-20", "lg:z-30", "lg:z-20", "lg:z-10"];
+
 
   const trackRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
