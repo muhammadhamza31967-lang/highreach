@@ -507,30 +507,39 @@ const INDUSTRIES = [
 export function Industries() {
   const trackRef = useRef<HTMLUListElement | null>(null);
   const rafRef = useRef<number | null>(null);
+  const timerRef = useRef<number | null>(null);
+  const pausedRef = useRef(false);
 
-  const animateTo = (target: number) => {
+  const animateTo = (target: number, onDone?: () => void) => {
     const el = trackRef.current;
     if (!el) return;
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    if (rafRef.current) return; // an animation is already running — ignore
     const start = el.scrollLeft;
     const max = el.scrollWidth - el.clientWidth;
     const end = Math.max(0, Math.min(max, target));
     const dist = end - start;
     if (Math.abs(dist) < 1) return;
-    const duration = 600;
+    const duration = 900;
     const t0 = performance.now();
     const step = (now: number) => {
       const p = Math.min(1, (now - t0) / duration);
-      const eased = 1 - Math.pow(1 - p, 3);
+      // smooth ease-in-out
+      const eased = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
       el.scrollLeft = start + dist * eased;
-      if (p < 1) rafRef.current = requestAnimationFrame(step);
+      if (p < 1) {
+        rafRef.current = requestAnimationFrame(step);
+      } else {
+        rafRef.current = null;
+        onDone?.();
+      }
     };
     rafRef.current = requestAnimationFrame(step);
   };
 
-  const move = (dir: 1 | -1) => {
+  const move = (dir: 1 | -1, onDone?: () => void) => {
     const el = trackRef.current;
     if (!el) return;
+    if (rafRef.current) return; // prevent rapid clicks from jumping
     const first = el.querySelector("li");
     const second = el.querySelector("li:nth-child(2)");
     const stepPx =
@@ -539,13 +548,35 @@ export function Industries() {
         : el.clientWidth / 4;
     const max = el.scrollWidth - el.clientWidth;
     // gentle loop: wrap at the ends instead of stalling
-    if (dir === 1 && el.scrollLeft >= max - 2) return animateTo(0);
-    if (dir === -1 && el.scrollLeft <= 2) return animateTo(max);
-    animateTo(el.scrollLeft + dir * stepPx);
+    if (dir === 1 && el.scrollLeft >= max - 2) return animateTo(0, onDone);
+    if (dir === -1 && el.scrollLeft <= 2) return animateTo(max, onDone);
+    animateTo(el.scrollLeft + dir * stepPx, onDone);
   };
+
+  // Auto-scroll: advance one card every ~3.5s, paused on hover / touch / reduced motion
+  useEffect(() => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+    const schedule = () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+      timerRef.current = window.setTimeout(tick, 3500);
+    };
+    const tick = () => {
+      if (!pausedRef.current) move(1, schedule);
+      else schedule();
+    };
+    schedule();
+
+    return () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => () => {
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    if (timerRef.current) window.clearTimeout(timerRef.current);
   }, []);
 
   return (
@@ -591,6 +622,10 @@ export function Industries() {
         <Container>
           <ul
             ref={trackRef}
+            onMouseEnter={() => { pausedRef.current = true; }}
+            onMouseLeave={() => { pausedRef.current = false; }}
+            onTouchStart={() => { pausedRef.current = true; }}
+            onTouchEnd={() => { pausedRef.current = false; }}
             className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] lg:gap-6 [&::-webkit-scrollbar]:hidden"
           >
             {INDUSTRIES.map((ind, i) => (
@@ -600,39 +635,36 @@ export function Industries() {
                 delay={Math.min(i, 4) * 70}
                 className="w-[85%] shrink-0 snap-start sm:w-[46%] md:w-[36%] lg:w-[23%]"
               >
-                <a
-                  href="#contact"
-                  className="group relative block h-[24rem] overflow-hidden rounded-2xl shadow-[0_4px_16px_rgba(5,52,98,0.08)] transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_14px_36px_rgba(5,52,98,0.18)] sm:h-[26rem] lg:h-[28rem]"
-                >
+                <div className="group relative block h-[24rem] overflow-hidden rounded-2xl shadow-[0_4px_16px_rgba(5,52,98,0.08)] transition-all duration-[800ms] ease-out hover:-translate-y-1 hover:shadow-[0_14px_36px_rgba(5,52,98,0.18)] sm:h-[26rem] lg:h-[28rem]">
                   <img
                     src={ind.image}
                     alt={ind.alt}
                     loading="lazy"
                     width={1024}
                     height={1024}
-                    className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[600ms] ease-out group-hover:scale-[1.045]"
+                    className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[800ms] ease-out group-hover:scale-[1.045]"
                   />
                   <span
                     aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-[#053462]/95 via-[#053462]/35 to-transparent transition-opacity duration-[600ms] ease-out group-hover:opacity-90"
+                    className="absolute inset-0 bg-gradient-to-t from-[#053462]/95 via-[#053462]/35 to-transparent transition-opacity duration-[800ms] ease-out group-hover:opacity-90"
                   />
                   <span
                     aria-hidden="true"
-                    className="absolute inset-0 bg-[#053462]/0 transition-colors duration-[600ms] ease-out group-hover:bg-[#053462]/15"
+                    className="absolute inset-0 bg-[#053462]/0 transition-colors duration-[800ms] ease-out group-hover:bg-[#053462]/15"
                   />
                   <span className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 lg:p-7">
-                    <h3 className="text-xl font-semibold leading-tight tracking-[-0.01em] text-white transition-transform duration-[550ms] ease-out lg:text-2xl">
+                    <h3 className="text-xl font-semibold leading-tight tracking-[-0.01em] text-white transition-transform duration-[800ms] ease-out lg:text-2xl">
                       {ind.title}
                     </h3>
-                    <span className="grid max-h-0 overflow-hidden opacity-0 transition-all duration-[550ms] ease-out group-hover:max-h-32 group-hover:opacity-100">
-                      <p className="pt-2.5 text-sm leading-relaxed text-white/85">{ind.body}</p>
+                    <span className="grid max-h-0 overflow-hidden opacity-0 transition-all duration-[800ms] ease-out group-hover:max-h-32 group-hover:opacity-100">
+                      <p className="pt-2.5 text-sm leading-relaxed text-white/85 transition-transform duration-[800ms] ease-out">{ind.body}</p>
                     </span>
                     <span className="mt-4 flex items-center gap-2 text-white/90">
-                      <span className="block h-px w-7 bg-accent transition-all duration-500 ease-out group-hover:w-10" />
-                      <Arrow className="h-4 w-4 text-accent transition-transform duration-500 ease-out group-hover:translate-x-1.5" />
+                      <span className="block h-px w-7 bg-accent transition-all duration-[800ms] ease-out group-hover:w-10" />
+                      <Arrow className="h-4 w-4 text-accent transition-transform duration-[800ms] ease-out group-hover:translate-x-1.5" />
                     </span>
                   </span>
-                </a>
+                </div>
               </Reveal>
             ))}
           </ul>
