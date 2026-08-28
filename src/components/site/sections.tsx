@@ -841,111 +841,61 @@ export function Services() {
 
 export function Careers() {
   return (
-    <section id="careers" className="py-20 lg:py-28" aria-labelledby="careers-heading">
-      <Container>
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <Reveal>
-              <SectionLabel>Interested in Working With Us?</SectionLabel>
-              <h2
-                id="careers-heading"
-                className="mt-6 text-3xl font-semibold leading-[1.08] tracking-[-0.02em] text-foreground sm:text-4xl lg:text-5xl"
-              >
-                Interested in Working With Us?
-              </h2>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-7 lg:border-l lg:border-hairline lg:pl-16">
-            <Reveal delay={100}>
-              <p className="text-base leading-relaxed text-secondary-ink lg:text-lg">
-                At HighReach, we develop the next generation of leaders and organisations by bringing the latest
-                research and thinking into practice. We are always looking for passionate, experienced professionals and
-                expert facilitators who are committed to excellence.
-              </p>
-              <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-                <a
-                  href="mailto:info@HighReach.sa"
-                  className="group inline-flex items-center justify-between gap-6 bg-accent px-6 py-4 text-sm font-medium text-accent-foreground transition-colors duration-300 hover:bg-foreground"
-                >
-                  Work With HighReach
-                  <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
-                <a
-                  href="mailto:info@HighReach.sa"
-                  className="text-sm text-secondary-ink underline-offset-4 transition-colors hover:text-accent hover:underline"
-                >
-                  info@HighReach.sa
-                </a>
-              </div>
-            </Reveal>
-          </div>
-        </div>
+    <section
+      id="contact"
+      className="relative overflow-hidden bg-foreground py-24 text-primary-foreground sm:py-28 lg:py-36"
+      aria-labelledby="careers-heading"
+    >
+      {/* ambient gradient + subtle tech grid */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="cta-drift absolute -inset-[10%] opacity-[0.10] bg-[radial-gradient(circle_at_30%_30%,var(--accent),transparent_45%),radial-gradient(circle_at_70%_70%,var(--primary-foreground),transparent_45%)]" />
+        <svg
+          viewBox="0 0 800 400"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full text-primary-foreground/[0.04]"
+        >
+          <defs>
+            <pattern id="cta-grid" width="96" height="96" patternUnits="userSpaceOnUse">
+              <circle cx="48" cy="48" r="1.5" fill="currentColor" />
+              <path d="M48 0 V96 M0 48 H96" stroke="currentColor" strokeWidth="0.5" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#cta-grid)" />
+        </svg>
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground via-transparent to-foreground opacity-60" />
+      </div>
+
+      <Container className="relative z-10">
+        <Reveal>
+          <h2
+            id="careers-heading"
+            className="max-w-[18ch] text-4xl font-light leading-[1.05] tracking-[-0.02em] sm:text-5xl lg:text-6xl"
+          >
+            Interested in Working With Us?
+          </h2>
+        </Reveal>
+        <Reveal delay={120}>
+          <p className="mt-6 max-w-2xl text-base leading-[1.75] text-primary-foreground/80 sm:text-lg">
+            At HighReach, we develop the next generation of leaders and organisations by bringing the latest
+            research and thinking into practice. We are always looking for passionate, experienced professionals and
+            expert facilitators who are committed to excellence.
+          </p>
+        </Reveal>
+        <Reveal delay={220}>
+          <a
+            href="mailto:info@HighReach.sa"
+            className="group mt-10 inline-flex items-center gap-3 rounded-xl bg-accent px-8 py-4 text-sm font-semibold text-accent-foreground shadow-[0_10px_30px_-10px_rgba(5,52,98,0.5)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-accent/90 hover:shadow-[0_18px_40px_-12px_rgba(5,52,98,0.55)]"
+          >
+            Work With HighReach
+            <Arrow className="transition-transform duration-500 ease-out group-hover:translate-x-1.5" />
+          </a>
+        </Reveal>
       </Container>
     </section>
   );
 }
 
-/* --------------------------------------------------------------- CONTACT */
-
-export function Contact() {
-  return (
-    <section id="contact" className="bg-surface py-20 lg:py-28" aria-labelledby="contact-heading">
-      <Container>
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <SectionLabel>Get in Touch</SectionLabel>
-              <h2
-                id="contact-heading"
-                className="mt-6 max-w-[14ch] text-4xl font-semibold leading-[1.04] tracking-[-0.025em] text-foreground sm:text-5xl lg:text-6xl"
-              >
-                Let's Start a Conversation
-              </h2>
-              <p className="mt-8 max-w-xl text-base leading-relaxed text-secondary-ink lg:text-lg">
-                Discover how HighReach can support your organisation's leadership and transformation journey.
-              </p>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-5">
-            <Reveal delay={120}>
-              <dl className="border-t border-hairline">
-                <div className="flex items-center justify-between border-b border-hairline py-4">
-                  <dt className="text-xs uppercase tracking-[0.2em] text-secondary-ink">Email</dt>
-                  <dd>
-                    <a
-                      className="text-base text-foreground transition-colors hover:text-accent"
-                      href="mailto:info@HighReach.sa"
-                    >
-                      info@HighReach.sa
-                    </a>
-                  </dd>
-                </div>
-                <div className="flex items-center justify-between border-b border-hairline py-4">
-                  <dt className="text-xs uppercase tracking-[0.2em] text-secondary-ink">Phone</dt>
-                  <dd>
-                    <a
-                      className="text-base text-foreground transition-colors hover:text-accent"
-                      href="tel:+966566653356"
-                    >
-                      +966 56 665 3356
-                    </a>
-                  </dd>
-                </div>
-              </dl>
-              <a
-                href="mailto:info@HighReach.sa"
-                className="group mt-8 inline-flex w-full items-center justify-between gap-6 bg-accent px-6 py-4 text-sm font-medium text-accent-foreground transition-colors duration-300 hover:bg-foreground sm:w-auto"
-              >
-                Contact HighReach
-                <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
-            </Reveal>
-          </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
 
 /* -------------------------------------------------------------- PARTNERS */
 

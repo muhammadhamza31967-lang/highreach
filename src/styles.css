@@ -204,6 +204,22 @@ body {
   }
 }
 
+/* Premium final CTA ambient background drift */
+.cta-drift {
+  animation: cta-drift 24s linear infinite;
+}
+
+@keyframes cta-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(4%, -3%, 0) scale(1.08);
+  }
+}
+
+
 
 :focus-visible {
   outline: 2px solid var(--accent);
