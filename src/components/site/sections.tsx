@@ -179,25 +179,21 @@ const TOOLS = [
 
 export function AssessmentTools() {
   return (
-    <section className="bg-surface py-16 lg:py-20" aria-label="Strategic & Digital Assessment Tools">
+    <section className="py-10 lg:py-12" aria-label="Strategic & Digital Assessment Tools">
       <Container>
         <Reveal>
-          <nav className="mx-auto w-full max-w-5xl rounded-2xl border border-hairline bg-background p-2 shadow-[0_8px_25px_rgba(15,45,75,0.10)]">
-            <ul className="flex flex-col sm:flex-row">
+          <nav className="mx-auto w-full max-w-4xl rounded-xl border border-hairline bg-background p-1 shadow-[0_4px_18px_rgba(15,45,75,0.08)]">
+            <ul className="flex overflow-x-auto sm:overflow-visible">
               {TOOLS.map((tool) => (
                 <li
                   key={tool.label}
-                  className="group flex flex-1 border-b border-hairline last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0"
+                  className="flex shrink-0 border-b border-hairline last:border-b-0 sm:flex-1 sm:border-b-0 sm:border-r sm:last:border-r-0"
                 >
                   <a
                     href={tool.href}
-                    className="flex w-full items-center gap-3 rounded-lg px-5 py-4 text-foreground transition-all duration-300 ease-out hover:bg-accent/[0.10] hover:text-accent"
-                    aria-current={undefined}
+                    className="flex w-full items-center justify-center whitespace-nowrap px-5 py-3 text-sm font-medium text-foreground transition-colors duration-300 hover:text-accent sm:text-[0.95rem]"
                   >
-                    <span className="flex-1 text-base font-medium sm:text-center sm:text-lg">
-                      {tool.label}
-                    </span>
-                    <Arrow className="h-4 w-4 shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-1" />
+                    {tool.label}
                   </a>
                 </li>
               ))}
@@ -208,6 +204,7 @@ export function AssessmentTools() {
     </section>
   );
 }
+
 
 
 /* ---------------------------------------------------------------- ABOUT */
