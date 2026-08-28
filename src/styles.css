@@ -184,6 +184,27 @@ body {
   transform: none;
 }
 
+/* Slow, seamless resource marquee */
+.marquee-track {
+  animation: marquee-x 70s linear infinite;
+  will-change: transform;
+}
+
+.marquee-viewport:hover .marquee-track,
+.marquee-viewport:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
@@ -198,4 +219,9 @@ body {
     transform: none;
     transition: none;
   }
+  .marquee-track {
+    animation: none;
+  }
 }
+
+
