@@ -318,7 +318,7 @@ export function Resources() {
 
 const TOOLS = [
   { label: "AI Direction Scan", href: "https://londonstrategycentre.com/ai-direction-scan" },
-  { label: "Cyber Excellence, Assessment", href: "https://londonstrategycentre.com/cyber-assessment" },
+  { label: "Cyber Excellence Assessment", href: "https://londonstrategycentre.com/cyber-assessment" },
   { label: "Digital, Business Plan", href: "https://londonstrategycentre.com/venture-framework" },
 ];
 
