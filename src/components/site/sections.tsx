@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Download } from "lucide-react";
 import riyadhArchitecture from "@/assets/riyadh-architecture.jpg";
 import aiTransformation from "@/assets/ai-transformation.jpg";
