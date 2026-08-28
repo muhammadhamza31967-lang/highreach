@@ -204,18 +204,18 @@ body {
   }
 }
 
-/* Premium final CTA ambient background drift */
-.cta-drift {
-  animation: cta-drift 24s linear infinite;
+/* Premium final CTA abstract visual drift */
+.cta-aurora {
+  animation: cta-aurora 28s ease-in-out infinite;
 }
 
-@keyframes cta-drift {
+@keyframes cta-aurora {
   0%,
   100% {
     transform: translate3d(0, 0, 0) scale(1);
   }
   50% {
-    transform: translate3d(4%, -3%, 0) scale(1.08);
+    transform: translate3d(-3%, 2%, 0) scale(1.06);
   }
 }
 
