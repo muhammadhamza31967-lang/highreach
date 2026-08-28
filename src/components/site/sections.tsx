@@ -955,11 +955,11 @@ export function Careers() {
 /* -------------------------------------------------------------- PARTNERS */
 
 const partnerLogos = [
-  { src: gamiLogo.url, alt: "General Authority for Military Industries", size: "h-20 sm:h-24 lg:h-28 max-w-[190px]" },
-  { src: iamiLogo.url, alt: "Innovation Award for Military Industries", size: "h-20 sm:h-24 lg:h-28 max-w-[180px]" },
-  { src: adiLogo.url, alt: "Academy of Defense Industries", size: "h-20 sm:h-24 lg:h-28 max-w-[190px]" },
-  { src: salLogo.url, alt: "SAL", size: "h-12 sm:h-14 lg:h-16 max-w-[170px]" },
-  { src: slaLogo.url, alt: "Saudi Logistics Academy", size: "h-16 sm:h-20 lg:h-24 max-w-[200px]" },
+  { src: gamiLogo.url, alt: "General Authority for Military Industries", size: "h-24 sm:h-28 lg:h-32 max-w-[220px]" },
+  { src: iamiLogo.url, alt: "Innovation Award for Military Industries", size: "h-24 sm:h-28 lg:h-32 max-w-[210px]" },
+  { src: adiLogo.url, alt: "Academy of Defense Industries", size: "h-24 sm:h-28 lg:h-32 max-w-[220px]" },
+  { src: salLogo.url, alt: "SAL", size: "h-14 sm:h-16 lg:h-20 max-w-[200px]" },
+  { src: slaLogo.url, alt: "Saudi Logistics Academy", size: "h-20 sm:h-24 lg:h-28 max-w-[240px]" },
 ];
 
 export function Partners() {
