@@ -98,47 +98,47 @@ const RESOURCES = [
   },
 ];
 
-/** One report-cover style panel with a premium visual. */
+/** One full-bleed immersive resource panel. Title shows by default; description + download reveal on hover. */
 function ResourcePanel({ item, focal = false }: { item: (typeof RESOURCES)[number]; focal?: boolean }) {
   return (
     <a
       href="#contact"
       className={
-        "group relative flex h-[21rem] w-[17.5rem] shrink-0 snap-center flex-col overflow-hidden rounded-2xl border border-hairline bg-background sm:w-[19rem] " +
-        "shadow-[0_10px_30px_-18px_rgba(5,52,98,0.35)] transition-all duration-[550ms] ease-[cubic-bezier(0.16,1,0.3,1)] " +
+        "group relative block h-[21rem] w-[17.5rem] shrink-0 snap-center overflow-hidden rounded-2xl border border-hairline bg-background shadow-[0_10px_30px_-18px_rgba(5,52,98,0.35)] " +
+        "transition-all duration-[550ms] ease-[cubic-bezier(0.16,1,0.3,1)] " +
         "hover:-translate-y-2 hover:border-accent hover:shadow-[0_28px_55px_-24px_rgba(5,52,98,0.45)] " +
         (focal ? " lg:h-[22.5rem] lg:w-[19.5rem]" : " lg:w-[18rem]")
       }
     >
-      <div className="relative h-[9.5rem] shrink-0 overflow-hidden bg-surface lg:h-[10.5rem]">
-        <img
-          src={item.image}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          width={1024}
-          height={768}
-          className="h-full w-full object-cover transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05] group-hover:-translate-y-1"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-foreground/[0.06] transition-opacity duration-[600ms] group-hover:bg-accent/[0.10]"
-        />
-      </div>
+      <img
+        src={item.image}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        width={1024}
+        height={768}
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[650ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#053462]/75 via-[#053462]/30 to-transparent transition-all duration-[650ms] group-hover:from-[#053462]/85 group-hover:via-[#053462]/40"
+      />
 
-      <div className="relative flex flex-1 flex-col justify-between p-6">
-        <div>
-          <h3 className="max-w-[20ch] text-lg font-medium leading-snug tracking-[-0.01em] text-foreground">
-            {item.title}
-          </h3>
-          <p className="mt-2 max-w-[28ch] text-xs leading-relaxed text-secondary-ink">{item.sub}</p>
+      <div className="absolute inset-x-0 bottom-0 p-6 transition-transform duration-[650ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3">
+        <h3 className="max-w-[20ch] text-lg font-medium leading-snug tracking-[-0.01em] text-white transition-transform duration-[650ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-6">
+          {item.title}
+        </h3>
+        <div className="overflow-hidden">
+          <p className="max-w-[28ch] text-sm leading-relaxed text-white/90 opacity-0 translate-y-4 transition-all duration-[600ms] ease-out group-hover:opacity-100 group-hover:translate-y-0">
+            {item.sub}
+          </p>
+          <span className="mt-4 inline-flex items-center gap-2 text-[0.78rem] font-medium text-white opacity-0 translate-y-4 transition-all duration-[600ms] ease-out delay-75 group-hover:opacity-100 group-hover:translate-y-0">
+            <Download className="h-3.5 w-3.5" aria-hidden="true" />
+            Download
+            <span className="sr-only"> {item.title}</span>
+            <Arrow className="h-3 w-3 transition-transform duration-500 ease-out group-hover:translate-x-1.5" />
+          </span>
         </div>
-        <span className="mt-5 inline-flex items-center gap-2 text-[0.78rem] font-medium text-foreground transition-colors duration-300 group-hover:text-accent">
-          <Download className="h-3.5 w-3.5" aria-hidden="true" />
-          Download
-          <span className="sr-only"> {item.title}</span>
-          <Arrow className="h-3 w-3 transition-transform duration-500 ease-out group-hover:translate-x-1.5" />
-        </span>
       </div>
     </a>
   );
