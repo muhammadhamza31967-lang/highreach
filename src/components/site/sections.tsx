@@ -971,7 +971,7 @@ export function Services() {
 
 export function Careers() {
   return (
-    <section id="contact" className="bg-background py-16 sm:py-20 lg:py-24" aria-labelledby="careers-heading">
+    <section id="contact" className="bg-background pt-8 pb-16 sm:pt-10 sm:pb-20 lg:pt-12 lg:pb-24" aria-labelledby="careers-heading">
       <Container>
         <div className="relative overflow-hidden rounded-[20px] bg-white shadow-[0_12px_44px_-16px_rgba(5,52,98,0.14)] ring-1 ring-[rgba(5,52,98,0.08)]">
           {/* full-width subtle gradient wash */}
@@ -1094,7 +1094,7 @@ const partnerLogos = [
 
 export function Partners() {
   return (
-    <section id="partners" className="relative overflow-hidden py-20 lg:py-28" aria-labelledby="partners-heading">
+    <section id="partners" className="relative overflow-hidden pt-20 pb-10 lg:pt-28 lg:pb-14" aria-labelledby="partners-heading">
       <div
         aria-hidden
         className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,#FFFFFF_0%,#F6F9FC_45%,#FFFFFF_100%)]"
