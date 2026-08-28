@@ -242,7 +242,7 @@ export function Resources() {
     >
       <Reveal>
         <div
-          className="overflow-hidden px-6 pb-6 pt-2 lg:px-0"
+          className="overflow-hidden px-6 pb-6 pt-2 lg:px-12"
           onMouseEnter={() => {
             pausedRef.current = true;
           }}
@@ -261,25 +261,23 @@ export function Resources() {
         >
           <div
             ref={trackRef}
-            className="flex w-max items-start gap-8 lg:gap-10 lg:pl-12"
+            className="flex w-max items-start gap-6"
             style={{
               transform: `translate3d(-${x}px, 0, 0)`,
               transition: animated ? "transform 900ms cubic-bezier(0.65, 0, 0.35, 1)" : "none",
             }}
           >
-            {[...RESOURCES, ...RESOURCES].map((r, i) => {
-              const originalIndex = i % n;
-              return (
-                <div
-                  key={`${i >= n ? "copy-" : ""}${r.id}`}
-                  className={`shrink-0 ${offsets[originalIndex]} ${layers[originalIndex]} hover:z-40`}
-                  aria-hidden={i >= n ? true : undefined}
-                >
-                  <ResourcePanel item={r} focal={originalIndex === 2} />
-                </div>
-              );
-            })}
+            {[...RESOURCES, ...RESOURCES].map((r, i) => (
+              <div
+                key={`${i >= n ? "copy-" : ""}${r.id}`}
+                className="w-[calc(100vw-3rem)] shrink-0 sm:w-[calc((100vw-4.5rem)/2)] md:w-[calc((100vw-6rem)/3)] lg:w-[calc((100vw-10.5rem)/4)] hover:z-40"
+                aria-hidden={i >= n ? true : undefined}
+              >
+                <ResourcePanel item={r} />
+              </div>
+            ))}
           </div>
+
         </div>
       </Reveal>
 
