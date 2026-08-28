@@ -242,7 +242,7 @@ export function Resources() {
     >
       <Reveal>
         <div
-          className="overflow-hidden px-6 pb-6 pt-2 lg:px-12"
+          className="mx-auto overflow-hidden px-6 pb-6 pt-2 sm:w-[calc(2*15rem+1.5rem)] sm:px-0 md:w-[calc(3*15rem+3rem)] lg:w-[calc(4*14rem+4.5rem)]"
           onMouseEnter={() => {
             pausedRef.current = true;
           }}
@@ -270,9 +270,10 @@ export function Resources() {
             {[...RESOURCES, ...RESOURCES].map((r, i) => (
               <div
                 key={`${i >= n ? "copy-" : ""}${r.id}`}
-                className="w-[calc(100vw-3rem)] shrink-0 sm:w-[calc((100vw-4.5rem)/2)] md:w-[calc((100vw-6rem)/3)] lg:w-[calc((100vw-10.5rem)/4)] hover:z-40"
+                className="w-[calc(100vw-3rem)] shrink-0 sm:w-[15rem] lg:w-[14rem] hover:z-40"
                 aria-hidden={i >= n ? true : undefined}
               >
+
                 <ResourcePanel item={r} />
               </div>
             ))}
