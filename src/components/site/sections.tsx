@@ -844,108 +844,106 @@ export function Careers() {
     <section id="contact" className="bg-background py-16 sm:py-20 lg:py-24" aria-labelledby="careers-heading">
       <Container>
         <div className="relative overflow-hidden rounded-[20px] bg-white shadow-[0_12px_44px_-16px_rgba(5,52,98,0.14)] ring-1 ring-[rgba(5,52,98,0.08)]">
-          {/* soft blue-tinted gradient wash */}
+          {/* full-width subtle gradient wash */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white via-surface to-[oklch(0.96_0.01_236)]"
           />
 
-          <div className="relative z-10 grid min-h-[24rem] lg:grid-cols-2">
-            <div className="flex flex-col justify-center px-8 py-14 sm:px-10 sm:py-16 lg:px-14 lg:py-20">
-              <Reveal>
-                <h2
-                  id="careers-heading"
-                  className="text-3xl font-light leading-[1.05] tracking-[-0.02em] text-foreground sm:text-4xl lg:text-5xl"
-                >
-                  Interested in Working With Us?
-                </h2>
-              </Reveal>
-              <Reveal delay={120}>
-                <p className="mt-5 text-base leading-[1.75] text-secondary-ink sm:text-lg">
-                  At HighReach, we develop the next generation of leaders and organisations by bringing the latest
-                  research and thinking into practice. We are always looking for passionate, experienced professionals and
-                  expert facilitators who are committed to excellence.
-                </p>
-              </Reveal>
-              <Reveal delay={220}>
-                <a
-                  href="mailto:info@HighReach.sa"
-                  className="group mt-10 inline-flex items-center gap-3 rounded-xl bg-accent px-8 py-4 text-sm font-semibold text-accent-foreground shadow-[0_8px_24px_-8px_rgba(20,128,174,0.35)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-accent/90 hover:shadow-[0_16px_36px_-10px_rgba(20,128,174,0.45)]"
-                >
-                  Work With HighReach
-                  <Arrow className="transition-transform duration-500 ease-out group-hover:translate-x-1.5" />
-                </a>
-              </Reveal>
-            </div>
+          {/* full-bleed premium abstract visual background */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-br from-accent-light/[0.06] via-surface/50 to-accent/[0.10]"
+          />
 
-            {/* full-bleed premium abstract visual panel */}
-            <div className="relative hidden h-full overflow-hidden lg:block">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-gradient-to-br from-accent-light/[0.06] via-surface/50 to-accent/[0.10]"
-              />
+          {/* slow drifting gradient orbs */}
+          <div
+            aria-hidden="true"
+            className="cta-aurora absolute -right-1/4 -top-1/4 h-[150%] w-[150%] rounded-full bg-[radial-gradient(circle_at_center,var(--accent-light),transparent_55%)] opacity-35 blur-3xl"
+          />
+          <div
+            aria-hidden="true"
+            className="cta-aurora absolute -bottom-1/4 -left-1/4 h-[140%] w-[140%] rounded-full bg-[radial-gradient(circle_at_center,var(--accent),transparent_50%)] opacity-25 blur-3xl"
+            style={{ animationDelay: "-14s" }}
+          />
 
-              {/* slow drifting gradient orbs */}
-              <div
-                aria-hidden="true"
-                className="cta-aurora absolute -right-1/4 -top-1/4 h-[150%] w-[150%] rounded-full bg-[radial-gradient(circle_at_center,var(--accent-light),transparent_55%)] opacity-35 blur-3xl"
-              />
-              <div
-                aria-hidden="true"
-                className="cta-aurora absolute -bottom-1/4 -left-1/4 h-[140%] w-[140%] rounded-full bg-[radial-gradient(circle_at_center,var(--accent),transparent_50%)] opacity-25 blur-3xl"
-                style={{ animationDelay: "-14s" }}
-              />
+          <svg
+            viewBox="0 0 420 420"
+            preserveAspectRatio="xMidYMid slice"
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full"
+          >
+            <defs>
+              <linearGradient id="ctaFlow1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="var(--accent-light)" stopOpacity="0.35" />
+                <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.08" />
+              </linearGradient>
+              <linearGradient id="ctaFlow2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.25" />
+                <stop offset="100%" stopColor="var(--foreground)" stopOpacity="0.06" />
+              </linearGradient>
+              <linearGradient id="ctaPanelFill" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="var(--accent-light)" stopOpacity="0.18" />
+                <stop offset="60%" stopColor="var(--accent)" stopOpacity="0.06" />
+                <stop offset="100%" stopColor="var(--foreground)" stopOpacity="0.04" />
+              </linearGradient>
+            </defs>
+            <rect width="420" height="420" fill="url(#ctaPanelFill)" opacity="0.45" />
+            <path
+              d="M-30 290 C70 250 150 330 250 270 S440 210 470 310"
+              fill="none"
+              stroke="url(#ctaFlow1)"
+              strokeWidth="1.5"
+              opacity="0.55"
+            />
+            <path
+              d="M-30 130 C90 170 190 70 310 110 S450 190 490 150"
+              fill="none"
+              stroke="url(#ctaFlow2)"
+              strokeWidth="1.5"
+              opacity="0.45"
+            />
+            <ellipse cx="340" cy="90" rx="95" ry="75" fill="url(#ctaFlow1)" opacity="0.22" />
+            <ellipse cx="90" cy="340" rx="120" ry="90" fill="url(#ctaFlow2)" opacity="0.18" />
+            <line x1="60" y1="60" x2="360" y2="360" stroke="var(--accent)" strokeWidth="0.5" opacity="0.12" />
+            <line x1="360" y1="60" x2="60" y2="360" stroke="var(--foreground)" strokeWidth="0.5" opacity="0.08" />
+            <circle cx="210" cy="210" r="150" fill="none" stroke="var(--accent)" strokeWidth="0.5" opacity="0.08" />
+            <circle cx="210" cy="210" r="110" fill="none" stroke="var(--accent-light)" strokeWidth="0.5" opacity="0.10" />
+          </svg>
 
-              <svg
-                viewBox="0 0 420 420"
-                preserveAspectRatio="xMidYMid slice"
-                aria-hidden="true"
-                className="absolute inset-0 h-full w-full"
+          {/* centered content */}
+          <div className="relative z-10 flex flex-col items-center px-8 py-16 text-center sm:py-20 lg:px-14 lg:py-24">
+            <Reveal>
+              <h2
+                id="careers-heading"
+                className="text-3xl font-light leading-[1.05] tracking-[-0.02em] text-foreground sm:text-4xl lg:text-5xl"
               >
-                <defs>
-                  <linearGradient id="ctaFlow1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="var(--accent-light)" stopOpacity="0.35" />
-                    <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.08" />
-                  </linearGradient>
-                  <linearGradient id="ctaFlow2" x1="100%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.25" />
-                    <stop offset="100%" stopColor="var(--foreground)" stopOpacity="0.06" />
-                  </linearGradient>
-                  <linearGradient id="ctaPanelFill" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="var(--accent-light)" stopOpacity="0.18" />
-                    <stop offset="60%" stopColor="var(--accent)" stopOpacity="0.06" />
-                    <stop offset="100%" stopColor="var(--foreground)" stopOpacity="0.04" />
-                  </linearGradient>
-                </defs>
-                <rect width="420" height="420" fill="url(#ctaPanelFill)" opacity="0.45" />
-                <path
-                  d="M-30 290 C70 250 150 330 250 270 S440 210 470 310"
-                  fill="none"
-                  stroke="url(#ctaFlow1)"
-                  strokeWidth="1.5"
-                  opacity="0.55"
-                />
-                <path
-                  d="M-30 130 C90 170 190 70 310 110 S450 190 490 150"
-                  fill="none"
-                  stroke="url(#ctaFlow2)"
-                  strokeWidth="1.5"
-                  opacity="0.45"
-                />
-                <ellipse cx="340" cy="90" rx="95" ry="75" fill="url(#ctaFlow1)" opacity="0.22" />
-                <ellipse cx="90" cy="340" rx="120" ry="90" fill="url(#ctaFlow2)" opacity="0.18" />
-                <line x1="60" y1="60" x2="360" y2="360" stroke="var(--accent)" strokeWidth="0.5" opacity="0.12" />
-                <line x1="360" y1="60" x2="60" y2="360" stroke="var(--foreground)" strokeWidth="0.5" opacity="0.08" />
-                <circle cx="210" cy="210" r="150" fill="none" stroke="var(--accent)" strokeWidth="0.5" opacity="0.08" />
-                <circle cx="210" cy="210" r="110" fill="none" stroke="var(--accent-light)" strokeWidth="0.5" opacity="0.10" />
-              </svg>
-            </div>
+                Interested in Working With Us?
+              </h2>
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="mt-6 max-w-3xl text-base leading-[1.75] text-secondary-ink sm:text-lg">
+                At HighReach, we develop the next generation of leaders and organisations by bringing the latest
+                research and thinking into practice. We are always looking for passionate, experienced professionals and
+                expert facilitators who are committed to excellence.
+              </p>
+            </Reveal>
+            <Reveal delay={220}>
+              <a
+                href="mailto:info@HighReach.sa"
+                className="group mt-10 inline-flex items-center gap-3 rounded-xl bg-accent px-8 py-4 text-sm font-semibold text-accent-foreground shadow-[0_8px_24px_-8px_rgba(20,128,174,0.35)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-accent/90 hover:shadow-[0_16px_36px_-10px_rgba(20,128,174,0.45)]"
+              >
+                Work With HighReach
+                <Arrow className="transition-transform duration-500 ease-out group-hover:translate-x-1.5" />
+              </a>
+            </Reveal>
           </div>
         </div>
       </Container>
     </section>
   );
 }
+
 
 
 /* -------------------------------------------------------------- PARTNERS */
