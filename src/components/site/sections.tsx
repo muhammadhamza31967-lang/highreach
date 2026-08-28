@@ -1095,7 +1095,50 @@ export function Partners() {
         className="absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(60%_100%_at_50%_0%,rgba(20,128,174,0.07),transparent_70%)]"
       />
       <Container>
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-20">
+        {/* Supported By — primary institutional endorsement panel */}
+        <Reveal>
+          <div className="relative overflow-hidden rounded-3xl border border-hairline bg-[linear-gradient(160deg,#F2F8FC_0%,#E9F3F9_55%,#F7FBFD_100%)] px-6 py-16 text-center shadow-[0_28px_64px_-36px_rgba(5,52,98,0.28)] sm:px-12 sm:py-20 lg:py-24">
+            {/* subtle abstract strategy/network motif */}
+            <svg
+              aria-hidden
+              className="cta-aurora pointer-events-none absolute inset-0 h-full w-full"
+              viewBox="0 0 1200 600"
+              preserveAspectRatio="xMidYMid slice"
+              fill="none"
+            >
+              <circle cx="600" cy="300" r="260" stroke="rgba(20,128,174,0.08)" strokeWidth="1" />
+              <circle cx="600" cy="300" r="380" stroke="rgba(20,128,174,0.05)" strokeWidth="1" />
+              <ellipse cx="600" cy="300" rx="520" ry="160" stroke="rgba(5,52,98,0.05)" strokeWidth="1" />
+              <path d="M80 480 C 340 340, 860 340, 1120 480" stroke="rgba(20,128,174,0.07)" strokeWidth="1" />
+              <path d="M120 140 C 400 240, 800 240, 1080 140" stroke="rgba(5,52,98,0.05)" strokeWidth="1" />
+              <circle cx="340" cy="200" r="3" fill="rgba(20,128,174,0.18)" />
+              <circle cx="860" cy="180" r="3" fill="rgba(20,128,174,0.18)" />
+              <circle cx="600" cy="440" r="3" fill="rgba(5,52,98,0.14)" />
+            </svg>
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_70%_at_50%_45%,rgba(20,128,174,0.06),transparent_70%)]"
+            />
+
+            <div className="relative">
+              <p className="text-xs font-medium uppercase tracking-[0.26em] text-accent">Supported By</p>
+              <h3 className="mt-5 text-2xl font-semibold tracking-[-0.015em] text-foreground sm:text-3xl lg:text-4xl">
+                London Strategy Centre
+              </h3>
+              <div className="mx-auto mt-8 h-px w-16 bg-accent/40" aria-hidden />
+              <div className="mt-10 flex items-center justify-center sm:mt-12">
+                <img
+                  src={lscLogo}
+                  alt="London Strategy Centre"
+                  loading="lazy"
+                  className="h-16 w-auto max-w-[220px] object-contain transition-transform duration-700 ease-out hover:scale-[1.02] sm:h-20 sm:max-w-[260px] lg:h-28 lg:max-w-[320px]"
+                />
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-20 lg:mt-16">
           <div className="lg:col-span-6">
             <Reveal>
               <Eyebrow>OUR PARTNERS</Eyebrow>
@@ -1141,49 +1184,6 @@ export function Partners() {
                 </li>
               ))}
             </ul>
-          </div>
-        </Reveal>
-
-        {/* Supported By — primary institutional endorsement panel */}
-        <Reveal delay={200}>
-          <div className="relative mt-14 overflow-hidden rounded-3xl border border-hairline bg-[linear-gradient(160deg,#F2F8FC_0%,#E9F3F9_55%,#F7FBFD_100%)] px-6 py-16 text-center shadow-[0_28px_64px_-36px_rgba(5,52,98,0.28)] sm:px-12 sm:py-20 lg:mt-16 lg:py-24">
-            {/* subtle abstract strategy/network motif */}
-            <svg
-              aria-hidden
-              className="cta-aurora pointer-events-none absolute inset-0 h-full w-full"
-              viewBox="0 0 1200 600"
-              preserveAspectRatio="xMidYMid slice"
-              fill="none"
-            >
-              <circle cx="600" cy="300" r="260" stroke="rgba(20,128,174,0.08)" strokeWidth="1" />
-              <circle cx="600" cy="300" r="380" stroke="rgba(20,128,174,0.05)" strokeWidth="1" />
-              <ellipse cx="600" cy="300" rx="520" ry="160" stroke="rgba(5,52,98,0.05)" strokeWidth="1" />
-              <path d="M80 480 C 340 340, 860 340, 1120 480" stroke="rgba(20,128,174,0.07)" strokeWidth="1" />
-              <path d="M120 140 C 400 240, 800 240, 1080 140" stroke="rgba(5,52,98,0.05)" strokeWidth="1" />
-              <circle cx="340" cy="200" r="3" fill="rgba(20,128,174,0.18)" />
-              <circle cx="860" cy="180" r="3" fill="rgba(20,128,174,0.18)" />
-              <circle cx="600" cy="440" r="3" fill="rgba(5,52,98,0.14)" />
-            </svg>
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_70%_at_50%_45%,rgba(20,128,174,0.06),transparent_70%)]"
-            />
-
-            <div className="relative">
-              <p className="text-xs font-medium uppercase tracking-[0.26em] text-accent">Supported By</p>
-              <h3 className="mt-5 text-2xl font-semibold tracking-[-0.015em] text-foreground sm:text-3xl lg:text-4xl">
-                London Strategy Centre
-              </h3>
-              <div className="mx-auto mt-8 h-px w-16 bg-accent/40" aria-hidden />
-              <div className="mt-10 flex items-center justify-center sm:mt-12">
-                <img
-                  src={lscLogo}
-                  alt="London Strategy Centre"
-                  loading="lazy"
-                  className="h-24 w-auto max-w-[320px] object-contain transition-transform duration-700 ease-out hover:scale-[1.02] sm:h-32 sm:max-w-[400px] lg:h-40 lg:max-w-[460px]"
-                />
-              </div>
-            </div>
           </div>
         </Reveal>
       </Container>
