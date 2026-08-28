@@ -793,7 +793,7 @@ export function Industries() {
                 <li
                   key={`${ind.title}-${i}`}
                   aria-hidden={i >= n ? true : undefined}
-                  className="w-[85%] shrink-0 sm:w-[calc((100%_-_1.25rem)_/_2)] md:w-[calc((100%_-_2.5rem)_/_3)] lg:w-[calc((100%_-_4.5rem)_/_4)]"
+                  className="w-full shrink-0 sm:w-[calc((100%_-_1.25rem)_/_2)] md:w-[calc((100%_-_2.5rem)_/_3)] lg:w-[calc((100%_-_4.5rem)_/_4)]"
                 >
                   <div className="group relative block h-[24rem] overflow-hidden rounded-2xl shadow-[0_4px_16px_rgba(5,52,98,0.08)] transition-all duration-[800ms] ease-out hover:-translate-y-1 hover:shadow-[0_14px_36px_rgba(5,52,98,0.18)] sm:h-[26rem] lg:h-[28rem]">
                     <img
