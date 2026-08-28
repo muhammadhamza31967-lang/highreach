@@ -45,7 +45,7 @@ export function Footer() {
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
       </div>
 
-      <Container className="relative grid gap-14 py-20 md:grid-cols-2 md:gap-x-12 lg:grid-cols-12 lg:gap-x-10 lg:py-24">
+      <Container className="relative grid gap-14 pt-20 pb-12 md:grid-cols-2 md:gap-x-12 md:pb-14 lg:grid-cols-12 lg:gap-x-10 lg:pt-24 lg:pb-16">
         <div className="lg:col-span-4 lg:pr-8">
           <img
             src={logoAsset.url}
