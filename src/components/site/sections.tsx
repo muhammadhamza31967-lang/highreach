@@ -47,7 +47,7 @@ export function Hero() {
               Building Intelligent Organisations
               <br className="hidden sm:block" /> for an AI-Driven World
             </h1> */}
-            <h1 className="mx-auto max-w-[30ch] text-[2rem] font-light leading-[1.1] tracking-[-0.025em] text-foreground sm:max w-[34ch] sm:text-[2.25rem] lg:max-w-[36ch] lg:text-[2.75rem] xl:text-[3rem]">
+            <h1 className="mx-auto max-w-[30ch] text-[clamp(1.75rem,7vw,3rem)] font-light leading-[1.15] tracking-[-0.025em] text-foreground sm:max-w-[34ch] lg:max-w-[36ch]">
               Building Intelligent Organisations
               <br className="hidden sm:block" /> for an AI-Driven World
             </h1>
