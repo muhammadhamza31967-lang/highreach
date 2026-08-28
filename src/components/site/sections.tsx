@@ -313,18 +313,21 @@ const CAPABILITIES = [
     body: "Comprehensive AI strategy and implementation certification",
     image: aiTransformation,
     alt: "Analysts reviewing AI performance dashboards",
+    kind: "ai" as const,
   },
   {
     title: "Cyber Security",
     body: "Advanced cyber security framework and risk management",
     image: cyberSecurity,
     alt: "Cyber security operations centre",
+    kind: "cyber" as const,
   },
   {
     title: "Advisory Services",
     body: "Advisory Services provide expert advice to support better decisions and growth.",
     image: advisoryMeeting,
     alt: "Executive advisory meeting in a Riyadh office",
+    kind: "advisory" as const,
   },
 ];
 
