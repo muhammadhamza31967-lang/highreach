@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Download } from "lucide-react";
+import gamiLogo from "@/assets/GAMI.png.asset.json";
+import iamiLogo from "@/assets/IAMI.png.asset.json";
+import adiLogo from "@/assets/ADI.png.asset.json";
+import salLogo from "@/assets/SAL.png.asset.json";
+import slaLogo from "@/assets/SLA.png.asset.json";
+import lscLogo from "@/assets/lsc-logo.svg";
 import riyadhArchitecture from "@/assets/riyadh-architecture.jpg";
 import aiTransformation from "@/assets/ai-transformation.jpg";
 import cyberSecurity from "@/assets/cyber-security.jpg";
