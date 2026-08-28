@@ -642,10 +642,10 @@ export function Industries() {
             className="overflow-hidden pb-4"
             onMouseEnter={() => { pausedRef.current = true; }}
             onMouseLeave={() => { pausedRef.current = false; }}
-            onTouchStart={(e) => { pausedRef.current = true; touchX.current = e.touches[0].clientX; }}
+            onTouchStart={(e) => { pausedRef.current = true; touchX.current = e.touches[0]?.clientX ?? 0; }}
             onTouchEnd={(e) => {
               pausedRef.current = false;
-              const dx = e.changedTouches[0].clientX - touchX.current;
+              const dx = (e.changedTouches[0]?.clientX ?? 0) - touchX.current;
               if (Math.abs(dx) > 40) manualMove(dx < 0 ? 1 : -1);
             }}
           >
