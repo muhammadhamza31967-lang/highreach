@@ -1120,51 +1120,69 @@ export function Partners() {
           </div>
         </div>
 
+        {/* Partners — secondary credibility strip */}
         <Reveal delay={150}>
-          <div className="mt-14 lg:mt-20">
-            <div className="flex items-center gap-5">
+          <div className="mt-14 lg:mt-16">
+            <div className="flex items-center justify-center gap-5">
+              <span className="h-px w-12 bg-hairline" aria-hidden />
               <h3 className="text-xs font-medium uppercase tracking-[0.22em] text-secondary-ink">Partners</h3>
-              <span className="h-px flex-1 bg-hairline" aria-hidden />
+              <span className="h-px w-12 bg-hairline" aria-hidden />
             </div>
 
-            <div className="mt-7 p-5 sm:p-6 lg:p-8">
-              <ul className="grid grid-cols-2 divide-y divide-hairline sm:grid-cols-3 lg:grid-cols-5 lg:divide-y-0">
-                {partnerLogos.map((logo, i) => (
-                  <li
-                    key={logo.alt}
-                    className={`flex items-center justify-center px-4 py-6 sm:px-6 sm:py-8 ${
-                      i % 2 === 1 ? "border-l border-hairline" : ""
-                    } sm:border-l-0 ${i % 3 !== 0 ? "sm:border-l sm:border-hairline" : ""} lg:border-l-0 ${
-                      i !== 0 ? "lg:border-l lg:border-hairline" : ""
-                    }`}
-                  >
-                    <img
-                      src={logo.src}
-                      alt={logo.alt}
-                      loading="lazy"
-                      className={`w-full object-contain transition-transform duration-500 ease-out hover:scale-[1.04] ${logo.size}`}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-14 lg:flex-nowrap lg:gap-x-16">
+              {partnerLogos.map((logo) => (
+                <li key={logo.alt} className="flex items-center justify-center">
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    loading="lazy"
+                    className={`w-auto object-contain opacity-80 transition-all duration-500 ease-out hover:scale-[1.03] hover:opacity-100 ${logo.size}`}
+                  />
+                </li>
+              ))}
+            </ul>
           </div>
         </Reveal>
 
+        {/* Supported By — primary institutional endorsement panel */}
         <Reveal delay={200}>
-          <div className="mt-10 lg:mt-12">
-            <div className="flex items-center gap-5">
-              <h3 className="text-xs font-medium uppercase tracking-[0.22em] text-secondary-ink">Supported By</h3>
-              <span className="h-px flex-1 bg-hairline" aria-hidden />
-            </div>
+          <div className="relative mt-14 overflow-hidden rounded-3xl border border-hairline bg-[linear-gradient(160deg,#F2F8FC_0%,#E9F3F9_55%,#F7FBFD_100%)] px-6 py-16 text-center shadow-[0_28px_64px_-36px_rgba(5,52,98,0.28)] sm:px-12 sm:py-20 lg:mt-16 lg:py-24">
+            {/* subtle abstract strategy/network motif */}
+            <svg
+              aria-hidden
+              className="cta-aurora pointer-events-none absolute inset-0 h-full w-full"
+              viewBox="0 0 1200 600"
+              preserveAspectRatio="xMidYMid slice"
+              fill="none"
+            >
+              <circle cx="600" cy="300" r="260" stroke="rgba(20,128,174,0.08)" strokeWidth="1" />
+              <circle cx="600" cy="300" r="380" stroke="rgba(20,128,174,0.05)" strokeWidth="1" />
+              <ellipse cx="600" cy="300" rx="520" ry="160" stroke="rgba(5,52,98,0.05)" strokeWidth="1" />
+              <path d="M80 480 C 340 340, 860 340, 1120 480" stroke="rgba(20,128,174,0.07)" strokeWidth="1" />
+              <path d="M120 140 C 400 240, 800 240, 1080 140" stroke="rgba(5,52,98,0.05)" strokeWidth="1" />
+              <circle cx="340" cy="200" r="3" fill="rgba(20,128,174,0.18)" />
+              <circle cx="860" cy="180" r="3" fill="rgba(20,128,174,0.18)" />
+              <circle cx="600" cy="440" r="3" fill="rgba(5,52,98,0.14)" />
+            </svg>
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_70%_at_50%_45%,rgba(20,128,174,0.06),transparent_70%)]"
+            />
 
-            <div className="mt-7 flex items-center justify-center px-6 py-8 sm:py-10">
-              <img
-                src={lscLogo}
-                alt="London Strategy Centre"
-                loading="lazy"
-                className="h-12 w-auto max-w-[200px] object-contain transition-transform duration-500 ease-out hover:scale-[1.04] sm:h-16 lg:h-20"
-              />
+            <div className="relative">
+              <p className="text-xs font-medium uppercase tracking-[0.26em] text-accent">Supported By</p>
+              <h3 className="mt-5 text-2xl font-semibold tracking-[-0.015em] text-foreground sm:text-3xl lg:text-4xl">
+                London Strategy Centre
+              </h3>
+              <div className="mx-auto mt-8 h-px w-16 bg-accent/40" aria-hidden />
+              <div className="mt-10 flex items-center justify-center sm:mt-12">
+                <img
+                  src={lscLogo}
+                  alt="London Strategy Centre"
+                  loading="lazy"
+                  className="h-24 w-auto max-w-[320px] object-contain transition-transform duration-700 ease-out hover:scale-[1.02] sm:h-32 sm:max-w-[400px] lg:h-40 lg:max-w-[460px]"
+                />
+              </div>
             </div>
           </div>
         </Reveal>
