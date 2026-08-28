@@ -34,10 +34,7 @@ import { Arrow, Container, Eyebrow, Reveal, SectionLabel } from "./primitives";
 
 export function Hero() {
   return (
-    <section
-      id="top"
-      className="relative overflow-hidden pt-28 pb-24 sm:pt-32 sm:pb-28 lg:pt-40 lg:pb-36"
-    >
+    <section id="top" className="relative overflow-hidden pt-28 pb-24 sm:pt-32 sm:pb-28 lg:pt-40 lg:pb-36">
       <Container>
         <div className="relative mx-auto max-w-[58rem] text-center">
           <Reveal>
@@ -129,9 +126,7 @@ function ResourcePanel({ item, focal = false }: { item: (typeof RESOURCES)[numbe
           {item.title}
         </h3>
         <div className="max-h-0 overflow-hidden opacity-0 transition-all duration-[600ms] ease-out group-hover:mt-2 group-hover:max-h-24 group-hover:opacity-100">
-          <p className="max-w-[28ch] text-sm leading-relaxed text-white/90">
-            {item.sub}
-          </p>
+          <p className="max-w-[28ch] text-sm leading-relaxed text-white/90">{item.sub}</p>
           <span className="mt-2 inline-flex items-center gap-2 text-[0.78rem] font-medium text-white">
             <Download className="h-3.5 w-3.5" aria-hidden="true" />
             Download
@@ -147,7 +142,13 @@ function ResourcePanel({ item, focal = false }: { item: (typeof RESOURCES)[numbe
 export function Resources() {
   const n = RESOURCES.length;
   /** vertical offsets create the layered editorial rhythm on desktop */
-  const offsets = ["lg:translate-y-6", "lg:translate-y-12", "lg:translate-y-0", "lg:translate-y-10", "lg:translate-y-4"];
+  const offsets = [
+    "lg:translate-y-6",
+    "lg:translate-y-12",
+    "lg:translate-y-0",
+    "lg:translate-y-10",
+    "lg:translate-y-4",
+  ];
   const layers = ["lg:z-10", "lg:z-20", "lg:z-30", "lg:z-20", "lg:z-10"];
 
   const trackRef = useRef<HTMLDivElement>(null);
@@ -239,16 +240,27 @@ export function Resources() {
     [],
   );
 
-  const x = positions.length ? positions[index] ?? 0 : 0;
+  const x = positions.length ? (positions[index] ?? 0) : 0;
 
   return (
-    <section id="resources" className="relative -mt-5 bg-background pb-14 pt-0 sm:-mt-6 lg:-mt-8 lg:pb-16 lg:pt-0" aria-label="Resources">
+    <section
+      id="resources"
+      className="relative -mt-5 bg-background pb-14 pt-0 sm:-mt-6 lg:-mt-8 lg:pb-16 lg:pt-0"
+      aria-label="Resources"
+    >
       <Reveal>
         <div
           className="overflow-hidden px-6 pb-6 pt-2 lg:px-0"
-          onMouseEnter={() => { pausedRef.current = true; }}
-          onMouseLeave={() => { pausedRef.current = false; }}
-          onTouchStart={(e) => { pausedRef.current = true; touchX.current = e.touches[0]?.clientX ?? 0; }}
+          onMouseEnter={() => {
+            pausedRef.current = true;
+          }}
+          onMouseLeave={() => {
+            pausedRef.current = false;
+          }}
+          onTouchStart={(e) => {
+            pausedRef.current = true;
+            touchX.current = e.touches[0]?.clientX ?? 0;
+          }}
           onTouchEnd={(e) => {
             pausedRef.current = false;
             const dx = (e.changedTouches[0]?.clientX ?? 0) - touchX.current;
@@ -302,10 +314,6 @@ export function Resources() {
   );
 }
 
-
-
-
-
 /* ------------------------------------------------------- ASSESSMENT TOOLS */
 
 const TOOLS = [
@@ -319,7 +327,7 @@ export function AssessmentTools() {
     <section className="py-10 lg:py-12" aria-label="Strategic & Digital Assessment Tools">
       <Container>
         <Reveal>
-          <nav className="mx-auto w-full max-w-4xl rounded-[1rem] border border-hairline bg-background p-1 shadow-[0_2px_8px_rgba(5,52,98,0.05),0_10px_28px_rgba(5,52,98,0.09)]">
+          <nav className="mx-auto w-full max-w-4xl rounded-[3rem] border border-hairline bg-background p-1 shadow-[0_2px_8px_rgba(5,52,98,0.05),0_10px_28px_rgba(5,52,98,0.09)]">
             <ul className="flex overflow-x-auto sm:overflow-visible">
               {TOOLS.map((tool) => (
                 <li
@@ -341,8 +349,6 @@ export function AssessmentTools() {
     </section>
   );
 }
-
-
 
 /* ---------------------------------------------------------------- ABOUT */
 
@@ -400,8 +406,8 @@ export function About() {
               </Reveal>
               <Reveal delay={150}>
                 <p className="mt-5 max-w-[46rem] text-base leading-[1.8] text-secondary-ink">
-                  We work with business leaders and management teams to overcome challenges, unlock potential and
-                  create lasting impact.
+                  We work with business leaders and management teams to overcome challenges, unlock potential and create
+                  lasting impact.
                 </p>
               </Reveal>
             </div>
@@ -438,7 +444,6 @@ export function About() {
     </section>
   );
 }
-
 
 /* ------------------------------------------------------------ CAPABILITY */
 
@@ -562,7 +567,9 @@ export function Capability() {
                   className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(5,52,98,0.42)_70%,rgba(5,52,98,0.72)_100%)] opacity-80 transition-opacity duration-500 group-hover:opacity-100"
                 />
                 <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end px-5 pt-5 pb-4 lg:px-6 lg:pt-6 lg:pb-5">
-                  <h3 className="text-2xl font-semibold tracking-[-0.01em] text-white transition-transform duration-500 ease-out sm:text-3xl">{c.title}</h3>
+                  <h3 className="text-2xl font-semibold tracking-[-0.01em] text-white transition-transform duration-500 ease-out sm:text-3xl">
+                    {c.title}
+                  </h3>
                   <p className="max-h-0 max-w-[30ch] overflow-hidden text-sm leading-relaxed text-white/90 opacity-0 transition-all duration-500 ease-out group-hover:mt-3 group-hover:max-h-24 group-hover:opacity-100">
                     {c.body}
                   </p>
@@ -575,7 +582,6 @@ export function Capability() {
     </section>
   );
 }
-
 
 /* ------------------------------------------------------------ INDUSTRIES */
 
@@ -713,14 +719,16 @@ export function Industries() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index]);
 
-  useEffect(() => () => {
-    if (timerRef.current) window.clearTimeout(timerRef.current);
-    if (releaseRef.current) window.clearTimeout(releaseRef.current);
-  }, []);
+  useEffect(
+    () => () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+      if (releaseRef.current) window.clearTimeout(releaseRef.current);
+    },
+    [],
+  );
 
   // touch swipe: one swipe = exactly one card
   const touchX = useRef(0);
-
 
   return (
     <section id="industries" className="py-20 lg:py-28" aria-labelledby="industries-heading">
@@ -766,9 +774,16 @@ export function Industries() {
           <div
             ref={viewportRef}
             className="overflow-hidden pb-4"
-            onMouseEnter={() => { pausedRef.current = true; }}
-            onMouseLeave={() => { pausedRef.current = false; }}
-            onTouchStart={(e) => { pausedRef.current = true; touchX.current = e.touches[0]?.clientX ?? 0; }}
+            onMouseEnter={() => {
+              pausedRef.current = true;
+            }}
+            onMouseLeave={() => {
+              pausedRef.current = false;
+            }}
+            onTouchStart={(e) => {
+              pausedRef.current = true;
+              touchX.current = e.touches[0]?.clientX ?? 0;
+            }}
             onTouchEnd={(e) => {
               pausedRef.current = false;
               const dx = (e.changedTouches[0]?.clientX ?? 0) - touchX.current;
@@ -789,47 +804,47 @@ export function Industries() {
                   aria-hidden={i >= n ? true : undefined}
                   className="w-[85%] shrink-0 sm:w-[46%] md:w-[36%] lg:w-[23%]"
                 >
-                <div className="group relative block h-[24rem] overflow-hidden rounded-2xl shadow-[0_4px_16px_rgba(5,52,98,0.08)] transition-all duration-[800ms] ease-out hover:-translate-y-1 hover:shadow-[0_14px_36px_rgba(5,52,98,0.18)] sm:h-[26rem] lg:h-[28rem]">
-                  <img
-                    src={ind.image}
-                    alt={ind.alt}
-                    loading="lazy"
-                    width={1024}
-                    height={1024}
-                    className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[800ms] ease-out group-hover:scale-[1.045]"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-[#053462]/95 via-[#053462]/35 to-transparent transition-opacity duration-[800ms] ease-out group-hover:opacity-90"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-[#053462]/0 transition-colors duration-[800ms] ease-out group-hover:bg-[#053462]/15"
-                  />
-                  <span className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 lg:p-7">
-                    <h3 className="text-xl font-semibold leading-tight tracking-[-0.01em] text-white transition-transform duration-[800ms] ease-out lg:text-2xl">
-                      {ind.title}
-                    </h3>
-                    <span className="grid max-h-0 overflow-hidden opacity-0 transition-all duration-[800ms] ease-out group-hover:max-h-32 group-hover:opacity-100">
-                      <p className="pt-2.5 text-sm leading-relaxed text-white/85 transition-transform duration-[800ms] ease-out">{ind.body}</p>
+                  <div className="group relative block h-[24rem] overflow-hidden rounded-2xl shadow-[0_4px_16px_rgba(5,52,98,0.08)] transition-all duration-[800ms] ease-out hover:-translate-y-1 hover:shadow-[0_14px_36px_rgba(5,52,98,0.18)] sm:h-[26rem] lg:h-[28rem]">
+                    <img
+                      src={ind.image}
+                      alt={ind.alt}
+                      loading="lazy"
+                      width={1024}
+                      height={1024}
+                      className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[800ms] ease-out group-hover:scale-[1.045]"
+                    />
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-0 bg-gradient-to-t from-[#053462]/95 via-[#053462]/35 to-transparent transition-opacity duration-[800ms] ease-out group-hover:opacity-90"
+                    />
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-0 bg-[#053462]/0 transition-colors duration-[800ms] ease-out group-hover:bg-[#053462]/15"
+                    />
+                    <span className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 lg:p-7">
+                      <h3 className="text-xl font-semibold leading-tight tracking-[-0.01em] text-white transition-transform duration-[800ms] ease-out lg:text-2xl">
+                        {ind.title}
+                      </h3>
+                      <span className="grid max-h-0 overflow-hidden opacity-0 transition-all duration-[800ms] ease-out group-hover:max-h-32 group-hover:opacity-100">
+                        <p className="pt-2.5 text-sm leading-relaxed text-white/85 transition-transform duration-[800ms] ease-out">
+                          {ind.body}
+                        </p>
+                      </span>
+                      <span className="mt-4 flex items-center gap-2 text-white/90">
+                        <span className="block h-px w-7 bg-accent transition-all duration-[800ms] ease-out group-hover:w-10" />
+                        <Arrow className="h-4 w-4 text-accent transition-transform duration-[800ms] ease-out group-hover:translate-x-1.5" />
+                      </span>
                     </span>
-                    <span className="mt-4 flex items-center gap-2 text-white/90">
-                      <span className="block h-px w-7 bg-accent transition-all duration-[800ms] ease-out group-hover:w-10" />
-                      <Arrow className="h-4 w-4 text-accent transition-transform duration-[800ms] ease-out group-hover:translate-x-1.5" />
-                    </span>
-                  </span>
-                </div>
+                  </div>
                 </li>
               ))}
             </ul>
           </div>
         </Container>
       </div>
-
     </section>
   );
 }
-
 
 /* -------------------------------------------------------------- SERVICES */
 
@@ -875,10 +890,7 @@ function ServiceCard({ service, featured = false }: { service: ServiceItem; feat
         height={900}
         className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[650ms] ease-out group-hover:scale-[1.03]"
       />
-      <span
-        aria-hidden="true"
-        className="absolute inset-0 bg-[#053462]/40"
-      />
+      <span aria-hidden="true" className="absolute inset-0 bg-[#053462]/40" />
       <span
         aria-hidden="true"
         className="absolute inset-0 bg-[#053462]/0 transition-colors duration-[600ms] ease-out group-hover:bg-[#053462]/15"
@@ -902,11 +914,7 @@ function ServiceCard({ service, featured = false }: { service: ServiceItem; feat
         >
           {service.title}
         </h3>
-        <p
-          className={`mt-3 text-sm leading-relaxed text-white/80 ${
-            featured ? "max-w-lg lg:text-base" : "max-w-md"
-          }`}
-        >
+        <p className={`mt-3 text-sm leading-relaxed text-white/80 ${featured ? "max-w-lg lg:text-base" : "max-w-md"}`}>
           {service.body}
         </p>
       </span>
@@ -958,7 +966,6 @@ export function Services() {
     </section>
   );
 }
-
 
 /* --------------------------------------------------------------- CAREERS */
 
@@ -1031,7 +1038,15 @@ export function Careers() {
             <line x1="60" y1="60" x2="360" y2="360" stroke="var(--accent)" strokeWidth="0.5" opacity="0.12" />
             <line x1="360" y1="60" x2="60" y2="360" stroke="var(--foreground)" strokeWidth="0.5" opacity="0.08" />
             <circle cx="210" cy="210" r="150" fill="none" stroke="var(--accent)" strokeWidth="0.5" opacity="0.08" />
-            <circle cx="210" cy="210" r="110" fill="none" stroke="var(--accent-light)" strokeWidth="0.5" opacity="0.10" />
+            <circle
+              cx="210"
+              cy="210"
+              r="110"
+              fill="none"
+              stroke="var(--accent-light)"
+              strokeWidth="0.5"
+              opacity="0.10"
+            />
           </svg>
 
           {/* centered content */}
@@ -1066,8 +1081,6 @@ export function Careers() {
     </section>
   );
 }
-
-
 
 /* -------------------------------------------------------------- PARTNERS */
 
@@ -1168,5 +1181,3 @@ export function Partners() {
     </section>
   );
 }
-
-
