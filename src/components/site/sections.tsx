@@ -96,17 +96,17 @@ const RESOURCES = [
 ];
 
 /** One full-bleed immersive resource panel. Title shows by default; description + download reveal on hover. */
-function ResourcePanel({ item, focal = false }: { item: (typeof RESOURCES)[number]; focal?: boolean }) {
+function ResourcePanel({ item }: { item: (typeof RESOURCES)[number] }) {
   return (
     <a
       href="#contact"
       className={
-        "group relative block h-[21rem] w-[17.5rem] shrink-0 snap-center overflow-hidden rounded-2xl border border-hairline bg-background shadow-[0_10px_30px_-18px_rgba(5,52,98,0.35)] " +
+        "group relative block h-[21rem] w-full overflow-hidden rounded-2xl border border-hairline bg-background shadow-[0_10px_30px_-18px_rgba(5,52,98,0.35)] " +
         "transition-all duration-[550ms] ease-[cubic-bezier(0.16,1,0.3,1)] " +
-        "hover:-translate-y-2 hover:border-accent hover:shadow-[0_28px_55px_-24px_rgba(5,52,98,0.45)] " +
-        (focal ? " lg:h-[22.5rem] lg:w-[19.5rem]" : " lg:w-[18rem]")
+        "hover:-translate-y-2 hover:border-accent hover:shadow-[0_28px_55px_-24px_rgba(5,52,98,0.45)]"
       }
     >
+
       <img
         src={item.image}
         alt=""
@@ -141,15 +141,7 @@ function ResourcePanel({ item, focal = false }: { item: (typeof RESOURCES)[numbe
 
 export function Resources() {
   const n = RESOURCES.length;
-  /** vertical offsets create the layered editorial rhythm on desktop */
-  const offsets = [
-    "lg:translate-y-6",
-    "lg:translate-y-12",
-    "lg:translate-y-0",
-    "lg:translate-y-10",
-    "lg:translate-y-4",
-  ];
-  const layers = ["lg:z-10", "lg:z-20", "lg:z-30", "lg:z-20", "lg:z-10"];
+
 
   const trackRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
@@ -250,7 +242,7 @@ export function Resources() {
     >
       <Reveal>
         <div
-          className="overflow-hidden px-6 pb-6 pt-2 lg:px-0"
+          className="overflow-hidden px-6 pb-6 pt-2 lg:px-12"
           onMouseEnter={() => {
             pausedRef.current = true;
           }}
@@ -269,25 +261,23 @@ export function Resources() {
         >
           <div
             ref={trackRef}
-            className="flex w-max items-start gap-8 lg:gap-10 lg:pl-12"
+            className="flex w-max items-start gap-6"
             style={{
               transform: `translate3d(-${x}px, 0, 0)`,
               transition: animated ? "transform 900ms cubic-bezier(0.65, 0, 0.35, 1)" : "none",
             }}
           >
-            {[...RESOURCES, ...RESOURCES].map((r, i) => {
-              const originalIndex = i % n;
-              return (
-                <div
-                  key={`${i >= n ? "copy-" : ""}${r.id}`}
-                  className={`shrink-0 ${offsets[originalIndex]} ${layers[originalIndex]} hover:z-40`}
-                  aria-hidden={i >= n ? true : undefined}
-                >
-                  <ResourcePanel item={r} focal={originalIndex === 2} />
-                </div>
-              );
-            })}
+            {[...RESOURCES, ...RESOURCES].map((r, i) => (
+              <div
+                key={`${i >= n ? "copy-" : ""}${r.id}`}
+                className="w-[calc(100vw-3rem)] shrink-0 sm:w-[calc((100vw-4.5rem)/2)] md:w-[calc((100vw-6rem)/3)] lg:w-[calc((100vw-10.5rem)/4)] hover:z-40"
+                aria-hidden={i >= n ? true : undefined}
+              >
+                <ResourcePanel item={r} />
+              </div>
+            ))}
           </div>
+
         </div>
       </Reveal>
 
