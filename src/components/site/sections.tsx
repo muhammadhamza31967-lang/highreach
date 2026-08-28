@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Download } from "lucide-react";
+import { ChevronLeft, ChevronRight, Download } from "lucide-react";
 import gamiLogo from "@/assets/GAMI.png.asset.json";
 import iamiLogo from "@/assets/IAMI.png.asset.json";
 import adiLogo from "@/assets/ADI.png.asset.json";
@@ -145,42 +145,159 @@ function ResourcePanel({ item, focal = false }: { item: (typeof RESOURCES)[numbe
 }
 
 export function Resources() {
+  const n = RESOURCES.length;
   /** vertical offsets create the layered editorial rhythm on desktop */
   const offsets = ["lg:translate-y-6", "lg:translate-y-12", "lg:translate-y-0", "lg:translate-y-10", "lg:translate-y-4"];
   const layers = ["lg:z-10", "lg:z-20", "lg:z-30", "lg:z-20", "lg:z-10"];
 
-  const group = (copy: number) => (
-    <div className="flex shrink-0 items-start gap-8 lg:gap-10" aria-hidden={copy > 0 ? "true" : undefined}>
-      {RESOURCES.map((r, i) => (
-        <div key={`${copy}-${r.id}`} className={`shrink-0 ${offsets[i]} ${layers[i]} hover:z-40`}>
-          <ResourcePanel item={r} focal={i === 2} />
-        </div>
-      ))}
-      <span aria-hidden="true" className="w-16 shrink-0" />
-    </div>
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [index, setIndex] = useState(0);
+  const [animated, setAnimated] = useState(true);
+  const [positions, setPositions] = useState<number[]>([]);
+  const busyRef = useRef(false);
+  const pausedRef = useRef(false);
+  const timerRef = useRef<number | null>(null);
+  const releaseRef = useRef<number | null>(null);
+  const touchX = useRef(0);
+
+  // measure exact slide positions (both original + duplicated groups)
+  useEffect(() => {
+    const measure = () => {
+      const el = trackRef.current;
+      if (!el) return;
+      const items = Array.from(el.children) as HTMLElement[];
+      if (items.length < 2) return;
+      const first = items[0];
+      if (!first) return;
+      setPositions(items.map((item) => item.offsetLeft - first.offsetLeft));
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  // single source of truth for carousel movement
+  const move = (dir: 1 | -1) => {
+    if (busyRef.current) return;
+    busyRef.current = true;
+
+    if (dir === -1 && index === 0) {
+      // silently reposition onto the clone set, then animate one card back
+      setAnimated(false);
+      setIndex(n);
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          setAnimated(true);
+          setIndex(n - 1);
+        }),
+      );
+    } else {
+      setAnimated(true);
+      setIndex((i) => i + dir);
+    }
+
+    if (releaseRef.current) window.clearTimeout(releaseRef.current);
+    releaseRef.current = window.setTimeout(() => {
+      busyRef.current = false;
+      // seamless index correction once the transition has completed
+      setIndex((i) => {
+        if (i >= n) {
+          setAnimated(false);
+          requestAnimationFrame(() => setAnimated(true));
+          return i - n;
+        }
+        return i;
+      });
+    }, 950);
+  };
+
+  const manualMove = (dir: 1 | -1) => {
+    if (busyRef.current) return;
+    if (timerRef.current) window.clearTimeout(timerRef.current);
+    move(dir);
+  };
+
+  // auto-scroll: one controlled timer, one card every ~6s, paused on hover/touch
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const tick = () => {
+      if (!pausedRef.current && !busyRef.current && positions.length) move(1);
+      timerRef.current = window.setTimeout(tick, 12000);
+    };
+    timerRef.current = window.setTimeout(tick, 12000);
+    return () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index, positions.length]);
+
+  useEffect(
+    () => () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+      if (releaseRef.current) window.clearTimeout(releaseRef.current);
+    },
+    [],
   );
+
+  const x = positions.length ? positions[index] ?? 0 : 0;
 
   return (
     <section id="resources" className="relative -mt-5 bg-background pb-14 pt-0 sm:-mt-6 lg:-mt-8 lg:pb-16 lg:pt-0" aria-label="Resources">
-      {/* mobile / tablet: swipeable carousel */}
-      <div className="lg:hidden">
-        <div className="flex snap-x snap-mandatory gap-8 overflow-x-auto px-6 pb-6 pt-2">
-          {RESOURCES.map((r) => (
-            <ResourcePanel key={r.id} item={r} />
-          ))}
-          <span aria-hidden="true" className="w-1 shrink-0" />
-        </div>
-      </div>
-
-      {/* desktop: layered composition on a slow, seamless marquee */}
-      <Reveal className="hidden lg:block">
-        <div className="marquee-viewport overflow-hidden pb-8 pt-2">
-          <div className="marquee-track flex w-max items-start pl-12">
-            {group(0)}
-            {group(1)}
+      <Reveal>
+        <div
+          className="overflow-hidden pb-6 pt-2"
+          onMouseEnter={() => { pausedRef.current = true; }}
+          onMouseLeave={() => { pausedRef.current = false; }}
+          onTouchStart={(e) => { pausedRef.current = true; touchX.current = e.touches[0]?.clientX ?? 0; }}
+          onTouchEnd={(e) => {
+            pausedRef.current = false;
+            const dx = (e.changedTouches[0]?.clientX ?? 0) - touchX.current;
+            if (Math.abs(dx) > 40) manualMove(dx < 0 ? 1 : -1);
+          }}
+        >
+          <div
+            ref={trackRef}
+            className="flex w-max items-start gap-8 pl-6 lg:gap-10 lg:pl-12"
+            style={{
+              transform: `translate3d(-${x}px, 0, 0)`,
+              transition: animated ? "transform 900ms cubic-bezier(0.65, 0, 0.35, 1)" : "none",
+            }}
+          >
+            {[...RESOURCES, ...RESOURCES].map((r, i) => {
+              const originalIndex = i % n;
+              return (
+                <div
+                  key={`${i >= n ? "copy-" : ""}${r.id}`}
+                  className={`shrink-0 ${offsets[originalIndex]} ${layers[originalIndex]} hover:z-40`}
+                  aria-hidden={i >= n ? true : undefined}
+                >
+                  <ResourcePanel item={r} focal={originalIndex === 2} />
+                </div>
+              );
+            })}
           </div>
         </div>
       </Reveal>
+
+      {/* carousel arrow controls */}
+      <div className="flex items-center justify-center gap-3 pt-2">
+        <button
+          type="button"
+          aria-label="Previous resource"
+          onClick={() => manualMove(-1)}
+          className="group flex h-11 w-11 items-center justify-center rounded-full border border-hairline bg-white text-foreground transition-all duration-300 hover:border-accent hover:bg-accent/[0.06] hover:text-accent"
+        >
+          <ChevronLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
+        </button>
+        <button
+          type="button"
+          aria-label="Next resource"
+          onClick={() => manualMove(1)}
+          className="group flex h-11 w-11 items-center justify-center rounded-full border border-hairline bg-white text-foreground transition-all duration-300 hover:border-accent hover:bg-accent/[0.06] hover:text-accent"
+        >
+          <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+        </button>
+      </div>
     </section>
   );
 }

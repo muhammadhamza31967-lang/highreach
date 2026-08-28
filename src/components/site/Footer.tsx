@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { Arrow, Container } from "./primitives";
 import logoAsset from "@/assets/highreach-logo.png.asset.json";
 
@@ -101,24 +101,27 @@ export function Footer() {
         <div className="lg:col-span-2">
           <ColumnHeading>Contact</ColumnHeading>
           <ul className="mt-6 space-y-4 text-sm text-secondary-ink">
-            <li>
+            <li className="group">
               <a
-                className="transition-colors duration-[400ms] hover:text-accent"
+                className="flex items-center gap-3 transition-colors duration-[400ms] hover:text-accent"
                 href="tel:+966566653356"
               >
+                <Phone className="h-4 w-4 text-foreground/60 transition-colors duration-[400ms] group-hover:text-accent" aria-hidden="true" />
                 +966 56 665 3356
               </a>
             </li>
-            <li>
+            <li className="group">
               <a
-                className="transition-colors duration-[400ms] hover:text-accent"
+                className="flex items-center gap-3 transition-colors duration-[400ms] hover:text-accent"
                 href="mailto:info@HighReach.sa"
               >
+                <Mail className="h-4 w-4 text-foreground/60 transition-colors duration-[400ms] group-hover:text-accent" aria-hidden="true" />
                 info@HighReach.sa
               </a>
             </li>
-            <li className="max-w-[16rem] leading-[1.85] text-secondary-ink/80">
-              Al Tauwin – Othman Bin Afan Road, Riyadh, Saudi Arabia
+            <li className="group flex max-w-[16rem] items-start gap-3 leading-[1.85] text-secondary-ink/80">
+              <MapPin className="mt-1 h-4 w-4 shrink-0 text-foreground/60" aria-hidden="true" />
+              AI Tauwin – Othman Bin Afan Road, Riyadh, Saudi Arabia
             </li>
           </ul>
         </div>
