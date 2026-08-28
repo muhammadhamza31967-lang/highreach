@@ -49,8 +49,8 @@ function Index() {
         <Capability />
         <Industries />
         <Services />
-        <Careers />
         <Partners />
+        <Careers />
       </main>
       <Footer />
     </div>
