@@ -457,31 +457,50 @@ const INDUSTRIES = [
   {
     title: "Public Sector",
     body: "Public administration optimization and digital government solutions",
+    image: industryPublicSector,
+    alt: "Modern civic government architecture representing the public sector",
   },
   {
     title: "Technology and Telecommunications",
     body: "Digital transformation and innovation strategies for tech companies",
+    image: industryTechTelecom,
+    alt: "Glowing data network and fibre optics representing technology and telecommunications",
   },
-  { title: "Private Sector", body: "Comprehensive business solutions for private sector enterprises" },
+  {
+    title: "Private Sector",
+    body: "Comprehensive business solutions for private sector enterprises",
+    image: industryPrivateSector,
+    alt: "Executives collaborating in a modern corporate boardroom representing the private sector",
+  },
   {
     title: "Real Estate",
     body: "Real estate leaders need organisational intelligence built for market complexity — not instinct or convention dressed as strategy.",
+    image: industryRealEstate,
+    alt: "Premium commercial skyscraper architecture representing real estate development",
   },
   {
     title: "Healthcare Sector",
     body: "Healthcare organisations demand the leadership capability and decision systems designed for a fundamentally different environment.",
+    image: industryHealthcare,
+    alt: "Modern hospital corridor representing the healthcare sector",
   },
   {
     title: "Media Sector",
     body: "The sector demands leaders making high-quality decisions under pressure, not those who react faster to change they failed to see.",
+    image: industryMedia,
+    alt: "Broadcast production control room representing the media sector",
   },
   {
     title: "Logistics Sector",
     body: "In logistics, execution coherence is the decisive competitive advantage separating organisations that perform from those who fail.",
+    image: industryLogistics,
+    alt: "Container port with cargo cranes at dusk representing the logistics sector",
   },
   {
     title: "Aerospace and Defence",
     body: "Strategic consulting for aerospace innovation and defense sector transformation.",
+    image: industryAerospace,
+    alt: "Jet aircraft on a runway at dusk representing aerospace and defence",
   },
 ];
 
