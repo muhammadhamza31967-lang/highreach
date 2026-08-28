@@ -47,7 +47,7 @@ export function Hero() {
               Building Intelligent Organisations
               <br className="hidden sm:block" /> for an AI-Driven World
             </h1> */}
-            <h1 className="mx-auto max-w-[30ch] text-[2rem] font-light leading-[1.1] tracking-[-0.025em] text-foreground sm:max w-[34ch] sm:text-[2.25rem] lg:max-w-[36ch] lg:text-[2.75rem] xl:text-[3rem]">
+            <h1 className="mx-auto max-w-[30ch] text-[clamp(1.75rem,7vw,3rem)] font-light leading-[1.15] tracking-[-0.025em] text-foreground sm:max-w-[34ch] lg:max-w-[36ch]">
               Building Intelligent Organisations
               <br className="hidden sm:block" /> for an AI-Driven World
             </h1>
@@ -242,7 +242,7 @@ export function Resources() {
     >
       <Reveal>
         <div
-          className="mx-auto overflow-hidden px-6 pb-6 pt-2 sm:w-[calc(2*15rem+2.75rem)] sm:px-0 md:w-[calc(3*14rem+5.5rem)] lg:w-[calc(4*13.75rem+8.25rem)]"
+          className="mx-auto max-w-full overflow-hidden px-6 pb-6 pt-2 sm:w-[calc(2*12.5rem+1.5rem)] sm:px-0 md:w-[calc(3*13rem+4rem)] lg:w-[calc(4*11.5rem+6rem)] xl:w-[calc(4*13.75rem+8.25rem)]"
           onMouseEnter={() => {
             pausedRef.current = true;
           }}
@@ -261,7 +261,7 @@ export function Resources() {
         >
           <div
             ref={trackRef}
-            className="flex w-max items-start gap-11"
+            className="flex w-max items-start gap-6 md:gap-8 xl:gap-11"
             style={{
               transform: `translate3d(-${x}px, 0, 0)`,
               transition: animated ? "transform 900ms cubic-bezier(0.65, 0, 0.35, 1)" : "none",
@@ -270,7 +270,7 @@ export function Resources() {
             {[...RESOURCES, ...RESOURCES].map((r, i) => (
               <div
                 key={`${i >= n ? "copy-" : ""}${r.id}`}
-                className="w-[calc(100vw-3rem)] shrink-0 sm:w-[15rem] md:w-[14rem] lg:w-[13.75rem] hover:z-40"
+                className="w-[calc(100vw-3rem)] shrink-0 sm:w-[12.5rem] md:w-[13rem] lg:w-[11.5rem] xl:w-[13.75rem] hover:z-40"
                 aria-hidden={i >= n ? true : undefined}
               >
 
@@ -793,7 +793,7 @@ export function Industries() {
                 <li
                   key={`${ind.title}-${i}`}
                   aria-hidden={i >= n ? true : undefined}
-                  className="w-[85%] shrink-0 sm:w-[calc((100%_-_1.25rem)_/_2)] md:w-[calc((100%_-_2.5rem)_/_3)] lg:w-[calc((100%_-_4.5rem)_/_4)]"
+                  className="w-full shrink-0 sm:w-[calc((100%_-_1.25rem)_/_2)] md:w-[calc((100%_-_2.5rem)_/_3)] lg:w-[calc((100%_-_4.5rem)_/_4)]"
                 >
                   <div className="group relative block h-[24rem] overflow-hidden rounded-2xl shadow-[0_4px_16px_rgba(5,52,98,0.08)] transition-all duration-[800ms] ease-out hover:-translate-y-1 hover:shadow-[0_14px_36px_rgba(5,52,98,0.18)] sm:h-[26rem] lg:h-[28rem]">
                     <img
