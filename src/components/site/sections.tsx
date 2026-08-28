@@ -1037,12 +1037,12 @@ export function Partners() {
               <span className="h-px flex-1 bg-hairline" aria-hidden />
             </div>
 
-            <div className="mt-7 flex items-center justify-center rounded-3xl border border-hairline bg-[linear-gradient(180deg,#F4F8FB_0%,#FFFFFF_100%)] px-8 py-12 sm:py-14">
+            <div className="mt-7 flex items-center justify-center rounded-3xl border border-hairline bg-[linear-gradient(180deg,#F4F8FB_0%,#FFFFFF_100%)] px-6 py-8 sm:py-10">
               <img
                 src={lscLogo}
                 alt="London Strategy Centre"
                 loading="lazy"
-                className="h-24 w-auto max-w-[340px] object-contain transition-transform duration-500 ease-out hover:scale-[1.04] sm:h-28 lg:h-32"
+                className="h-16 w-auto max-w-[260px] object-contain transition-transform duration-500 ease-out hover:scale-[1.04] sm:h-20 lg:h-24"
               />
             </div>
           </div>
