@@ -332,11 +332,11 @@ export function AssessmentTools() {
               {TOOLS.map((tool) => (
                 <li
                   key={tool.label}
-                  className="flex shrink-0 border-b border-hairline last:border-b-0 sm:flex-none sm:border-b-0 sm:border-r sm:last:border-r-0"
+                  className="flex shrink-0 border-b border-hairline last:border-b-0 sm:flex-1 sm:border-b-0 sm:border-r sm:last:border-r-0"
                 >
                   <a
                     href={tool.href}
-                    className="flex w-full items-center justify-center whitespace-nowrap px-8 py-3 text-sm font-medium text-foreground transition-colors duration-300 hover:text-accent sm:text-[0.95rem]"
+                    className="flex w-full items-center justify-center whitespace-nowrap px-5 py-3 text-sm font-medium text-foreground transition-colors duration-300 hover:text-accent sm:text-[0.95rem]"
                   >
                     {tool.label}
                   </a>
