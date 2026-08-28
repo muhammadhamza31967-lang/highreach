@@ -124,7 +124,7 @@ function ResourcePanel({ item, focal = false }: { item: (typeof RESOURCES)[numbe
         className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#053462]/75 via-[#053462]/30 to-transparent transition-all duration-[650ms] group-hover:from-[#053462]/85 group-hover:via-[#053462]/40"
       />
 
-      <div className="absolute inset-x-0 bottom-0 p-6 transition-transform duration-[650ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3">
+      <div className="absolute inset-x-0 bottom-0 p-6 pb-4 transition-transform duration-[650ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3">
         <h3 className="max-w-[20ch] text-lg font-medium leading-snug tracking-[-0.01em] text-white transition-transform duration-[650ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-6">
           {item.title}
         </h3>
