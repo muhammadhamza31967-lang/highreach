@@ -477,6 +477,49 @@ const INDUSTRIES = [
 ];
 
 export function Industries() {
+  const trackRef = useRef<HTMLUListElement | null>(null);
+  const rafRef = useRef<number | null>(null);
+
+  const animateTo = (target: number) => {
+    const el = trackRef.current;
+    if (!el) return;
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    const start = el.scrollLeft;
+    const max = el.scrollWidth - el.clientWidth;
+    const end = Math.max(0, Math.min(max, target));
+    const dist = end - start;
+    if (Math.abs(dist) < 1) return;
+    const duration = 600;
+    const t0 = performance.now();
+    const step = (now: number) => {
+      const p = Math.min(1, (now - t0) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.scrollLeft = start + dist * eased;
+      if (p < 1) rafRef.current = requestAnimationFrame(step);
+    };
+    rafRef.current = requestAnimationFrame(step);
+  };
+
+  const move = (dir: 1 | -1) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const first = el.querySelector("li");
+    const second = el.querySelector("li:nth-child(2)");
+    const stepPx =
+      first && second
+        ? (second as HTMLElement).offsetLeft - (first as HTMLElement).offsetLeft
+        : el.clientWidth / 4;
+    const max = el.scrollWidth - el.clientWidth;
+    // gentle loop: wrap at the ends instead of stalling
+    if (dir === 1 && el.scrollLeft >= max - 2) return animateTo(0);
+    if (dir === -1 && el.scrollLeft <= 2) return animateTo(max);
+    animateTo(el.scrollLeft + dir * stepPx);
+  };
+
+  useEffect(() => () => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+  }, []);
+
   return (
     <section id="industries" className="py-20 lg:py-28" aria-labelledby="industries-heading">
       <Container>
@@ -489,33 +532,68 @@ export function Industries() {
             >
               Our Industries
             </h2>
-            <p className="max-w-md text-base leading-relaxed text-secondary-ink">
-              Specialised expertise across diverse sectors and industries
-            </p>
+            <div className="flex items-end justify-between gap-8 lg:items-center">
+              <p className="max-w-md text-base leading-relaxed text-secondary-ink">
+                Specialised expertise across diverse sectors and industries
+              </p>
+              <div className="hidden shrink-0 gap-3 lg:flex">
+                <button
+                  type="button"
+                  aria-label="Previous industries"
+                  onClick={() => move(-1)}
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-hairline text-foreground transition-colors duration-300 hover:border-accent hover:text-accent"
+                >
+                  <Arrow className="h-4 w-4 rotate-180" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Next industries"
+                  onClick={() => move(1)}
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-hairline text-foreground transition-colors duration-300 hover:border-accent hover:text-accent"
+                >
+                  <Arrow className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
           </div>
         </Reveal>
-
-        <ul className="mt-14 grid gap-px border-y border-hairline bg-hairline md:grid-cols-2">
-          {INDUSTRIES.map((ind, i) => (
-            <Reveal as="li" key={ind.title} delay={(i % 2) * 70} className="group bg-background">
-              <a
-                href="#contact"
-                className="flex h-full items-start gap-6 p-7 transition-colors duration-300 group-hover:bg-surface lg:p-9"
-              >
-                <span className="mt-2 h-px w-8 shrink-0 bg-accent transition-all duration-300 group-hover:w-12" />
-                <span>
-                  <h3 className="text-lg font-semibold tracking-[-0.01em] text-foreground lg:text-xl">{ind.title}</h3>
-                  <p className="mt-3 max-w-md text-sm leading-relaxed text-secondary-ink">{ind.body}</p>
-                </span>
-                <Arrow className="ml-auto mt-1 h-4 w-4 text-accent opacity-0 transition-all duration-300 group-hover:opacity-100" />
-              </a>
-            </Reveal>
-          ))}
-        </ul>
       </Container>
+
+      <div className="mt-14">
+        <Container>
+          <ul
+            ref={trackRef}
+            className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] lg:gap-6 [&::-webkit-scrollbar]:hidden"
+          >
+            {INDUSTRIES.map((ind, i) => (
+              <Reveal
+                as="li"
+                key={ind.title}
+                delay={Math.min(i, 4) * 70}
+                className="w-[85%] shrink-0 snap-start sm:w-[46%] md:w-[36%] lg:w-[23%]"
+              >
+                <a
+                  href="#contact"
+                  className="group flex h-full flex-col justify-between rounded-2xl border border-hairline bg-background p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_10px_28px_rgba(5,52,98,0.09)] lg:p-8"
+                >
+                  <span className="block h-px w-8 bg-accent transition-all duration-300 group-hover:w-12" />
+                  <span className="mt-8 block">
+                    <h3 className="text-lg font-semibold tracking-[-0.01em] text-foreground lg:text-xl">
+                      {ind.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-secondary-ink">{ind.body}</p>
+                  </span>
+                  <Arrow className="mt-8 h-4 w-4 text-accent opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
+                </a>
+              </Reveal>
+            ))}
+          </ul>
+        </Container>
+      </div>
     </section>
   );
 }
+
 
 /* -------------------------------------------------------------- SERVICES */
 
