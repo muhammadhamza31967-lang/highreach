@@ -955,19 +955,27 @@ export function Careers() {
 /* -------------------------------------------------------------- PARTNERS */
 
 const partnerLogos = [
-  { src: gamiLogo.url, alt: "General Authority for Military Industries" },
-  { src: iamiLogo.url, alt: "Innovation Award for Military Industries" },
-  { src: adiLogo.url, alt: "Academy of Defense Industries" },
-  { src: salLogo.url, alt: "SAL" },
-  { src: slaLogo.url, alt: "Saudi Logistics Academy" },
+  { src: gamiLogo.url, alt: "General Authority for Military Industries", size: "h-20 sm:h-24 lg:h-28 max-w-[190px]" },
+  { src: iamiLogo.url, alt: "Innovation Award for Military Industries", size: "h-20 sm:h-24 lg:h-28 max-w-[180px]" },
+  { src: adiLogo.url, alt: "Academy of Defense Industries", size: "h-20 sm:h-24 lg:h-28 max-w-[190px]" },
+  { src: salLogo.url, alt: "SAL", size: "h-12 sm:h-14 lg:h-16 max-w-[170px]" },
+  { src: slaLogo.url, alt: "Saudi Logistics Academy", size: "h-16 sm:h-20 lg:h-24 max-w-[200px]" },
 ];
 
 export function Partners() {
   return (
-    <section id="partners" className="py-20 lg:py-28" aria-labelledby="partners-heading">
+    <section id="partners" className="relative overflow-hidden py-20 lg:py-28" aria-labelledby="partners-heading">
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,#FFFFFF_0%,#F6F9FC_45%,#FFFFFF_100%)]"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(60%_100%_at_50%_0%,rgba(20,128,174,0.07),transparent_70%)]"
+      />
       <Container>
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
-          <div className="lg:col-span-5">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-20">
+          <div className="lg:col-span-6">
             <Reveal>
               <Eyebrow>OUR PARTNERS</Eyebrow>
               <h2
@@ -981,40 +989,67 @@ export function Partners() {
             </Reveal>
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-6">
             <Reveal delay={100}>
+              <p className="max-w-xl text-base leading-[1.75] text-secondary-ink sm:text-lg">
+                HighReach collaborates with leading partners in executive learning and organisational development to
+                create impactful experiences for leaders and organisations.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+
+        <Reveal delay={150}>
+          <div className="mt-14 lg:mt-20">
+            <div className="flex items-center gap-5">
               <h3 className="text-xs font-medium uppercase tracking-[0.22em] text-secondary-ink">Partners</h3>
-              <ul className="mt-8 grid grid-cols-2 gap-x-10 gap-y-12 sm:gap-x-16">
-                {partnerLogos.map((logo) => (
-                  <li key={logo.alt} className="flex items-center justify-center">
+              <span className="h-px flex-1 bg-hairline" aria-hidden />
+            </div>
+
+            <div className="mt-7 rounded-3xl border border-hairline bg-white/85 p-6 shadow-[0_18px_50px_-30px_rgba(5,52,98,0.35)] backdrop-blur-sm sm:p-8 lg:p-10">
+              <ul className="grid grid-cols-2 divide-y divide-hairline sm:grid-cols-3 lg:grid-cols-5 lg:divide-y-0">
+                {partnerLogos.map((logo, i) => (
+                  <li
+                    key={logo.alt}
+                    className={`flex items-center justify-center px-4 py-8 sm:px-6 sm:py-10 ${
+                      i % 2 === 1 ? "border-l border-hairline" : ""
+                    } sm:border-l-0 ${i % 3 !== 0 ? "sm:border-l sm:border-hairline" : ""} lg:border-l-0 ${
+                      i !== 0 ? "lg:border-l lg:border-hairline" : ""
+                    }`}
+                  >
                     <img
                       src={logo.src}
                       alt={logo.alt}
                       loading="lazy"
-                      className="h-16 w-full max-w-[180px] object-contain transition-transform duration-500 ease-out hover:scale-[1.03] sm:h-20"
+                      className={`w-full object-contain transition-transform duration-500 ease-out hover:scale-[1.04] ${logo.size}`}
                     />
                   </li>
                 ))}
               </ul>
-            </Reveal>
-
-            <Reveal delay={200}>
-              <div className="mt-16 border-t border-hairline pt-12">
-                <h3 className="text-xs font-medium uppercase tracking-[0.22em] text-secondary-ink">Supported By</h3>
-                <div className="mt-8 flex justify-start">
-                  <img
-                    src={lscLogo}
-                    alt="LSC"
-                    loading="lazy"
-                    className="h-20 w-auto max-w-[260px] object-contain transition-transform duration-500 ease-out hover:scale-[1.03] sm:h-24"
-                  />
-                </div>
-              </div>
-            </Reveal>
+            </div>
           </div>
-        </div>
+        </Reveal>
+
+        <Reveal delay={200}>
+          <div className="mt-16 lg:mt-20">
+            <div className="flex items-center gap-5">
+              <h3 className="text-xs font-medium uppercase tracking-[0.22em] text-secondary-ink">Supported By</h3>
+              <span className="h-px flex-1 bg-hairline" aria-hidden />
+            </div>
+
+            <div className="mt-7 flex items-center justify-center rounded-3xl border border-hairline bg-[linear-gradient(180deg,#F4F8FB_0%,#FFFFFF_100%)] px-8 py-12 sm:py-14">
+              <img
+                src={lscLogo}
+                alt="London Strategy Centre"
+                loading="lazy"
+                className="h-24 w-auto max-w-[340px] object-contain transition-transform duration-500 ease-out hover:scale-[1.04] sm:h-28 lg:h-32"
+              />
+            </div>
+          </div>
+        </Reveal>
       </Container>
     </section>
   );
 }
+
 
