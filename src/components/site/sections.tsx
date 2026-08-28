@@ -948,40 +948,62 @@ export function Careers() {
 
 /* -------------------------------------------------------------- PARTNERS */
 
+const partnerLogos = [
+  { src: gamiLogo.url, alt: "General Authority for Military Industries" },
+  { src: iamiLogo.url, alt: "Innovation Award for Military Industries" },
+  { src: adiLogo.url, alt: "Academy of Defense Industries" },
+  { src: salLogo.url, alt: "SAL" },
+  { src: slaLogo.url, alt: "Saudi Logistics Academy" },
+];
+
 export function Partners() {
   return (
     <section id="partners" className="py-20 lg:py-28" aria-labelledby="partners-heading">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-12">
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-5">
             <Reveal>
               <Eyebrow>OUR PARTNERS</Eyebrow>
               <h2
                 id="partners-heading"
-                className="mt-6 text-3xl font-semibold leading-[1.08] tracking-[-0.02em] text-foreground sm:text-4xl"
+                className="mt-6 text-3xl font-semibold leading-[1.08] tracking-[-0.02em] text-foreground sm:text-4xl lg:text-[2.75rem]"
               >
-                Trusted Partnerships. Shared Success.
+                Trusted Partnerships.
+                <br />
+                Shared Success.
               </h2>
             </Reveal>
           </div>
-          <div className="lg:col-span-7 lg:pl-16">
+
+          <div className="lg:col-span-7">
             <Reveal delay={100}>
-              <p className="text-base leading-relaxed text-secondary-ink lg:text-lg">
-                HighReach collaborates with leading partners in executive learning and organisational development to
-                create impactful experiences for leaders and organisations.
-              </p>
-              <h3 className="mt-12 text-xs font-medium uppercase tracking-[0.22em] text-secondary-ink">Supported By</h3>
-              <ul className="mt-6 grid gap-px bg-hairline sm:grid-cols-2">
-                {[0, 1, 2, 3].map((i) => (
-                  <li
-                    key={i}
-                    aria-hidden="true"
-                    className="group flex h-24 items-center justify-center bg-background px-6"
-                  >
-                    <span className="h-8 w-28 bg-hairline transition-colors duration-300 group-hover:bg-accent/25" />
+              <h3 className="text-xs font-medium uppercase tracking-[0.22em] text-secondary-ink">Partners</h3>
+              <ul className="mt-8 grid grid-cols-2 gap-x-10 gap-y-12 sm:gap-x-16">
+                {partnerLogos.map((logo) => (
+                  <li key={logo.alt} className="flex items-center justify-center">
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      loading="lazy"
+                      className="h-16 w-full max-w-[180px] object-contain transition-transform duration-500 ease-out hover:scale-[1.03] sm:h-20"
+                    />
                   </li>
                 ))}
               </ul>
+            </Reveal>
+
+            <Reveal delay={200}>
+              <div className="mt-16 border-t border-hairline pt-12">
+                <h3 className="text-xs font-medium uppercase tracking-[0.22em] text-secondary-ink">Supported By</h3>
+                <div className="mt-8 flex justify-start">
+                  <img
+                    src={lscLogo}
+                    alt="LSC"
+                    loading="lazy"
+                    className="h-20 w-auto max-w-[260px] object-contain transition-transform duration-500 ease-out hover:scale-[1.03] sm:h-24"
+                  />
+                </div>
+              </div>
             </Reveal>
           </div>
         </div>
@@ -989,3 +1011,4 @@ export function Partners() {
     </section>
   );
 }
+
