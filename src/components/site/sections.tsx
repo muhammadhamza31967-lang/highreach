@@ -130,9 +130,9 @@ export function Resources() {
   const layers = ["lg:z-10", "lg:z-20", "lg:z-30", "lg:z-20", "lg:z-10"];
 
   const group = (copy: number) => (
-    <div className="flex shrink-0 items-start" aria-hidden={copy > 0 ? "true" : undefined}>
+    <div className="flex shrink-0 items-start gap-8 lg:gap-10" aria-hidden={copy > 0 ? "true" : undefined}>
       {RESOURCES.map((r, i) => (
-        <div key={`${copy}-${r.id}`} className={`shrink-0 lg:-ml-8 ${offsets[i]} ${layers[i]} hover:z-40`}>
+        <div key={`${copy}-${r.id}`} className={`shrink-0 ${offsets[i]} ${layers[i]} hover:z-40`}>
           <ResourcePanel item={r} focal={i === 2} />
         </div>
       ))}
@@ -141,10 +141,10 @@ export function Resources() {
   );
 
   return (
-    <section id="resources" className="bg-background pb-14 pt-0 lg:pb-16 lg:pt-0" aria-label="Resources">
+    <section id="resources" className="relative -mt-5 bg-background pb-14 pt-0 sm:-mt-6 lg:-mt-8 lg:pb-16 lg:pt-0" aria-label="Resources">
       {/* mobile / tablet: swipeable carousel */}
       <div className="lg:hidden">
-        <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-6 pt-2">
+        <div className="flex snap-x snap-mandatory gap-8 overflow-x-auto px-6 pb-6 pt-2">
           {RESOURCES.map((r) => (
             <ResourcePanel key={r.id} item={r} />
           ))}
