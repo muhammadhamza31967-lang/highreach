@@ -1161,7 +1161,7 @@ export function Partners() {
         </Reveal>
 
         <Reveal delay={200}>
-          <div className="mt-16 lg:mt-20">
+          <div className="mt-10 lg:mt-12">
             <div className="flex items-center gap-5">
               <h3 className="text-xs font-medium uppercase tracking-[0.22em] text-secondary-ink">Supported By</h3>
               <span className="h-px flex-1 bg-hairline" aria-hidden />
@@ -1172,7 +1172,7 @@ export function Partners() {
                 src={lscLogo}
                 alt="London Strategy Centre"
                 loading="lazy"
-                className="h-16 w-auto max-w-[260px] object-contain transition-transform duration-500 ease-out hover:scale-[1.04] sm:h-20 lg:h-24"
+                className="h-12 w-auto max-w-[200px] object-contain transition-transform duration-500 ease-out hover:scale-[1.04] sm:h-16 lg:h-20"
               />
             </div>
           </div>
