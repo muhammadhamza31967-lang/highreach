@@ -261,7 +261,7 @@ export function Resources() {
         >
           <div
             ref={trackRef}
-            className="flex w-max items-start gap-11"
+            className="flex w-max items-start gap-6 md:gap-8 xl:gap-11"
             style={{
               transform: `translate3d(-${x}px, 0, 0)`,
               transition: animated ? "transform 900ms cubic-bezier(0.65, 0, 0.35, 1)" : "none",
@@ -270,7 +270,7 @@ export function Resources() {
             {[...RESOURCES, ...RESOURCES].map((r, i) => (
               <div
                 key={`${i >= n ? "copy-" : ""}${r.id}`}
-                className="w-[calc(100vw-3rem)] shrink-0 sm:w-[15rem] md:w-[14rem] lg:w-[13.75rem] hover:z-40"
+                className="w-[calc(100vw-3rem)] shrink-0 sm:w-[12.5rem] md:w-[13rem] lg:w-[11.5rem] xl:w-[13.75rem] hover:z-40"
                 aria-hidden={i >= n ? true : undefined}
               >
 
