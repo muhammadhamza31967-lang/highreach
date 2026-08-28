@@ -57,6 +57,80 @@ const RESOURCES = [
   { index: "05", title: "Cyber Security Practice", sub: "Cyber Capability Built for Complex" },
 ];
 
+/** Subtle abstract linework art, one per resource. Navy/blue only. */
+function ResourceArt({ index }: { index: string }) {
+  const common = "pointer-events-none absolute right-0 top-0 h-28 w-32 text-accent";
+  const stroke = { fill: "none", stroke: "currentColor", strokeWidth: 1 } as const;
+  switch (index) {
+    case "01": // diagnostic / scan
+      return (
+        <svg viewBox="0 0 120 100" aria-hidden="true" className={common + " opacity-[0.5]"}>
+          <g {...stroke} className="opacity-40">
+            {[0, 1, 2, 3, 4, 5].map((i) => (
+              <line key={i} x1={20 + i * 16} y1="10" x2={20 + i * 16} y2="90" />
+            ))}
+          </g>
+          <circle cx="68" cy="50" r="26" {...stroke} />
+          <circle cx="68" cy="50" r="14" {...stroke} className="opacity-60" />
+          <path d="M10 62 L34 62 L42 38 L52 74 L62 50 L110 50" {...stroke} strokeWidth={1.2} />
+        </svg>
+      );
+    case "02": // layered architecture
+      return (
+        <svg viewBox="0 0 120 100" aria-hidden="true" className={common + " opacity-[0.5]"}>
+          {[0, 1, 2].map((i) => (
+            <g key={i} {...stroke} className={i === 1 ? "" : "opacity-50"}>
+              <path d={`M60 ${18 + i * 24} L104 ${34 + i * 24} L60 ${50 + i * 24} L16 ${34 + i * 24} Z`} />
+            </g>
+          ))}
+          <line x1="60" y1="50" x2="60" y2="66" {...stroke} className="opacity-40" />
+        </svg>
+      );
+    case "03": // intelligence network
+      return (
+        <svg viewBox="0 0 120 100" aria-hidden="true" className={common + " opacity-[0.55]"}>
+          <g {...stroke} className="opacity-45">
+            <path d="M30 22 L70 14 L100 40 L86 78 L44 84 L18 54 Z" />
+            <path d="M30 22 L86 78 M70 14 L44 84 M100 40 L18 54" />
+          </g>
+          {[
+            [30, 22],
+            [70, 14],
+            [100, 40],
+            [86, 78],
+            [44, 84],
+            [18, 54],
+          ].map(([x, y]) => (
+            <circle key={`${x}-${y}`} cx={x} cy={y} r="3" fill="currentColor" className="opacity-70" />
+          ))}
+          <circle cx="58" cy="48" r="5" fill="currentColor" />
+        </svg>
+      );
+    case "04": // organisational system
+      return (
+        <svg viewBox="0 0 120 100" aria-hidden="true" className={common + " opacity-[0.5]"}>
+          <g {...stroke}>
+            <rect x="48" y="12" width="26" height="16" />
+            <rect x="14" y="60" width="26" height="16" className="opacity-60" />
+            <rect x="47" y="60" width="26" height="16" className="opacity-60" />
+            <rect x="80" y="60" width="26" height="16" className="opacity-60" />
+            <path d="M61 28 L61 44 M27 60 L27 44 L93 44 L93 60 M60 44 L60 60" className="opacity-45" />
+          </g>
+        </svg>
+      );
+    default: // cyber security
+      return (
+        <svg viewBox="0 0 120 100" aria-hidden="true" className={common + " opacity-[0.5]"}>
+          <g {...stroke}>
+            <path d="M60 10 L98 24 V52 C98 74 80 86 60 92 C40 86 22 74 22 52 V24 Z" />
+            <path d="M60 22 L86 32 V52 C86 68 74 77 60 82 C46 77 34 68 34 52 V32 Z" className="opacity-45" />
+            <path d="M48 52 L57 61 L74 42" strokeWidth={1.4} />
+          </g>
+        </svg>
+      );
+  }
+}
+
 /** One report-cover style panel. */
 function ResourcePanel({
   item,
@@ -71,7 +145,7 @@ function ResourcePanel({
     <a
       href="#contact"
       className={
-        "group relative block h-[14.5rem] w-[18rem] shrink-0 snap-center overflow-hidden rounded-2xl border border-hairline bg-background " +
+        "group relative block h-[14.5rem] w-[17rem] shrink-0 snap-center overflow-hidden rounded-2xl border border-hairline bg-background sm:w-[18rem] " +
         "shadow-[0_10px_30px_-18px_rgba(5,52,98,0.35)] transition-all duration-500 ease-out " +
         "hover:-translate-y-2 hover:shadow-[0_28px_55px_-24px_rgba(5,52,98,0.45)] hover:border-accent/40 " +
         (focal ? " lg:h-[16rem] lg:w-[18.5rem]" : " lg:w-[16.5rem]")
@@ -86,6 +160,12 @@ function ResourcePanel({
       </span>
       <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-8 w-px bg-hairline" />
       <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-14 h-px bg-hairline" />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute right-3 top-3 opacity-25 transition-opacity duration-500 group-hover:opacity-45"
+      >
+        <ResourceArt index={item.index} />
+      </span>
       {focal && (
         <span
           aria-hidden="true"
@@ -119,41 +199,45 @@ function ResourcePanel({
 export function Resources() {
   /** vertical offsets + overlap create the layered editorial rhythm on desktop */
   const offsets = ["lg:translate-y-8", "lg:translate-y-16", "lg:translate-y-0", "lg:translate-y-14", "lg:translate-y-6"];
-  const overlaps = ["", "lg:-ml-10", "lg:-ml-10", "lg:-ml-10", "lg:-ml-10"];
+  const overlaps = ["lg:-ml-10", "lg:-ml-10", "lg:-ml-10", "lg:-ml-10", "lg:-ml-10"];
   const layers = ["lg:z-10", "lg:z-20", "lg:z-30", "lg:z-20", "lg:z-10"];
 
-  return (
-    <section id="resources" className="bg-background py-20 lg:py-28" aria-labelledby="resources-heading">
-      <Container>
-        <Reveal>
-          <SectionLabel>Resources</SectionLabel>
-          <h2
-            id="resources-heading"
-            className="mt-6 max-w-[18ch] text-3xl font-light leading-[1.08] tracking-[-0.025em] text-foreground sm:text-4xl lg:text-[3.4rem]"
-          >
-            Strategic Intelligence &amp; Capability Resources
-          </h2>
-        </Reveal>
-      </Container>
+  const group = (copy: number) => (
+    <div className="flex shrink-0 items-start" aria-hidden={copy > 0 ? "true" : undefined}>
+      {RESOURCES.map((r, i) => (
+        <div key={`${copy}-${r.index}`} className={`shrink-0 ${offsets[i]} ${overlaps[i]} ${layers[i]} hover:z-40`}>
+          <ResourcePanel item={r} focal={i === 2} inset />
+        </div>
+      ))}
+      <span aria-hidden="true" className="w-16 shrink-0" />
+    </div>
+  );
 
-      {/* layered horizontal composition */}
-      <div className="mt-14 lg:mt-16">
-        <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-10 lg:mx-auto lg:w-full lg:max-w-[86rem] lg:snap-none lg:justify-center lg:gap-0 lg:overflow-visible lg:px-12 lg:pb-24">
-          {RESOURCES.map((r, i) => (
-            <Reveal
-              key={r.index}
-              delay={i * 110}
-              className={`shrink-0 ${offsets[i]} ${overlaps[i]} ${layers[i]} transition-transform hover:z-40`}
-            >
-              <ResourcePanel item={r} focal={i === 2} inset={i > 0} />
-            </Reveal>
+  return (
+    <section id="resources" className="bg-background pb-16 pt-6 lg:pb-20 lg:pt-8" aria-label="Resources">
+      {/* mobile / tablet: swipeable carousel */}
+      <div className="lg:hidden">
+        <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 py-8">
+          {RESOURCES.map((r) => (
+            <ResourcePanel key={r.index} item={r} />
           ))}
-          <span aria-hidden="true" className="w-1 shrink-0 lg:hidden" />
+          <span aria-hidden="true" className="w-1 shrink-0" />
         </div>
       </div>
+
+      {/* desktop: layered composition on a slow, seamless marquee */}
+      <Reveal className="hidden lg:block">
+        <div className="marquee-viewport overflow-hidden py-10">
+          <div className="marquee-track flex w-max items-start pl-12">
+            {group(0)}
+            {group(1)}
+          </div>
+        </div>
+      </Reveal>
     </section>
   );
 }
+
 
 
 
