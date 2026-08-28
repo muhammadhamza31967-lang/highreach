@@ -237,12 +237,12 @@ export function Resources() {
   return (
     <section
       id="resources"
-      className="relative -mt-5 bg-background pb-14 pt-0 sm:-mt-6 lg:-mt-8 lg:pb-16 lg:pt-0"
+      className="relative -mt-5 overflow-hidden bg-background pb-14 pt-0 sm:-mt-6 lg:-mt-8 lg:pb-16 lg:pt-0"
       aria-label="Resources"
     >
       <Reveal>
         <div
-          className="mx-auto overflow-hidden px-6 pb-6 pt-2 sm:w-[calc(2*15rem+1.5rem)] sm:px-0 md:w-[calc(3*15rem+3rem)] lg:w-[calc(4*14rem+4.5rem)]"
+          className="mx-auto overflow-hidden px-6 pb-6 pt-2 sm:w-[calc(2*15rem+1.75rem)] sm:px-0 md:w-[calc(3*15rem+3.5rem)] lg:w-[calc(4*14rem+5.25rem)]"
           onMouseEnter={() => {
             pausedRef.current = true;
           }}
@@ -261,7 +261,7 @@ export function Resources() {
         >
           <div
             ref={trackRef}
-            className="flex w-max items-start gap-6"
+            className="flex w-max items-start gap-7"
             style={{
               transform: `translate3d(-${x}px, 0, 0)`,
               transition: animated ? "transform 900ms cubic-bezier(0.65, 0, 0.35, 1)" : "none",
