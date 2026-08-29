@@ -166,12 +166,15 @@ function AboutPage() {
           </div>
 
           <Container className="relative">
-            <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+            <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-14">
               <Reveal className="lg:col-span-5">
                 <span className="block h-0.5 w-14 rounded-full bg-accent" />
                 <h2 className="mt-7 text-[clamp(2rem,4.6vw,3.5rem)] font-semibold leading-[1.06] tracking-[-0.025em] text-foreground">
                   We Transform How Organisations Think, Decide, and Execute
                 </h2>
+                <p className="mt-6 text-[clamp(1.1rem,2.4vw,2rem)] font-semibold leading-[1.35] tracking-[-0.01em] text-accent lg:mt-8">
+                  HighReach exists to close that gap.
+                </p>
               </Reveal>
               <Reveal delay={120} className="lg:col-span-6 lg:col-start-7">
                 <p className="max-w-xl text-base leading-[1.9] text-secondary-ink sm:text-[1.05rem]">
@@ -185,25 +188,6 @@ function AboutPage() {
                 </p>
               </Reveal>
             </div>
-
-            <Reveal delay={220}>
-              <div className="relative mt-12 lg:mt-14">
-                {/* refined transition: thin gradient rule with accent node */}
-                <div className="flex items-center gap-4" aria-hidden="true">
-                  <span className="h-px flex-1 bg-gradient-to-r from-foreground/10 via-foreground/10 to-accent/40" />
-                  <span className="h-2 w-2 rounded-full border border-accent/50 bg-accent/15" />
-                </div>
-                <div className="relative mt-12 text-center lg:mt-16">
-                  {/* subtle abstract emphasis around the statement */}
-                  <span className="pointer-events-none absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/10" aria-hidden="true" />
-                  <span className="pointer-events-none absolute left-1/2 top-1/2 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-accent/[0.08]" aria-hidden="true" />
-                  <span className="pointer-events-none absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/25" aria-hidden="true" />
-                  <p className="relative mx-auto max-w-3xl text-[clamp(1.35rem,2.9vw,2.85rem)] font-semibold leading-[1.2] tracking-[-0.015em] text-accent">
-                    HighReach exists to close that gap.
-                  </p>
-                </div>
-              </div>
-            </Reveal>
           </Container>
         </section>
 
