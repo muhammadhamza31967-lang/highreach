@@ -74,11 +74,11 @@ function AboutPage() {
       <Header />
       <main id="main">
         {/* HERO */}
-        <section className="relative flex min-h-[60vh] items-center overflow-hidden pt-28 pb-10 sm:pt-32 lg:min-h-[65vh] lg:pt-36 lg:pb-14">
-          {/* Fallback background image / colour */}
+        <section className="relative isolate flex min-h-[560px] items-center overflow-hidden pt-28 pb-10 sm:min-h-[600px] sm:pt-32 lg:h-[700px] lg:min-h-[680px] lg:max-h-[720px] lg:pt-36 lg:pb-14">
+          {/* Fallback background image / colour (visible while video loads) */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 -z-20 bg-[#053462] bg-cover bg-center bg-no-repeat"
+            className="absolute inset-0 z-0 bg-[#053462] bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${aboutHero})` }}
           />
           <video
@@ -88,14 +88,14 @@ function AboutPage() {
             playsInline
             poster={aboutHero}
             aria-hidden="true"
-            className="absolute inset-0 -z-10 h-full w-full object-cover"
+            className="absolute inset-0 z-[1] h-full w-full object-cover"
           >
             <source src={aboutHeroVideo.url} type="video/mp4" />
           </video>
           {/* Subtle dark/blue readability overlay */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 z-0 bg-gradient-to-br from-[#053462]/80 via-[#053462]/55 to-[#1480AE]/30"
+            className="absolute inset-0 z-[2] bg-gradient-to-br from-[#053462]/80 via-[#053462]/55 to-[#1480AE]/30"
           />
 
           <Container className="relative z-10">
