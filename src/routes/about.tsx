@@ -152,12 +152,12 @@ function AboutPage() {
 
           <Container className="relative">
             <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-14">
-              <Reveal className="lg:col-span-5">
+              <Reveal className="lg:col-span-5 lg:-mt-2">
                 <span className="block h-0.5 w-14 rounded-full bg-accent" />
-                <h2 className="mt-7 text-[clamp(2rem,4.6vw,3.5rem)] font-semibold leading-[1.06] tracking-[-0.025em] text-foreground">
+                <h2 className="mt-5 text-[clamp(2rem,4.6vw,3.5rem)] font-semibold leading-[1.06] tracking-[-0.025em] text-foreground">
                   We Transform How Organisations Think, Decide, and Execute
                 </h2>
-                <p className="mt-6 text-[clamp(1.1rem,2.4vw,2rem)] font-semibold leading-[1.35] tracking-[-0.01em] text-accent lg:mt-8">
+                <p className="mt-5 text-[clamp(0.95rem,1.55vw,1.35rem)] font-semibold leading-[1.35] tracking-[-0.01em] text-accent lg:mt-6">
                   HighReach exists to close that gap.
                 </p>
               </Reveal>
