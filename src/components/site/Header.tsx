@@ -73,14 +73,14 @@ export function Header() {
           )}
         >
           <ul className="flex items-center gap-1">
-            {NAV.map((item, i) => (
+            {NAV.map((item) => (
               <li key={item.label}>
                 <a
                   href={item.href}
-                  aria-current={i === 0 ? "page" : undefined}
+                  aria-current={isActive(item) ? "page" : undefined}
                   className={cn(
                     "inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-[0.83rem] font-semibold tracking-wide text-[#053462]/85 transition-colors hover:bg-[#f3f4f3] hover:text-[#1480AE]",
-                    i === 0 &&
+                    isActive(item) &&
                       "bg-[#f3f4f3] text-[#053462] hover:bg-[#e8eeec] hover:text-[#053462]",
                   )}
                 >
