@@ -73,46 +73,62 @@ function AboutPage() {
       <Header />
       <main id="main">
         {/* HERO */}
-        <section className="relative pt-32 pb-16 sm:pt-36 lg:pt-44 lg:pb-24">
+        <section className="relative overflow-hidden pt-28 pb-10 sm:pt-32 lg:pt-36 lg:pb-14">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 h-[36rem] bg-gradient-to-b from-surface to-transparent"
+            className="pointer-events-none absolute inset-x-0 top-0 h-[30rem] bg-gradient-to-b from-surface via-surface/60 to-transparent"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-40 top-10 hidden h-[28rem] w-[28rem] rounded-full border border-accent/15 lg:block"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-24 top-24 hidden h-[18rem] w-[18rem] rounded-full border border-accent/10 lg:block"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-0 top-28 hidden h-px w-40 bg-accent/30 lg:block"
           />
           <Container className="relative">
-            <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-12">
-              <Reveal className="lg:col-span-6">
+            <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+              <Reveal className="lg:col-span-5">
                 <Eyebrow>About us</Eyebrow>
-                <h1 className="mt-5 text-[clamp(2.75rem,9vw,6.5rem)] font-semibold leading-[0.95] tracking-[-0.03em] text-foreground">
-                  HighReach
-                </h1>
                 <span
                   aria-hidden="true"
-                  className="mt-8 block h-px w-24 bg-accent"
+                  className="mt-5 block h-0.5 w-16 bg-accent"
                 />
-                <p className="mt-8 max-w-xl text-base leading-[1.85] text-secondary-ink sm:text-lg">
+                <h1 className="mt-6 text-[clamp(2.5rem,6.5vw,4.75rem)] font-semibold leading-[1.0] tracking-[-0.03em] text-foreground">
+                  HighReach
+                </h1>
+                <p className="mt-6 max-w-md text-base leading-[1.85] text-secondary-ink sm:text-lg">
                   Helping executives and organisations unlock their full potential in preparation
                   for the future world of work.
                 </p>
               </Reveal>
 
-              <Reveal delay={120} className="lg:col-span-6">
-                <div className="relative">
+              <Reveal delay={120} className="lg:col-span-7">
+                <div className="relative lg:-mr-6 xl:-mr-10">
                   <span
                     aria-hidden="true"
-                    className="absolute -left-3 -top-3 hidden h-24 w-24 border-l border-t border-accent/40 sm:block"
+                    className="absolute -left-4 -top-4 hidden h-28 w-28 border-l-2 border-t-2 border-accent/50 sm:block"
                   />
                   <span
                     aria-hidden="true"
-                    className="absolute -bottom-3 -right-3 hidden h-24 w-24 border-b border-r border-foreground/20 sm:block"
+                    className="absolute -bottom-4 -right-4 hidden h-28 w-28 border-b border-r border-foreground/20 sm:block"
                   />
-                  <div className="overflow-hidden rounded-[18px] bg-surface">
+                  <div className="relative overflow-hidden rounded-xl shadow-[0_28px_60px_-24px_rgba(5,52,98,0.35)] ring-1 ring-foreground/10">
                     <img
                       src={aboutHero}
                       alt="Saudi executive leadership team in a Riyadh boardroom overlooking the city skyline"
                       width={1408}
                       height={1008}
-                      className="h-full w-full object-cover"
+                      className="aspect-[16/11] w-full object-cover object-center lg:aspect-auto lg:h-[26rem]"
                     />
+                    <span className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-background/90 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground backdrop-blur-sm">
+                      <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                      Riyadh, Saudi Arabia
+                    </span>
                   </div>
                 </div>
               </Reveal>
