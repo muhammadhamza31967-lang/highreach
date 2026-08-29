@@ -1,24 +1,27 @@
 import { useEffect, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { useRouterState } from "@tanstack/react-router";
 import { Arrow, Container } from "./primitives";
 import { cn } from "@/lib/utils";
 import logoAsset from "@/assets/highreach-logo.png.asset.json";
 
 const NAV = [
-  { label: "Home", href: "#top", chevron: false },
-  { label: "About Us", href: "#about", chevron: false },
-  { label: "Artificial Intelligence", href: "#capability", chevron: true },
-  { label: "Cyber Security", href: "#capability", chevron: true },
-  { label: "Advisory Services", href: "#services", chevron: true },
-  { label: "Press Release", href: "#resources", chevron: true },
-  { label: "Contact", href: "#contact", chevron: false },
-];
+  { label: "Home", href: "/", path: "/", chevron: false },
+  { label: "About Us", href: "/about", path: "/about", chevron: false },
+  { label: "Artificial Intelligence", href: "/#capability", chevron: true },
+  { label: "Cyber Security", href: "/#capability", chevron: true },
+  { label: "Advisory Services", href: "/#services", chevron: true },
+  { label: "Press Release", href: "/#resources", chevron: true },
+  { label: "Contact", href: "/#contact", chevron: false },
+] as { label: string; href: string; path?: string; chevron: boolean }[];
 
 const FLOATING =
   "bg-white border border-black/[0.06] shadow-[0_8px_25px_rgba(15,45,75,0.10)]";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isActive = (item: (typeof NAV)[number]) => item.path === pathname;
 
   useEffect(() => {
     const close = () => setOpen(false);
@@ -70,14 +73,14 @@ export function Header() {
           )}
         >
           <ul className="flex items-center gap-1">
-            {NAV.map((item, i) => (
+            {NAV.map((item) => (
               <li key={item.label}>
                 <a
                   href={item.href}
-                  aria-current={i === 0 ? "page" : undefined}
+                  aria-current={isActive(item) ? "page" : undefined}
                   className={cn(
                     "inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-[0.83rem] font-semibold tracking-wide text-[#053462]/85 transition-colors hover:bg-[#f3f4f3] hover:text-[#1480AE]",
-                    i === 0 &&
+                    isActive(item) &&
                       "bg-[#f3f4f3] text-[#053462] hover:bg-[#e8eeec] hover:text-[#053462]",
                   )}
                 >
@@ -108,14 +111,14 @@ export function Header() {
           )}
         >
           <ul className="flex flex-col">
-            {NAV.map((item, i) => (
+            {NAV.map((item) => (
               <li key={item.label}>
                 <a
                   href={item.href}
                   onClick={() => setOpen(false)}
                   className={cn(
                     "flex items-center justify-between rounded-xl px-4 py-3.5 text-base text-[#053462] transition-colors hover:bg-[#f3f4f3] hover:text-[#1480AE]",
-                    i === 0 && "bg-[#f3f4f3]",
+                    isActive(item) && "bg-[#f3f4f3]",
                   )}
                 >
                   {item.label}
