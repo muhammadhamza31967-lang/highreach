@@ -161,7 +161,7 @@ function AboutPage() {
                   HighReach exists to close that gap.
                 </p>
               </Reveal>
-              <Reveal delay={120} className="lg:col-span-6 lg:col-start-7">
+              <Reveal delay={120} className="lg:col-span-6 lg:col-start-7 lg:mt-9">
                 <p className="max-w-xl text-base leading-[1.9] text-secondary-ink sm:text-[1.05rem]">
                   Most organisations have capable people. The problem is not individual performance,
                   it is the system those people operate within. When decision architecture is poorly
