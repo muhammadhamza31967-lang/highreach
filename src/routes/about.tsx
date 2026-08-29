@@ -74,7 +74,7 @@ function AboutPage() {
       <Header />
       <main id="main">
         {/* HERO */}
-        <section className="relative isolate flex min-h-[560px] items-center overflow-hidden pt-28 pb-10 sm:min-h-[600px] sm:pt-32 lg:h-[700px] lg:min-h-[680px] lg:max-h-[720px] lg:pt-36 lg:pb-14">
+        <section className="relative isolate flex min-h-[560px] items-center overflow-hidden pt-28 pb-10 sm:min-h-[600px] sm:pt-32 lg:h-[640px] lg:min-h-[620px] lg:max-h-[680px] lg:pt-36 lg:pb-14">
           {/* Fallback background image / colour (visible while video loads) */}
           <div
             aria-hidden="true"
