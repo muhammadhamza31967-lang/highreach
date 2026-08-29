@@ -20,6 +20,8 @@ const FLOATING =
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isActive = (item: (typeof NAV)[number]) => item.path === pathname;
 
   useEffect(() => {
     const close = () => setOpen(false);
