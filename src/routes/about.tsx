@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import { Arrow, Container, Eyebrow, Reveal, SectionLabel } from "@/components/site/primitives";
+import { Arrow, Container, Eyebrow, Reveal } from "@/components/site/primitives";
 import aboutHero from "@/assets/about-hero-riyadh.jpg";
 import aboutHeroVideo from "@/assets/about-hero-video.mp4.asset.json";
 import aboutSystems from "@/assets/about-systems.jpg";
