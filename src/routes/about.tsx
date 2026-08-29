@@ -159,15 +159,14 @@ function AboutPage() {
         </section>
 
         {/* SECTION 2 */}
-        <section className="bg-surface py-16 sm:py-20 lg:py-28">
+        <section className="bg-surface py-12 sm:py-14 lg:py-20">
           <Container>
-            <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
-              <Reveal className="lg:col-span-7">
-                <SectionLabel>Our premise</SectionLabel>
-                <h2 className="mt-7 max-w-2xl text-[clamp(1.75rem,4vw,3rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-foreground">
+            <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-12">
+              <Reveal className="flex flex-col justify-center lg:col-span-7">
+                <h2 className="max-w-2xl text-[clamp(1.75rem,4vw,3rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-foreground">
                   HighReach is your capability transformation partner
                 </h2>
-                <p className="mt-7 max-w-2xl text-base leading-[1.95] text-secondary-ink sm:text-[1.05rem]">
+                <p className="mt-5 max-w-2xl text-base leading-[1.95] text-secondary-ink sm:text-[1.05rem]">
                   The central premise of HighReach's work is that measurable organisational
                   performance improvement requires a system-level intervention, not a training
                   programme, a strategy report, or a technology implementation. It requires
@@ -176,13 +175,13 @@ function AboutPage() {
                   time. That is what HighReach builds.
                 </p>
               </Reveal>
-              <Reveal delay={120} className="lg:col-span-5">
-                <div className="group relative overflow-hidden rounded-[18px] bg-white lg:translate-y-6">
+              <Reveal delay={120} className="lg:col-span-5 lg:h-full">
+                <div className="group relative h-[16rem] min-h-0 overflow-hidden rounded-[18px] bg-white sm:h-[20rem] lg:h-full">
                   <img
                     src={aboutDetail}
                     alt="Executive strategy session mapping organisational decision architecture"
                     loading="lazy"
-                    className="h-[18rem] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03] sm:h-[24rem] lg:h-[30rem]"
+                    className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
                   />
                   <span
                     aria-hidden="true"
