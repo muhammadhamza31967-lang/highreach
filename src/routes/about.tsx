@@ -94,16 +94,16 @@ function AboutPage() {
             <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
               <Reveal className="lg:col-span-5">
                 <Eyebrow>About us</Eyebrow>
-                <span
-                  aria-hidden="true"
-                  className="mt-5 block h-0.5 w-16 bg-accent"
-                />
-                <h1 className="mt-6 text-[clamp(2.5rem,6.5vw,4.75rem)] font-semibold leading-[1.0] tracking-[-0.03em] text-foreground">
+                <span aria-hidden="true" className="mt-5 block h-0.5 w-16 bg-accent" />
+                {/* <h1 className="mt-6 text-[clamp(2.5rem,6.5vw,4.75rem)] font-semibold leading-[1.0] tracking-[-0.03em] text-foreground">
+                  HighReach
+                </h1> */}
+                <h1 className="mt-6 text-[clamp(2rem,5vw,3.75rem)] font-semibold leading-[1.0] tracking-[-0.03em] text-foreground">
                   HighReach
                 </h1>
                 <p className="mt-6 max-w-md text-base leading-[1.85] text-secondary-ink sm:text-lg">
-                  Helping executives and organisations unlock their full potential in preparation
-                  for the future world of work.
+                  Helping executives and organisations unlock their full potential in preparation for the future world
+                  of work.
                 </p>
               </Reveal>
 
@@ -163,13 +163,11 @@ function AboutPage() {
               </Reveal>
               <Reveal delay={120} className="lg:col-span-6 lg:col-start-7">
                 <p className="max-w-xl text-base leading-[1.9] text-secondary-ink sm:text-[1.05rem]">
-                  Most organisations have capable people. The problem is not individual performance,
-                  it is the system those people operate within. When decision architecture is poorly
-                  designed, when strategy dilutes as it passes through organisational layers, when
-                  execution fragments across functions and geographies, capability at the individual
-                  level fails to translate into performance at the system level. The gap compounds
-                  over time. Transformation programmes come and go. The underlying system remains
-                  unchanged.
+                  Most organisations have capable people. The problem is not individual performance, it is the system
+                  those people operate within. When decision architecture is poorly designed, when strategy dilutes as
+                  it passes through organisational layers, when execution fragments across functions and geographies,
+                  capability at the individual level fails to translate into performance at the system level. The gap
+                  compounds over time. Transformation programmes come and go. The underlying system remains unchanged.
                 </p>
               </Reveal>
             </div>
@@ -186,12 +184,11 @@ function AboutPage() {
                   HighReach is your capability transformation partner
                 </h2>
                 <p className="mt-7 max-w-2xl text-base leading-[1.95] text-secondary-ink sm:text-[1.05rem]">
-                  The central premise of HighReach's work is that measurable organisational
-                  performance improvement requires a system-level intervention, not a training
-                  programme, a strategy report, or a technology implementation. It requires
-                  redesigning how the organisation senses its environment, how decisions are made
-                  and communicated, how execution is governed, and how capability compounds across
-                  time. That is what HighReach builds.
+                  The central premise of HighReach's work is that measurable organisational performance improvement
+                  requires a system-level intervention, not a training programme, a strategy report, or a technology
+                  implementation. It requires redesigning how the organisation senses its environment, how decisions are
+                  made and communicated, how execution is governed, and how capability compounds across time. That is
+                  what HighReach builds.
                 </p>
               </Reveal>
               <Reveal delay={120} className="lg:col-span-5">
@@ -224,10 +221,10 @@ function AboutPage() {
               </Reveal>
               <Reveal delay={100} className="lg:col-span-7">
                 <p className="text-base leading-[1.95] text-secondary-ink sm:text-[1.05rem]">
-                  Our mission is to empower individuals and organisations through strategic thinking,
-                  leadership excellence, and innovation that drives sustainable growth, while our
-                  vision is to become a globally recognised centre of excellence that develops
-                  future-ready leaders who create meaningful and lasting impact.
+                  Our mission is to empower individuals and organisations through strategic thinking, leadership
+                  excellence, and innovation that drives sustainable growth, while our vision is to become a globally
+                  recognised centre of excellence that develops future-ready leaders who create meaningful and lasting
+                  impact.
                 </p>
               </Reveal>
             </div>
@@ -255,9 +252,7 @@ function AboutPage() {
                       <h3 className="mt-4 max-w-xl text-[clamp(1.4rem,3vw,2.15rem)] font-semibold leading-[1.15] tracking-[-0.015em] text-foreground">
                         {p.heading}
                       </h3>
-                      <p className="mt-5 max-w-2xl text-base leading-[1.9] text-secondary-ink">
-                        {p.content}
-                      </p>
+                      <p className="mt-5 max-w-2xl text-base leading-[1.9] text-secondary-ink">{p.content}</p>
                     </div>
                     <div className="lg:col-span-5">
                       <div className="group overflow-hidden rounded-[16px] bg-white">
@@ -290,16 +285,13 @@ function AboutPage() {
                     Contact the HighReach Team
                   </h2>
                   <p className="mt-7 text-base leading-[1.9] text-secondary-ink">
-                    For leadership teams navigating the gap between strategic intent and
-                    organisational performance, whether the challenge is decision quality under
-                    complexity, strategy-to-execution alignment, or building the systems that
-                    sustain capability at scale, HighReach provides the diagnostic rigour, the
-                    system-level perspective, and the embedded partnership that structural change
-                    requires.
+                    For leadership teams navigating the gap between strategic intent and organisational performance,
+                    whether the challenge is decision quality under complexity, strategy-to-execution alignment, or
+                    building the systems that sustain capability at scale, HighReach provides the diagnostic rigour, the
+                    system-level perspective, and the embedded partnership that structural change requires.
                   </p>
                   <p className="mt-6 text-base leading-[1.9] text-secondary-ink">
-                    To discuss how HighReach's work applies to your organisation's specific context,
-                    contact the team.
+                    To discuss how HighReach's work applies to your organisation's specific context, contact the team.
                   </p>
                   <a
                     href="mailto:info@HighReach.sa"
