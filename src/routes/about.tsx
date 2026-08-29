@@ -95,10 +95,10 @@ function AboutPage() {
           {/* Subtle dark/blue readability overlay */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 -z-10 bg-gradient-to-br from-[#053462]/90 via-[#053462]/65 to-[#1480AE]/35"
+            className="absolute inset-0 z-0 bg-gradient-to-br from-[#053462]/90 via-[#053462]/65 to-[#1480AE]/35"
           />
 
-          <Container className="relative">
+          <Container className="relative z-10">
             <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
               <Reveal className="lg:col-span-7 xl:col-span-6">
                 <Eyebrow className="text-white/80">About us</Eyebrow>
