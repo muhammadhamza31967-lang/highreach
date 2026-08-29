@@ -95,7 +95,7 @@ function AboutPage() {
           {/* Subtle dark/blue readability overlay */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 z-0 bg-gradient-to-br from-[#053462]/90 via-[#053462]/65 to-[#1480AE]/35"
+            className="absolute inset-0 z-0 bg-gradient-to-br from-[#053462]/80 via-[#053462]/55 to-[#1480AE]/30"
           />
 
           <Container className="relative z-10">
