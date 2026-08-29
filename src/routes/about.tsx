@@ -137,19 +137,44 @@ function AboutPage() {
         </section>
 
         {/* SECTION 1 */}
-        <section className="py-16 sm:py-20 lg:py-28">
-          <Container>
-            <Reveal>
-              <SectionLabel>The gap</SectionLabel>
-            </Reveal>
-            <div className="mt-8 grid gap-10 lg:grid-cols-12 lg:gap-14">
+        <section className="relative overflow-hidden py-14 sm:py-16 lg:py-20">
+          {/* Abstract strategy/system visual layer */}
+          <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+            {/* architectural grid lines */}
+            <div className="absolute inset-y-0 left-1/2 hidden w-px bg-gradient-to-b from-transparent via-foreground/[0.05] to-transparent lg:block" />
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/[0.06] to-transparent" />
+            {/* soft blue gradient field */}
+            <div className="absolute -bottom-40 left-1/2 h-[24rem] w-[52rem] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(20,128,174,0.08),transparent)] blur-2xl" />
+            {/* circular forms */}
+            <div className="absolute -left-28 top-6 h-64 w-64 rounded-full border border-foreground/[0.05]" />
+            <div className="absolute -left-14 top-20 h-36 w-36 rounded-full border border-accent/15" />
+            <div className="absolute -right-24 bottom-24 h-72 w-72 rounded-full border border-foreground/[0.05]" />
+            {/* connecting line + nodes */}
+            <svg
+              className="absolute bottom-20 right-0 hidden h-40 w-[46rem] text-accent/20 lg:block"
+              viewBox="0 0 736 160"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path d="M0 120 H280 L340 60 H560 L620 110 H736" stroke="currentColor" strokeWidth="1" />
+              <circle cx="280" cy="120" r="3.5" fill="currentColor" />
+              <circle cx="340" cy="60" r="3.5" fill="currentColor" />
+              <circle cx="560" cy="60" r="3.5" fill="currentColor" />
+              <circle cx="620" cy="110" r="3.5" fill="currentColor" />
+              <circle cx="736" cy="110" r="3.5" fill="currentColor" />
+            </svg>
+          </div>
+
+          <Container className="relative">
+            <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
               <Reveal className="lg:col-span-5">
-                <h2 className="text-[clamp(1.9rem,4.5vw,3.25rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-foreground">
+                <span className="block h-0.5 w-14 rounded-full bg-accent" />
+                <h2 className="mt-7 text-[clamp(2rem,4.6vw,3.5rem)] font-semibold leading-[1.06] tracking-[-0.025em] text-foreground">
                   We Transform How Organisations Think, Decide, and Execute
                 </h2>
               </Reveal>
-              <Reveal delay={100} className="lg:col-span-7">
-                <p className="text-base leading-[1.95] text-secondary-ink sm:text-[1.05rem]">
+              <Reveal delay={120} className="lg:col-span-6 lg:col-start-7">
+                <p className="max-w-xl text-base leading-[1.9] text-secondary-ink sm:text-[1.05rem]">
                   Most organisations have capable people. The problem is not individual performance,
                   it is the system those people operate within. When decision architecture is poorly
                   designed, when strategy dilutes as it passes through organisational layers, when
@@ -161,11 +186,19 @@ function AboutPage() {
               </Reveal>
             </div>
 
-            <Reveal delay={160}>
-              <div className="mt-12 border-t border-hairline pt-10 lg:mt-16 lg:pt-12">
-                <p className="text-[clamp(1.5rem,3.6vw,2.5rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-accent">
-                  HighReach exists to close that gap.
-                </p>
+            <Reveal delay={220}>
+              <div className="relative mt-12 lg:mt-14">
+                {/* refined transition: thin gradient rule with accent node */}
+                <div className="flex items-center gap-4" aria-hidden="true">
+                  <span className="h-px flex-1 bg-gradient-to-r from-foreground/10 via-foreground/10 to-accent/40" />
+                  <span className="h-2 w-2 rounded-full border border-accent/50 bg-accent/15" />
+                </div>
+                <div className="relative mt-10 text-center lg:mt-12">
+                  <span className="pointer-events-none absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/10" aria-hidden="true" />
+                  <p className="relative mx-auto max-w-3xl text-[clamp(1.6rem,3.8vw,2.75rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-accent">
+                    HighReach exists to close that gap.
+                  </p>
+                </div>
               </div>
             </Reveal>
           </Container>
