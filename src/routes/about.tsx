@@ -145,24 +145,9 @@ function AboutPage() {
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/[0.06] to-transparent" />
             {/* soft blue gradient field */}
             <div className="absolute -bottom-40 left-1/2 h-[24rem] w-[52rem] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(20,128,174,0.08),transparent)] blur-2xl" />
-            {/* circular forms */}
+            {/* subtle circular forms — left side only */}
             <div className="absolute -left-28 top-6 h-64 w-64 rounded-full border border-foreground/[0.05]" />
             <div className="absolute -left-14 top-20 h-36 w-36 rounded-full border border-accent/15" />
-            <div className="absolute -right-24 bottom-24 h-72 w-72 rounded-full border border-foreground/[0.05]" />
-            {/* connecting line + nodes */}
-            <svg
-              className="absolute bottom-20 right-0 hidden h-40 w-[46rem] text-accent/20 lg:block"
-              viewBox="0 0 736 160"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path d="M0 120 H280 L340 60 H560 L620 110 H736" stroke="currentColor" strokeWidth="1" />
-              <circle cx="280" cy="120" r="3.5" fill="currentColor" />
-              <circle cx="340" cy="60" r="3.5" fill="currentColor" />
-              <circle cx="560" cy="60" r="3.5" fill="currentColor" />
-              <circle cx="620" cy="110" r="3.5" fill="currentColor" />
-              <circle cx="736" cy="110" r="3.5" fill="currentColor" />
-            </svg>
           </div>
 
           <Container className="relative">
