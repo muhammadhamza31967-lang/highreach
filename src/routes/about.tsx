@@ -193,9 +193,12 @@ function AboutPage() {
                   <span className="h-px flex-1 bg-gradient-to-r from-foreground/10 via-foreground/10 to-accent/40" />
                   <span className="h-2 w-2 rounded-full border border-accent/50 bg-accent/15" />
                 </div>
-                <div className="relative mt-10 text-center lg:mt-12">
+                <div className="relative mt-12 text-center lg:mt-16">
+                  {/* subtle abstract emphasis around the statement */}
                   <span className="pointer-events-none absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/10" aria-hidden="true" />
-                  <p className="relative mx-auto max-w-3xl text-[clamp(1.6rem,3.8vw,2.75rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-accent">
+                  <span className="pointer-events-none absolute left-1/2 top-1/2 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-accent/[0.08]" aria-hidden="true" />
+                  <span className="pointer-events-none absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/25" aria-hidden="true" />
+                  <p className="relative mx-auto max-w-3xl text-[clamp(1.35rem,2.9vw,2.85rem)] font-semibold leading-[1.2] tracking-[-0.015em] text-accent">
                     HighReach exists to close that gap.
                   </p>
                 </div>
