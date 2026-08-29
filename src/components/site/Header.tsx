@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { useRouterState } from "@tanstack/react-router";
 import { Arrow, Container } from "./primitives";
 import { cn } from "@/lib/utils";
 import logoAsset from "@/assets/highreach-logo.png.asset.json";
 
 const NAV = [
-  { label: "Home", href: "#top", chevron: false },
-  { label: "About Us", href: "#about", chevron: false },
-  { label: "Artificial Intelligence", href: "#capability", chevron: true },
-  { label: "Cyber Security", href: "#capability", chevron: true },
-  { label: "Advisory Services", href: "#services", chevron: true },
-  { label: "Press Release", href: "#resources", chevron: true },
-  { label: "Contact", href: "#contact", chevron: false },
-];
+  { label: "Home", href: "/", path: "/", chevron: false },
+  { label: "About Us", href: "/about", path: "/about", chevron: false },
+  { label: "Artificial Intelligence", href: "/#capability", chevron: true },
+  { label: "Cyber Security", href: "/#capability", chevron: true },
+  { label: "Advisory Services", href: "/#services", chevron: true },
+  { label: "Press Release", href: "/#resources", chevron: true },
+  { label: "Contact", href: "/#contact", chevron: false },
+] as { label: string; href: string; path?: string; chevron: boolean }[];
 
 const FLOATING =
   "bg-white border border-black/[0.06] shadow-[0_8px_25px_rgba(15,45,75,0.10)]";
