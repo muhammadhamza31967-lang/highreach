@@ -111,14 +111,14 @@ export function Header() {
           )}
         >
           <ul className="flex flex-col">
-            {NAV.map((item, i) => (
+            {NAV.map((item) => (
               <li key={item.label}>
                 <a
                   href={item.href}
                   onClick={() => setOpen(false)}
                   className={cn(
                     "flex items-center justify-between rounded-xl px-4 py-3.5 text-base text-[#053462] transition-colors hover:bg-[#f3f4f3] hover:text-[#1480AE]",
-                    i === 0 && "bg-[#f3f4f3]",
+                    isActive(item) && "bg-[#f3f4f3]",
                   )}
                 >
                   {item.label}
