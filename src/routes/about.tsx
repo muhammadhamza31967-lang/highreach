@@ -194,65 +194,98 @@ function AboutPage() {
         </section>
 
         {/* MISSION / VISION */}
-        <section className="py-16 sm:py-20 lg:py-28">
-          <Container>
-            <div className="relative grid gap-8 border-l border-accent/30 pl-6 sm:pl-10 lg:grid-cols-12 lg:gap-14">
+        <section className="relative overflow-hidden py-16 sm:py-20 lg:py-24">
+          {/* subtle background detail */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+            <div className="absolute -right-40 top-1/2 h-[30rem] w-[30rem] -translate-y-1/2 rounded-full border border-accent/10" />
+            <div className="absolute -right-24 top-1/2 h-[20rem] w-[20rem] -translate-y-1/2 rounded-full border border-accent/[0.08]" />
+            <div className="absolute right-40 top-24 h-1.5 w-1.5 rounded-full bg-accent/30" />
+            <div className="absolute bottom-16 left-10 h-1 w-1 rounded-full bg-accent/20" />
+          </div>
+          <Container className="relative">
+            <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
               <Reveal className="lg:col-span-5">
-                <Eyebrow>Direction</Eyebrow>
-                <h2 className="mt-5 text-[clamp(1.9rem,4.5vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-foreground">
+                <h2 className="text-[clamp(2.1rem,4.5vw,3.75rem)] font-semibold leading-[1.02] tracking-[-0.025em] text-foreground">
                   Mission / Vision
                 </h2>
+                <span
+                  aria-hidden="true"
+                  className="mt-8 block h-[3px] w-20 rounded-full bg-accent"
+                />
               </Reveal>
-              <Reveal delay={100} className="lg:col-span-7">
-                <p className="text-base leading-[1.95] text-secondary-ink sm:text-[1.05rem]">
-                  Our mission is to empower individuals and organisations through strategic thinking,
-                  leadership excellence, and innovation that drives sustainable growth, while our
-                  vision is to become a globally recognised centre of excellence that develops
-                  future-ready leaders who create meaningful and lasting impact.
-                </p>
+              <Reveal delay={100} className="flex items-end lg:col-span-7 lg:pb-2">
+                <div className="max-w-xl lg:ml-auto lg:mt-9">
+                  <p className="text-base leading-[1.95] text-secondary-ink sm:text-[1.05rem]">
+                    Our mission is to empower individuals and organisations through strategic
+                    thinking, leadership excellence, and innovation that drives sustainable growth,
+                    while our vision is to become a globally recognised centre of excellence that
+                    develops future-ready leaders who create meaningful and lasting impact.
+                  </p>
+                </div>
               </Reveal>
             </div>
           </Container>
         </section>
 
         {/* PRINCIPLES */}
-        <section className="bg-surface py-16 sm:py-20 lg:py-28">
+        <section className="bg-surface py-16 sm:py-20 lg:py-24">
           <Container>
-            <Reveal>
-              <SectionLabel>How we work</SectionLabel>
-            </Reveal>
-            <div className="mt-10 flex flex-col gap-12 lg:mt-14 lg:gap-16">
-              {PRINCIPLES.map((p, i) => (
-                <Reveal key={p.heading} delay={60}>
-                  <article
-                    className={`grid items-center gap-7 border-t border-hairline pt-10 lg:grid-cols-12 lg:gap-14 ${
-                      i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
-                    }`}
-                  >
-                    <div className="lg:col-span-7">
-                      <span className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-accent">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <h3 className="mt-4 max-w-xl text-[clamp(1.4rem,3vw,2.15rem)] font-semibold leading-[1.15] tracking-[-0.015em] text-foreground">
-                        {p.heading}
-                      </h3>
-                      <p className="mt-5 max-w-2xl text-base leading-[1.9] text-secondary-ink">
-                        {p.content}
-                      </p>
-                    </div>
-                    <div className="lg:col-span-5">
-                      <div className="group overflow-hidden rounded-[16px] bg-white">
-                        <img
-                          src={p.image}
-                          alt={p.heading}
-                          loading="lazy"
-                          className="h-[13rem] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03] sm:h-[16rem] lg:h-[18rem]"
-                        />
+            <div className="flex flex-col gap-14 lg:gap-20">
+              {PRINCIPLES.map((p, i) => {
+                const reversed = i % 2 === 1;
+                return (
+                  <Reveal key={p.heading} delay={60}>
+                    <article className="relative">
+                      {/* connecting line with node */}
+                      <div
+                        aria-hidden="true"
+                        className="absolute -top-7 left-0 right-0 hidden items-center gap-4 lg:flex lg:-top-9"
+                      >
+                        <span className="h-px flex-1 bg-hairline" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-accent/50" />
                       </div>
-                    </div>
-                  </article>
-                </Reveal>
-              ))}
+                      <div className="grid items-center gap-8 pt-8 lg:grid-cols-12 lg:gap-14 lg:pt-10">
+                        <div
+                          className={`lg:col-span-6 ${reversed ? "lg:order-2" : ""}`}
+                        >
+                          <div className="flex items-baseline gap-5">
+                            <span
+                              aria-hidden="true"
+                              className="text-[clamp(2.2rem,4vw,3.25rem)] font-semibold leading-none tracking-[-0.02em] text-accent/25"
+                            >
+                              {String(i + 1).padStart(2, "0")}
+                            </span>
+                            <span
+                              aria-hidden="true"
+                              className="hidden h-px w-12 self-center bg-accent/40 sm:block"
+                            />
+                          </div>
+                          <h3 className="mt-5 max-w-xl text-[clamp(1.5rem,3vw,2.3rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-foreground">
+                            {p.heading}
+                          </h3>
+                          <p className="mt-5 max-w-xl text-base leading-[1.9] text-secondary-ink">
+                            {p.content}
+                          </p>
+                        </div>
+                        <div className={`lg:col-span-6 ${reversed ? "lg:order-1" : ""}`}>
+                          <div className="group relative overflow-hidden rounded-[20px]">
+                            <img
+                              src={p.image}
+                              alt={p.heading}
+                              loading="lazy"
+                              className="h-[15rem] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03] sm:h-[18rem] lg:h-[22rem]"
+                            />
+                            <span
+                              aria-hidden="true"
+                              className="pointer-events-none absolute inset-0 rounded-[20px] ring-1 ring-inset ring-foreground/10"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  </Reveal>
+                );
+              })}
             </div>
           </Container>
         </section>
